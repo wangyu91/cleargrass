@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<workspace>
+  <project>
+    <path>$WS_DIR$\LED.ewp</path>
+  </project>
+  <project>
+    <path>$WS_DIR$\..\..\STM32_Sensor8\EWARM\STM32_Sensor8.ewp</path>
+  </project>
+  <batchBuild/>
+</workspace>
+
+
