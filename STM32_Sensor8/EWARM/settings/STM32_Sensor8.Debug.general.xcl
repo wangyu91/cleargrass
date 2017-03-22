@@ -1,0 +1,15 @@
+"D:\IAR\arm\bin\armproc.dll" 
+
+"D:\IAR\arm\bin\armjlink2.dll" 
+
+"D:\Workspace\STM32_Sensor8\EWARM\Debug\Exe\STM32_Sensor8.out" 
+
+--plugin "D:\IAR\arm\bin\armbat.dll" 
+
+--device_macro "D:\IAR\arm\config\debugger\ST\STM32F1xx_XL.dmac" 
+
+--flash_loader "D:\IAR\arm\config\flashloader\ST\FlashSTM32F10xxE.board" 
+
+
+
+
