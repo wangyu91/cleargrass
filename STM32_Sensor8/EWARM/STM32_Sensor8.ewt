@@ -2366,6 +2366,39 @@
           <name>$PROJ_DIR$\..\Users\App\Global\Global.h</name>
         </file>
       </group>
+      <group>
+        <name>GPIO_LED</name>
+        <file>
+          <name>$PROJ_DIR$\..\Users\App\GPIO_LED\GPIO_LED.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\Users\App\GPIO_LED\GPIO_LED.h</name>
+        </file>
+      </group>
+      <group>
+        <name>SHT</name>
+        <file>
+          <name>$PROJ_DIR$\..\Users\App\SHT30_Driver\SHT30_Driver.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\Users\App\SHT30_Driver\SHT30_Driver.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\Users\App\SHT30_Driver\SHT30_Init.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\Users\App\SHT30_Driver\SHT30_Init.h</name>
+        </file>
+      </group>
+      <group>
+        <name>SW_IIC</name>
+        <file>
+          <name>$PROJ_DIR$\..\Users\App\Soft_IIC\SW_IIC.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\Users\App\Soft_IIC\SW_IIC.h</name>
+        </file>
+      </group>
     </group>
     <group>
       <name>main</name>

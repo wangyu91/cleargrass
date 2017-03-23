@@ -10,33 +10,80 @@
 /* Includes ------------------------------------------------------------------*/
 #include "Global.h"
 /* Private Variables ---------------------------------------------------------*/
+SW_IIC_t LED_t;
+SW_IIC_t SHT30_s;															// SHT30 结构体
 
 /* Private Function Prototypes -----------------------------------------------*/
-void GPIO_Pin_Config(uint32_t RCC_APB2P_GPIOx, uint16_t Pin, uint32_t Mode, uint16_t Speed, GPIO_TypeDef *GPIOx);
+void GPIO_Pin_Config(uint32_t RCC_APB2P_GPIOx, uint16_t Pin, uint32_t Mode, uint16_t Speed, GPIO_TypeDef *GPIOx);	// GPIO口初始化
+
+void STM32_Delay_us(uint16_t time_us);										// 粗延时 微秒
+void STM32_Delay_ms(uint16_t time_ms);										// 毫秒
 
 /* Private Functions ---------------------------------------------------------*/
 /*******************************************************************************
 *						王宇@2017-03-21
 * Function Name   :  GPIO_Pin_Config
 * Description	  :  GPIO Pin 初始化
-* Input			  :  uint_32 *GPIOx		GPIO组
-					 uint_16 *Pin		管脚Pin
-					 uint_t32 Mode		管脚输出模式
-					 uint_16 Speed		管脚速率
+* Input			  :  uint32_t 		RCC_APB2P_GPIOx		始终初始化管脚组
+					 uint16_t 		Pin					管脚Pin
+					 uint32_t 		Mode				管脚输出模式
+					 uint32_t 		Speed				管脚速率
+					 GPIO_TypeDef * GPIOx				管脚组
 * Output          :  None
 * Return		  :  None
 *******************************************************************************/
-    void GPIO_Pin_Config(uint32_t RCC_APB2P_GPIOx, uint16_t Pin, uint32_t Mode, uint16_t Speed, GPIO_TypeDef *GPIOx)
-    {
-        GPIO_InitTypeDef GPIO_Init_s;									// 初始化配置结构体
+void GPIO_Pin_Config(uint32_t RCC_APB2P_GPIOx, uint16_t Pin, uint32_t Mode, uint16_t Speed, GPIO_TypeDef *GPIOx)
+{
+    GPIO_InitTypeDef GPIO_Init_s;										// 初始化配置结构体
     
-        RCC_APB2PeriphClockCmd(RCC_APB2P_GPIOx, ENABLE);                // 启动GPIO时钟
+    RCC_APB2PeriphClockCmd(RCC_APB2P_GPIOx, ENABLE);                	// 启动GPIO时钟
     
-        GPIO_Init_s.GPIO_Pin    = Pin;                                  // 设定管脚
-        GPIO_Init_s.GPIO_Mode   = Mode;                                 // 管脚输出模式
-        GPIO_Init_s.GPIO_Speed  = Speed;                                // 管脚速率
+    GPIO_Init_s.GPIO_Pin    = Pin;                                	    // 设定管脚
+    GPIO_Init_s.GPIO_Mode   = Mode;                               	    // 管脚输出模式
+    GPIO_Init_s.GPIO_Speed  = Speed;                               		// 管脚速率
     
-        GPIO_Init(GPIOx, &GPIO_Init_s);                                 // 初始化管脚
-    }
-    
+	GPIO_Init(GPIOx, &GPIO_Init_s);										// 初始化管脚
+}
+// end of  void GPIO_Pin_Config(uint32_t RCC_APB2P_GPIOx, uint16_t Pin, uint32_t Mode, uint16_t Speed, GPIO_TypeDef *GPIOx)
+
+/*******************************************************************************
+*						王宇@2017-03-23
+* Function Name   :  STM32_Delay_us
+* Description	  :  粗延时 微秒
+* Input			  :  uint16_t time_us	延时值
+* Output          :  None
+* Return		  :  None
+*******************************************************************************/
+void STM32_Delay_us(uint16_t time_us)
+{
+	u16 i = 0;
+
+	while(time_us--)
+	{
+		i = 10;
+		while(i--);
+	}
+}
+// end of void STM32_Delay_us(uint16_t time_us)
+
+/*******************************************************************************
+*						王宇@2017-03-23
+* Function Name   :  STM32_Delay_ms
+* Description	  :  粗延时 毫秒
+* Input			  :  uint16_t time_ms	延时值
+* Output          :  None
+* Return		  :  None
+*******************************************************************************/
+void STM32_Delay_ms(uint16_t time_ms)
+{
+	u16 i = 0;
+
+	while(time_ms--)
+	{
+		i = 12000;
+		while(i--);
+	}
+}
+// end of void STM32_Delay_ms(uint16_t time_ms)
+
 /******************* (C) COPYRIGHT 2017 王宇 ********END OF FILE***************/

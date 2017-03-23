@@ -1,4 +1,4 @@
-"D:\Workspace\STM32_Sensor8\Users\Main\stm32f10x_it.c"
+"D:\Workspace\STM32_Sensor8\Users\App\SHT30_Driver\SHT30_Driver.c"
 -std=c99
 -ferror-limit=100
 -I

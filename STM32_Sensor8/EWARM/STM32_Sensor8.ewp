@@ -318,6 +318,10 @@
           <state>$PROJ_DIR$\..\Users\main</state>
           <state>$PROJ_DIR$\..\Users\app</state>
           <state>$PROJ_DIR$\..\Users\App\Global</state>
+          <state>$PROJ_DIR$\..\Users\App\Soft_IIC</state>
+          <state>$PROJ_DIR$\..\Users\App\GPIO_LED</state>
+          <state>$PROJ_DIR$\..\Users\App\Global</state>
+          <state>$PROJ_DIR$\..\Users\App\SHT30_Driver</state>
         </option>
         <option>
           <name>CCStdIncCheck</name>
@@ -732,7 +736,7 @@
         </option>
         <option>
           <name>IlinkIcfFile</name>
-          <state>lnk0t.icf</state>
+          <state>$TOOLKIT_DIR$\config\linker\ST\stm32f103xE.icf</state>
         </option>
         <option>
           <name>IlinkIcfFileSlave</name>
@@ -792,7 +796,7 @@
         </option>
         <option>
           <name>IlinkProgramEntryLabel</name>
-          <state></state>
+          <state>__iar_program_start</state>
         </option>
         <option>
           <name>DoFill</name>
@@ -1985,6 +1989,39 @@
         </file>
         <file>
           <name>$PROJ_DIR$\..\Users\App\Global\Global.h</name>
+        </file>
+      </group>
+      <group>
+        <name>GPIO_LED</name>
+        <file>
+          <name>$PROJ_DIR$\..\Users\App\GPIO_LED\GPIO_LED.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\Users\App\GPIO_LED\GPIO_LED.h</name>
+        </file>
+      </group>
+      <group>
+        <name>SHT</name>
+        <file>
+          <name>$PROJ_DIR$\..\Users\App\SHT30_Driver\SHT30_Driver.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\Users\App\SHT30_Driver\SHT30_Driver.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\Users\App\SHT30_Driver\SHT30_Init.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\Users\App\SHT30_Driver\SHT30_Init.h</name>
+        </file>
+      </group>
+      <group>
+        <name>SW_IIC</name>
+        <file>
+          <name>$PROJ_DIR$\..\Users\App\Soft_IIC\SW_IIC.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\Users\App\Soft_IIC\SW_IIC.h</name>
         </file>
       </group>
     </group>
