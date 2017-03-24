@@ -30,14 +30,14 @@
 typedef struct
 {
     //void                (*Delay)(void);                                 // 延时
-    //void                (*Delay_us)(void);                              // us延时
+    void                (*Delay_us)(void);                              // us延时
     //void                (*Pin_Init)(void);                              // 管脚初始化
     void                (*SDA_High)(void);                              // 拉高SDA
     void                (*SDA_Low)(void);                               // 拉低SDA
     void                (*SCL_High)(void);                              // 拉高SCL
     void                (*SCL_Low)(void);                               // 拉低SCL                
-    //void                (*Set_SDA_Input)(void);                         // 设置数据位输入管脚
-    //void                (*Set_SDA_Output)(void);                        // 设置数据位输出管脚
+    void                (*Set_SDA_Input)(void);                         // 设置数据位输入管脚
+    void                (*Set_SDA_Output)(void);                        // 设置数据位输出管脚
     //void                (*Set_SCL_Output)(void);                        // 设置时钟位输出管脚
     unsigned char       (*SDA_Read)(void);                              // 读SDA管脚
     unsigned char       (*SCL_Read)(void);                              // 读SCL管脚  

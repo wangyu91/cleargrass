@@ -19,6 +19,8 @@ void GPIO_Pin_Config(uint32_t RCC_APB2P_GPIOx, uint16_t Pin, uint32_t Mode, uint
 void STM32_Delay_us(uint16_t time_us);										// 粗延时 微秒
 void STM32_Delay_ms(uint16_t time_ms);										// 毫秒
 
+static void IIC_Delay(unsigned char count);									// 延时
+
 /* Private Functions ---------------------------------------------------------*/
 /*******************************************************************************
 *						王宇@2017-03-21
@@ -60,7 +62,7 @@ void STM32_Delay_us(uint16_t time_us)
 
 	while(time_us--)
 	{
-		i = 10;
+		i = 3;
 		while(i--);
 	}
 }
@@ -85,5 +87,24 @@ void STM32_Delay_ms(uint16_t time_ms)
 	}
 }
 // end of void STM32_Delay_ms(uint16_t time_ms)
+
+/*******************************************************************************
+//*                           王宇@2017-03-22
+//* Function Name  :  IIC_Delay
+//* Description    :  IIC 时延
+//* Input          :  unsigned char count     时延计数
+//* Output         :  None
+//* Return         :  None
+//*******************************************************************************/
+//static void IIC_Delay(unsigned char count)
+//{
+//	unsigned char i, j;
+
+//	for (i = 0; i < count; i++)
+//	{
+//		for (j = 0; j < IIC_DELAY_COUNT; j++);
+//	}
+//}
+// end of static void IIC_Delay(unsigned char count)
 
 /******************* (C) COPYRIGHT 2017 王宇 ********END OF FILE***************/

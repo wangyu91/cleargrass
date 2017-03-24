@@ -54,6 +54,8 @@ u8 SHT30_Get_Data(float *fTemp, float *fHumi)
     
     ucResult = SHT30_Read_Register(CMD_MEAS_CLOCKSTR_L, ucRead_Data, 6);
     
+	u8 i;
+	
     if (ucResult)
     {
         // Í¨¹ýÁËCRC

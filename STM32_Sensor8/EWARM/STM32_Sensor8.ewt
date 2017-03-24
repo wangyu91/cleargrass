@@ -2345,6 +2345,12 @@
       <file>
         <name>$PROJ_DIR$\..\Library\FWlib\inc\stm32f10x_rcc.h</name>
       </file>
+      <file>
+        <name>$PROJ_DIR$\..\Library\FWlib\srs\stm32f10x_usart.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\..\Library\FWlib\inc\stm32f10x_usart.h</name>
+      </file>
     </group>
   </group>
   <group>
@@ -2357,6 +2363,15 @@
     <name>users</name>
     <group>
       <name>App</name>
+      <group>
+        <name>Example_Uart</name>
+        <file>
+          <name>$PROJ_DIR$\..\Users\App\Example_uart\bsp_usart1.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\Users\App\Example_uart\bsp_usart1.h</name>
+        </file>
+      </group>
       <group>
         <name>Global</name>
         <file>

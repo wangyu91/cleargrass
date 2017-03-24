@@ -18,14 +18,14 @@
 
 /* Private function prototypes -----------------------------------------------*/
 //void SHT30_Delay(void);                                            	// ÑÓÊ±
-//void SHT30_Delay_us(void);                                          	// usÑÓÊ±
+void SHT30_Delay_us(void);                                          	// usÑÓÊ±
 void SHT30_Pin_Init(void);                                          	// ¹Ü½Å³õÊ¼»¯
 void SHT30_Set_SDA_High(void);                                          // À­¸ßÊý¾ÝÏß
 void SHT30_Set_SDA_Low(void);                                           // À­µÍÊý¾ÝÏß
 void SHT30_Set_SCL_High(void);                                          // À­¸ßÊ±ÖÓ
 void SHT30_Set_SCL_Low(void);                                           // À­µÍÊ±ÖÓ
-//void SHT30_Set_SDA_Input(void);                                     	// ÉèÖÃSDAÎªÊäÈëÄ£Ê½
-//void SHT30_Set_SDA_Output(void);                                    	// ÉèÖÃSDAÎªÊä³öÄ£Ê½
+void SHT30_Set_SDA_Input(void);                                     	// ÉèÖÃSDAÎªÊäÈëÄ£Ê½
+void SHT30_Set_SDA_Output(void);                                    	// ÉèÖÃSDAÎªÊä³öÄ£Ê½
 //void SHT30_Set_SCL_Output(void);                                    	// ÉèÖÃSCLÎªÊä³öÄ£Ê½
 u8   SHT30_SDA_Read(void);                                          	// ¶ÁÈ¡SDAµçÆ½
 u8   SHT30_SCL_Read(void);                                          	// ¶ÁÈ¡SCLµçÆ½
@@ -54,18 +54,19 @@ u8 SHT30_Write_Register(u8 usWrite_Addr, u8* pBuffer, u8 usWrite_Len);// Ð´¼Ä´æÆ
 //}// End of void SHT30_Delay(void)
 
 /*******************************************************************************
-//*                           ÍõÓî@2017-03-21
-//* Function Name  :  SHT30_Delay_us
-//* Description    :  SHT30 usÑÓÊ±
-//* Input          :  None
-//* Output         :  None
-//* Return         :  None
-//*******************************************************************************/
-//void SHT30_Delay_us(void)
-//{
-//    nrf_delay_us(1);
-//    
-//}// End of void SHT30_Delay_us(void)
+*                           ÍõÓî@2017-03-21
+* Function Name  :  SHT30_Delay_us
+* Description    :  SHT30 usÑÓÊ±
+* Input          :  None
+* Output         :  None
+* Return         :  None
+*******************************************************************************/
+void SHT30_Delay_us(void)
+{
+    STM32_Delay_us(1);
+    
+}
+// End of void SHT30_Delay_us(void)
 
 /*******************************************************************************
 *                           ÍõÓî@2017-03-21
@@ -80,9 +81,8 @@ void SHT30_Pin_Init(void)
 {
     
     // ÉèÖÃ¹Ü½ÅÎª¿ªÂ©Ä£Ê½
-    GPIO_Pin_Config(RCC_APB2Periph_GPIOA, GPIO_Pin_2, GPIO_Mode_Out_OD, GPIO_Speed_50MHz, GPIOA);	// SCL A2½Å
-    GPIO_Pin_Config(RCC_APB2Periph_GPIOA, GPIO_Pin_3, GPIO_Mode_Out_OD, GPIO_Speed_50MHz, GPIOA);   // SDA A3½Å
-    
+    GPIO_Pin_Config(SHT30_GPIO_RCC, SHT30_SDA|SHT30_SCL, GPIO_Mode_Out_OD, GPIO_Speed_50MHz, SHT30_GPIO);   // SDA|A7½Å SCL|A6½Å ¿ªÂ©Êä³ö ËÙÂÊ50MHz 
+   // GPIO_Pin_Config(SHT30_GPIO_C, SHT30_SCL, GPIO_Mode_Out_PP, GPIO_Speed_50MHz, SHT30_GPIO);	// SCL A6½Å
 }
 // End of u8  SHT30_Pin_Init(void)
 
@@ -96,7 +96,7 @@ void SHT30_Pin_Init(void)
 *******************************************************************************/
 void SHT30_Set_SDA_High(void)
 {
-    GPIO_SetBits(GPIOA, GPIO_Pin_3);
+    GPIO_SetBits(SHT30_GPIO, SHT30_SDA);
     
 }
 // End of void SHT30_SDA_High(void)
@@ -111,7 +111,7 @@ void SHT30_Set_SDA_High(void)
 *******************************************************************************/
 void SHT30_Set_SDA_Low(void)
 {
-    GPIO_ResetBits(GPIOA, GPIO_Pin_3);
+    GPIO_ResetBits(SHT30_GPIO, SHT30_SDA);
     
 }
 // End of void SHT30_SDA_Low(void)
@@ -126,7 +126,7 @@ void SHT30_Set_SDA_Low(void)
 *******************************************************************************/
 void SHT30_Set_SCL_High(void)
 {
-    GPIO_SetBits(GPIOA, GPIO_Pin_2);
+    GPIO_SetBits(SHT30_GPIO, SHT30_SCL);
     
 }
 // End of void SHT30_SCL_High(void)
@@ -141,38 +141,40 @@ void SHT30_Set_SCL_High(void)
 *******************************************************************************/
 void SHT30_Set_SCL_Low(void)
 {
-    GPIO_ResetBits(GPIOA, GPIO_Pin_2);
+    GPIO_ResetBits(SHT30_GPIO, SHT30_SCL);
     
 }
 // End of void SHT30_SCL_Low(void)
 
 /*******************************************************************************
-//*                           ÍõÓî@2017-03-21
-//* Function Name  :  SHT30_Set_SDA_Input
-//* Description    :  ÉèÖÃSDA¹Ü½ÅÎªÊäÈëÄ£Ê½
-//* Input          :  None
-//* Output         :  None
-//* Return         :  None
-//*******************************************************************************/
-//void SHT30_Set_SDA_Input(void)
-//{
-//    NRF_GPIO->DIRCLR = (1UL << SHT30_SDA_PIN);
-//    
-//}// End of void SHT30_Set_SDA_Input(void)
+*                           ÍõÓî@2017-03-21
+* Function Name  :  SHT30_Set_SDA_Input
+* Description    :  ÉèÖÃSDA¹Ü½ÅÎªÊäÈëÄ£Ê½
+* Input          :  None
+* Output         :  None
+* Return         :  None
+*******************************************************************************/
+void SHT30_Set_SDA_Input(void)
+{
+    SHT30_GPIO->CRL &= 0x0FFFFFFF;										// A×é¹Ü½Å PIN7[31:28]
+    SHT30_GPIO->CRL |= 8 << 28;											// ÉèÎªÉÏÀ­ÊäÈëÄ£Ê½
+}
+// End of void SHT30_Set_SDA_Input(void)
 
 /*******************************************************************************
-//*                           ÍõÓî@2017-03-21
-//* Function Name  :  SHT30_Set_SDA_Output
-//* Description    :  ÉèÖÃSDA¹Ü½ÅÎªÊä³öÄ£Ê½
-//* Input          :  None
-//* Output         :  None
-//* Return         :  None
-//*******************************************************************************/
-//void SHT30_Set_SDA_Output(void)
-//{
-//    NRF_GPIO->DIRSET = (1UL << SHT30_SDA_PIN);
-//    
-//}// End of void SHT30_Set_SDA_Output(void)
+*                           ÍõÓî@2017-03-21
+* Function Name  :  SHT30_Set_SDA_Output
+* Description    :  ÉèÖÃSDA¹Ü½ÅÎªÊä³öÄ£Ê½
+* Input          :  None
+* Output         :  None
+* Return         :  None
+*******************************************************************************/
+void SHT30_Set_SDA_Output(void)
+{
+     SHT30_GPIO->CRL &= 0x0FFFFFFF;										// A×é¹Ü½Å PIN7[31:28]
+   	 SHT30_GPIO->CRL |= 3 << 28;										// ÉèÎªÍÆÍìÊä³öÄ£Ê½ 
+}
+// End of void SHT30_Set_SDA_Output(void)
 
 /*******************************************************************************
 //*                           ÍõÓî@2017-03-21
@@ -198,7 +200,7 @@ void SHT30_Set_SCL_Low(void)
 *******************************************************************************/
 u8 SHT30_SDA_Read(void)
 {
-    return(GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_3));
+    return(GPIO_ReadInputDataBit(SHT30_GPIO, SHT30_SDA));
     
 }
 // End of u8 SHT30_SDA_Read(void)
@@ -213,7 +215,7 @@ u8 SHT30_SDA_Read(void)
 *******************************************************************************/
 u8 SHT30_SCL_Read(void)
 {
-    return(GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_2));
+    return(GPIO_ReadInputDataBit(SHT30_GPIO, SHT30_SCL));
     
 }
 // End of u8 SHT30_SCL_Read(void)
@@ -234,18 +236,18 @@ u8 SHT30_Init(void)
 	
 	// ÅäÖÃ½á¹¹Ìå
 //    SHT30_s.Dealy                 = SHT30_Delay;
-//    SHT30_s.Dealy_us              = SHT30_Delay_us;
+    SHT30_s.Delay_us              = SHT30_Delay_us;
 //    SHT30_s.Pin_Init              = SHT30_Pin_Init;
     SHT30_s.SDA_High              = SHT30_Set_SDA_High;
     SHT30_s.SDA_Low               = SHT30_Set_SDA_Low;
     SHT30_s.SCL_High              = SHT30_Set_SCL_High;
     SHT30_s.SCL_Low               = SHT30_Set_SCL_Low;
-//    SHT30_s.Set_SDA_Input         = SHT30_Set_SDA_Input; 
-//    SHT30_s.Set_SDA_Output        = SHT30_Set_SDA_Output; 
+    SHT30_s.Set_SDA_Input         = SHT30_Set_SDA_Input; 
+    SHT30_s.Set_SDA_Output        = SHT30_Set_SDA_Output; 
 //    SHT30_s.Set_SCL_Output        = SHT30_Set_SCL_Output;   
     SHT30_s.SDA_Read              = SHT30_SDA_Read; 
     SHT30_s.SCL_Read              = SHT30_SCL_Read;
-    SHT30_s.Wait_Scl_Free_Timeout = (5 * 1000);
+    SHT30_s.Wait_Scl_Free_Timeout = SHT30_TIMEOUT;
     
     Transfer_Succeeded = SW_IIC_Init(&SHT30_s);							// ³õÊ¼»¯IICÍ¨ÐÅ
     
@@ -355,6 +357,7 @@ u8 SHT30_Read_Register(u16 usRead_Addr, u8* pBuffer, u16 usRead_Len)
     Transfer_Succeeded &= SW_IIC_Transfer(&SHT30_s, SHT30_WRITE_ADDR, ucRead_Addr, 2, SW_IIC_DONT_SEND_STOP);
     Transfer_Succeeded &= SW_IIC_Transfer(&SHT30_s, SHT30_READ_ADDR, pBuffer, usRead_Len, SW_IIC_NEED_SEND_STOP);
 
+	//printf("pBuffer = %d", *pBuffer);
     STM32_Delay_us(100);
 
     return Transfer_Succeeded;
@@ -408,4 +411,3 @@ u8 SHT30_Write_Register(u8 usWrite_Addr, u8* pBuffer, u8 usWrite_Len)
 // End of u8 Temp_Humi_Write_Register(u8 usWrite_Addr, u8* pBuffer, u8 usWrite_Len)
 
 /******************* (C) COPYRIGHT 2017 ÍõÓî **************END OF FILE*********/
-

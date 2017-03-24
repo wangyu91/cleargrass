@@ -1,7 +1,7 @@
 /******************** (C) COPYRIGHT 2016 王宇 **********************************
 * File Name          :  SW_IIC.c
 * Author             :  王宇
-* CPU Type           :  STM32f43
+* CPU Type           :  STM32f103
 * IDE                :  IAR 7.8
 * Version            :  V1.0
 * Date               :  22/03/2017
@@ -25,7 +25,6 @@ unsigned char SW_IIC_Transfer(SW_IIC_t * SW_IIC_s,
 							  unsigned char*  Data, 
 							  unsigned short  Data_Len, 
 							  unsigned char   Stop_Condition);			// 发送数据 通信交互
-static void   		 IIC_Delay(unsigned char count);					// 延时
 static unsigned char SW_IIC_Wait_SCL_Turn_High(SW_IIC_t * SW_IIC_s);	// 等待SCL被从机释放
 //void SW_IIC_ClearBus(void);
 
@@ -46,7 +45,7 @@ unsigned char SW_IIC_Init(SW_IIC_t * SW_IIC_s)
 	// 释放总线
 	SW_IIC_s->SDA_High();												// 空闲时间SDA为高电平且
 	SW_IIC_s->SCL_High();												// SCL也为高电平
-	STM32_Delay_us(4);
+	SW_IIC_s->Delay_us();
 
 	if (SW_IIC_s->SDA_Read() == 1 && SW_IIC_s->SCL_Read() == 1)
 	{
@@ -59,9 +58,9 @@ unsigned char SW_IIC_Init(SW_IIC_t * SW_IIC_s)
 		for (i = 0; i < 18; i++)										// 继续发送2Byte特数据和2位校验
 		{
 			SW_IIC_s->SCL_Low();										//*!-> ↑不确定 <-!*/
-			STM32_Delay_us(4);
+			SW_IIC_s->Delay_us();
 			SW_IIC_s->SCL_High();
-			STM32_Delay_us(4);
+			SW_IIC_s->Delay_us();
 
 			if (SW_IIC_s->SDA_Read() == 1)								// 数据发送完成
 			{
@@ -106,11 +105,11 @@ static unsigned char SW_IIC_Wait_SCL_Turn_High(SW_IIC_t * SW_IIC_s)
         else
         {
             Timeout_Counter--;
-            STM32_Delay_us(1);
+            SW_IIC_s->Delay_us();
         }
     }
     
-    STM32_Delay_us(4);
+    SW_IIC_s->Delay_us();
     
     return 1;
     
@@ -128,7 +127,7 @@ static unsigned char SW_IIC_Wait_SCL_Turn_High(SW_IIC_t * SW_IIC_s)
 unsigned char SW_IIC_Start(SW_IIC_t * SW_IIC_s)
 {
 	SW_IIC_s->SDA_High();												// 拉高SDA
-	STM32_Delay_us(4);
+	SW_IIC_s->Delay_us();
 	
 	if (SW_IIC_Wait_SCL_Turn_High(SW_IIC_s) == 0)						// 等待SCL拉高
 	{
@@ -136,9 +135,9 @@ unsigned char SW_IIC_Start(SW_IIC_t * SW_IIC_s)
 	}
 
 	SW_IIC_s->SDA_Low();												// 拉低SDA产生起始信息
-	STM32_Delay_us(4);
+	SW_IIC_s->Delay_us();
 	SW_IIC_s->SCL_Low();												// SCL拉低响应
-	STM32_Delay_us(4);
+	SW_IIC_s->Delay_us();
 
 	return 1;
 }
@@ -155,7 +154,7 @@ unsigned char SW_IIC_Start(SW_IIC_t * SW_IIC_s)
 unsigned char SW_IIC_Stop(SW_IIC_t * SW_IIC_s)
 {
 	SW_IIC_s->SDA_Low();												// SDA为低
-	STM32_Delay_us(4);
+	SW_IIC_s->Delay_us();
 
 	if (SW_IIC_Wait_SCL_Turn_High(SW_IIC_s) == 0)						// 等待SCL拉高
 	{
@@ -163,7 +162,7 @@ unsigned char SW_IIC_Stop(SW_IIC_t * SW_IIC_s)
 	}
 
 	SW_IIC_s->SDA_High();												// 拉高SDA以产生停止信号
-	STM32_Delay_us(4);
+	SW_IIC_s->Delay_us();
 	
 	return 1;
 }
@@ -183,8 +182,10 @@ unsigned char SW_IIC_Write_Byte(SW_IIC_t * SW_IIC_s, unsigned char IIC_Data)
 	unsigned char Succeed = 1;
 	unsigned char i;
 
+	SW_IIC_s->Set_SDA_Output();											// 设置SDA为输出模式
+	
 	SW_IIC_s->SCL_Low();												// 拉低SCL
-	STM32_Delay_us(4);
+	SW_IIC_s->Delay_us();
 
 	for (i = 0x80; i > 0; i >>= 1)										// 发送数据 从高位开始
 	{
@@ -204,9 +205,12 @@ unsigned char SW_IIC_Write_Byte(SW_IIC_t * SW_IIC_s, unsigned char IIC_Data)
 		}
 
 		SW_IIC_s->SCL_Low();											// 拉低SCL等待下一次发送
-		STM32_Delay_us(4);
+		SW_IIC_s->Delay_us();
 	}
 
+	SW_IIC_s->Set_SDA_Input();											// 设置SDA为输入模式 读取SDA电平
+	SW_IIC_s->Delay_us();
+	
 	Succeed &= SW_IIC_Wait_SCL_Turn_High(SW_IIC_s);						// 等待SCL空闲接收ACK
 
 	if (SW_IIC_s->SDA_Read() & SW_IIC_No_ACK)							// 读取ACK应答
@@ -219,7 +223,9 @@ unsigned char SW_IIC_Write_Byte(SW_IIC_t * SW_IIC_s, unsigned char IIC_Data)
 	}
 
 	SW_IIC_s->SCL_Low();												// 拉低SCL准备下一次发送
-	STM32_Delay_us(4);
+	SW_IIC_s->Delay_us();
+	//STM32_Delay_us(5);
+	SW_IIC_s->Set_SDA_Output();											// 还原SDA为输出模式
 
 	return Succeed;
 	
@@ -242,6 +248,8 @@ unsigned char SW_IIC_Read_Byte(SW_IIC_t * SW_IIC_s, unsigned char * Byte_Buff, u
 	unsigned char Succeed = 1;
 	unsigned char i;
 
+	SW_IIC_s->Set_SDA_Input();											// 设置为输入模式 读取数据
+	
 	for (i = 0x80; i > 0; i >>= 1)										// 接收数据 从高位开始
 	{
 		if (SW_IIC_Wait_SCL_Turn_High(SW_IIC_s) == 0)					// 等待SCL空闲
@@ -253,15 +261,18 @@ unsigned char SW_IIC_Read_Byte(SW_IIC_t * SW_IIC_s, unsigned char * Byte_Buff, u
 		if (SW_IIC_s->SDA_Read())										// 根据SDA电平高低
 		{
 			Byte_Read |= i;												// 读取数据
+			//printf("\r\n  Byte_Read = %d", Byte_Read);
 		}
 
 		SW_IIC_s->SCL_Low();											// 下拉SCL为下一次接收做准备
-		STM32_Delay_us(4);
+		SW_IIC_s->Delay_us();
 		
 	}
 
 	*Byte_Buff = Byte_Read;												// 接收数据存入BUFFER
 
+	SW_IIC_s->Set_SDA_Output();											// 还原SDA为输出模式
+	
 	if (Need_ACK == SW_IIC_SEND_ACK)									// 发送ACK
 	{
 		SW_IIC_s->SDA_Low();
@@ -270,7 +281,7 @@ unsigned char SW_IIC_Read_Byte(SW_IIC_t * SW_IIC_s, unsigned char * Byte_Buff, u
 	{
 		SW_IIC_s->SDA_High();
 	}
-	STM32_Delay_us(4);
+	SW_IIC_s->Delay_us();
 
 	if (SW_IIC_Wait_SCL_Turn_High(SW_IIC_s) == 0)						// 等待从机响应
 	{
@@ -278,7 +289,7 @@ unsigned char SW_IIC_Read_Byte(SW_IIC_t * SW_IIC_s, unsigned char * Byte_Buff, u
 	}
 
 	SW_IIC_s->SCL_Low();												// 拉低SCL准备下一次接收
-	STM32_Delay_us(4);
+	SW_IIC_s->Delay_us();
 
 	return Succeed;
 	
@@ -319,10 +330,12 @@ unsigned char SW_IIC_Transfer(SW_IIC_t * SW_IIC_s, unsigned char Chip_Addr, unsi
             if (Data_Len == 0)
             {
                 Succeed &= SW_IIC_Read_Byte(SW_IIC_s, Data, SW_IIC_DONT_SEND_ACK);
+                //printf("\r\n data = %d", *Data);
             }
             else
             {
                 Succeed &= SW_IIC_Read_Byte(SW_IIC_s, Data, SW_IIC_SEND_ACK);
+                //printf("\r\n data = %d", *Data);
             }
             Data++;
         }
@@ -347,22 +360,4 @@ unsigned char SW_IIC_Transfer(SW_IIC_t * SW_IIC_s, unsigned char Chip_Addr, unsi
 }
 // end of unsigned char SW_IIC_Transfer(SW_IIC_t * SW_IIC_s, unsigned char Chip_Addr, unsigned char *Data, unsigned short Data_Len, unsigned char Stop_Condition)
 
-/*******************************************************************************
-*                           王宇@2017-03-22
-* Function Name  :  IIC_Delay
-* Description    :  IIC 时延
-* Input          :  unsigned char count     时延计数
-* Output         :  None
-* Return         :  None
-*******************************************************************************/
-static void IIC_Delay(unsigned char count)
-{
-	unsigned char i, j;
-
-	for (i = 0; i < count; i++)
-	{
-		for (j = 0; j < IIC_DELAY_COUNT; j++);
-	}
-}
-// end of static void IIC_Delay(unsigned char count)
 /******************* (C) COPYRIGHT 2017 王宇 ********END OF FILE***************/

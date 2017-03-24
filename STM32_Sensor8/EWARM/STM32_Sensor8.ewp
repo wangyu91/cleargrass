@@ -60,16 +60,16 @@
         <option>
           <name>GRuntimeLibSelect</name>
           <version>0</version>
-          <state>1</state>
+          <state>2</state>
         </option>
         <option>
           <name>GRuntimeLibSelectSlave</name>
           <version>0</version>
-          <state>1</state>
+          <state>2</state>
         </option>
         <option>
           <name>RTDescription</name>
-          <state>Use the normal configuration of the C/C++ runtime library. No locale interface, C locale, no file descriptor support, no multibytes in printf and scanf, and no hex floats in strtod.</state>
+          <state>Use the full configuration of the C/C++ runtime library. Full locale interface, C locale, file descriptor support, multibytes in printf and scanf, and hex floats in strtod.</state>
         </option>
         <option>
           <name>OGProductVersion</name>
@@ -123,7 +123,7 @@
         </option>
         <option>
           <name>RTConfigPath2</name>
-          <state>$TOOLKIT_DIR$\INC\c\DLib_Config_Normal.h</state>
+          <state>$TOOLKIT_DIR$\INC\c\DLib_Config_Full.h</state>
         </option>
         <option>
           <name>GBECoreSlave</name>
@@ -322,6 +322,7 @@
           <state>$PROJ_DIR$\..\Users\App\GPIO_LED</state>
           <state>$PROJ_DIR$\..\Users\App\Global</state>
           <state>$PROJ_DIR$\..\Users\App\SHT30_Driver</state>
+          <state>$PROJ_DIR$\..\Users\App\Example_uart</state>
         </option>
         <option>
           <name>CCStdIncCheck</name>
@@ -1970,6 +1971,12 @@
       <file>
         <name>$PROJ_DIR$\..\Library\FWlib\inc\stm32f10x_rcc.h</name>
       </file>
+      <file>
+        <name>$PROJ_DIR$\..\Library\FWlib\srs\stm32f10x_usart.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\..\Library\FWlib\inc\stm32f10x_usart.h</name>
+      </file>
     </group>
   </group>
   <group>
@@ -1982,6 +1989,15 @@
     <name>users</name>
     <group>
       <name>App</name>
+      <group>
+        <name>Example_Uart</name>
+        <file>
+          <name>$PROJ_DIR$\..\Users\App\Example_uart\bsp_usart1.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\Users\App\Example_uart\bsp_usart1.h</name>
+        </file>
+      </group>
       <group>
         <name>Global</name>
         <file>
