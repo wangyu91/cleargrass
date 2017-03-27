@@ -11,15 +11,23 @@
 #include "Global.h"
 /* Private Variables ---------------------------------------------------------*/
 SW_IIC_t LED_t;
-SW_IIC_t SHT30_s;															// SHT30 结构体
+SW_IIC_t SHT30_s;														// SHT30 结构体
+SW_IIC_t Sensor8_IIC_s;													// IIC初始化结构体
+SW_IIC_t Sensor8_IIC1_s;
+SW_IIC_t Sensor8_IIC2_s;
+SW_IIC_t Sensor8_IIC3_s;
+SW_IIC_t Sensor8_IIC4_s;
+SW_IIC_t Sensor8_IIC5_s;
+SW_IIC_t Sensor8_IIC6_s;
+SW_IIC_t Sensor8_IIC7_s;
 
 /* Private Function Prototypes -----------------------------------------------*/
 void GPIO_Pin_Config(uint32_t RCC_APB2P_GPIOx, uint16_t Pin, uint32_t Mode, uint16_t Speed, GPIO_TypeDef *GPIOx);	// GPIO口初始化
 
-void STM32_Delay_us(uint16_t time_us);										// 粗延时 微秒
-void STM32_Delay_ms(uint16_t time_ms);										// 毫秒
+void STM32_Delay_us(uint16_t time_us);									// 粗延时 微秒
+void STM32_Delay_ms(uint16_t time_ms);									// 毫秒
 
-static void IIC_Delay(unsigned char count);									// 延时
+static void IIC_Delay(unsigned char count);								// 延时
 
 /* Private Functions ---------------------------------------------------------*/
 /*******************************************************************************

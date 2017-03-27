@@ -2391,6 +2391,57 @@
         </file>
       </group>
       <group>
+        <name>Sensor8_IIC_Init</name>
+        <file>
+          <name>$PROJ_DIR$\..\Users\App\Sensor8_IIC_Init\Sensor8_IIC_Init.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\Users\App\Sensor8_IIC_Init\Sensor8_IIC_Init.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\Users\App\Sensor8_IIC_Init\Sensor8_IIC_Init1.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\Users\App\Sensor8_IIC_Init\Sensor8_IIC_Init1.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\Users\App\Sensor8_IIC_Init\Sensor8_IIC_Init2.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\Users\App\Sensor8_IIC_Init\Sensor8_IIC_Init2.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\Users\App\Sensor8_IIC_Init\Sensor8_IIC_Init3.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\Users\App\Sensor8_IIC_Init\Sensor8_IIC_Init3.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\Users\App\Sensor8_IIC_Init\Sensor8_IIC_Init4.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\Users\App\Sensor8_IIC_Init\Sensor8_IIC_Init4.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\Users\App\Sensor8_IIC_Init\Sensor8_IIC_Init5.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\Users\App\Sensor8_IIC_Init\Sensor8_IIC_Init5.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\Users\App\Sensor8_IIC_Init\Sensor8_IIC_Init6.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\Users\App\Sensor8_IIC_Init\Sensor8_IIC_Init6.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\Users\App\Sensor8_IIC_Init\Sensor8_IIC_Init7.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\Users\App\Sensor8_IIC_Init\Sensor8_IIC_Init7.h</name>
+        </file>
+      </group>
+      <group>
         <name>SHT</name>
         <file>
           <name>$PROJ_DIR$\..\Users\App\SHT30_Driver\SHT30_Driver.c</name>

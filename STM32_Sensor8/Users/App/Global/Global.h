@@ -22,10 +22,24 @@
 #define SHT30_GPIO_RCC		RCC_APB2Periph_GPIOA						// SHT30时钟启动
 #define SHT30_GPIO			GPIOA										// SHT30管脚组
 #define SHT30_TIMEOUT		(5 * 1000)									// 超时
+
+#define Sensor8_IIC_GPIO_RCC	RCC_APB2Periph_GPIOA
+#define Sensor8_IIC_SDA			GPIO_Pin_5
+#define Sensor8_IIC_SCL			GPIO_Pin_4
+#define Sensor8_GPIO			GPIOA
+//#define Sensor8_TIMEOUT			(5 * 1000)
+
 /* Private Variables ---------------------------------------------------------*/
 extern SW_IIC_t LED_t;
 extern SW_IIC_t SHT30_s;												// SHT30 结构体
-
+extern SW_IIC_t Sensor8_IIC_s;											// IIC初始化结构体
+extern SW_IIC_t Sensor8_IIC1_s;
+extern SW_IIC_t Sensor8_IIC2_s;
+extern SW_IIC_t Sensor8_IIC3_s;
+extern SW_IIC_t Sensor8_IIC4_s;
+extern SW_IIC_t Sensor8_IIC5_s;
+extern SW_IIC_t Sensor8_IIC6_s;
+extern SW_IIC_t Sensor8_IIC7_s;
 /* Private Typedefs ----------------------------------------------------------*/
 
 /* Private Function Prototypes -----------------------------------------------*/

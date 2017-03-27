@@ -14,13 +14,14 @@
 /* Private variables ---------------------------------------------------------*/
         
 /* Private function prototypes -----------------------------------------------*/
-u8 SHT30_Read_SN(u8 *ucSN);                                             // 读取SN
-u8 SHT30_Soft_Reset(void);                                              // 软复位
-u8 SHT30_Check_CRC(u8 *ucData, u8 ucLen, u8 ucCheck_Sum);               // CRC校验
-u8 SHT30_Get_Data(float *fTemp, float *fHumi);                    		// 获取温湿度
+u8    SHT30_Read_SN(u8 *ucSN);                                          // 读取SN
+u8    SHT30_Soft_Reset(void);                                           // 软复位
+u8    SHT30_Check_CRC(u8 *ucData, u8 ucLen, u8 ucCheck_Sum);            // CRC校验
+u8 	  SHT30_Get_Data(float *fTemp, float *fHumi);                 		// 获取温湿度
 float SHT30_CalcTemp(u16 usValue);                              		// 计算温度
 float SHT30_CalcHumi(u16 usValue);										// 计算湿度
 
+u8 	  Sensor8_IIC_Get_Data(SW_IIC_t *IIC_s, float *fTemp, float *fHumi);
 /* Private functions ---------------------------------------------------------*/
 /*******************************************************************************
 *                           王宇@2017-03-23
@@ -39,7 +40,7 @@ u8 SHT30_Read_SN(u8 *ucSN)
 // End of u8 SHT30_Read_SN(u8 *ucSN)
 
 /*******************************************************************************
-*                           王宇@2016-12-28
+*                           王宇@2017-03-23
 * Function Name  :  SHT30_Get_Data
 * Description    :  获取温湿度
 * Input          :  float *fTemp    温度数据
@@ -192,9 +193,43 @@ u8 SHT30_Soft_Reset(void)
 }
 // End of u8 SHT30_Soft_Reset(void)
 
+/*******************************************************************************
+*                           王宇@2017-03-23
+* Function Name  :  SHT30_Get_Data
+* Description    :  获取温湿度
+* Input          :  float *fTemp    温度数据
+*                   float *fHumi    湿度数据
+* Output         :  None
+* Return         :  1成功 0失败
+*******************************************************************************/
+u8 Sensor8_IIC_Get_Data(SW_IIC_t *IIC_s, float *fTemp, float *fHumi)
+{
+    u8 ucResult = 0;
+    u8 ucRead_Data[6];
+    
+    ucResult = Sensor8_IIC_Read_Register(IIC_s, 0x44, CMD_MEAS_CLOCKSTR_L, ucRead_Data, 6);
+    
+	u8 i;
+	
+    if (ucResult)
+    {
+        // 通过了CRC
+        if (SHT30_Check_CRC(ucRead_Data, 2, ucRead_Data[2]) &&  SHT30_Check_CRC(&ucRead_Data[3], 2, ucRead_Data[5]))
+        {
+            // 计算温湿度
+            *fTemp = SHT30_CalcTemp((ucRead_Data[0] << 8) + ucRead_Data[1]);
+            *fHumi = SHT30_CalcHumi((ucRead_Data[3] << 8) + ucRead_Data[4]);
+        }
+        else
+        {
+            ucResult = 0;
+        }
+    }
+    
+    return(ucResult);
+
+}
+// End of u8 SHT30_Get_Data(float *fTemp, float *fHumi)
+
+
 /******************* (C) COPYRIGHT 2017 王宇 **************END OF FILE*********/
-
-
-
-
-
