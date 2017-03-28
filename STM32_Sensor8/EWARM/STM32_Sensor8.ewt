@@ -2364,6 +2364,15 @@
     <group>
       <name>App</name>
       <group>
+        <name>BH1721</name>
+        <file>
+          <name>$PROJ_DIR$\..\Users\App\BH172\BH1721_Driver.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\Users\App\BH172\BH1721_Driver.h</name>
+        </file>
+      </group>
+      <group>
         <name>Example_Uart</name>
         <file>
           <name>$PROJ_DIR$\..\Users\App\Example_uart\bsp_usart1.c</name>

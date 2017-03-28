@@ -28,6 +28,8 @@ D:\Workspace\STM32_Sensor8\EWARM\..\Users\App\Example_uart
 -I
 D:\Workspace\STM32_Sensor8\EWARM\..\Users\App\Sensor8_IIC_Init
 -I
+D:\Workspace\STM32_Sensor8\EWARM\..\Users\App\BH172
+-I
 D:\IAR\arm\CMSIS\Include
 -I
 D:\IAR\arm\inc
@@ -59,6 +61,8 @@ D:\Workspace\STM32_Sensor8\Users\App\SHT30_Driver
 D:\Workspace\STM32_Sensor8\Users\App\Example_uart
 -I
 D:\Workspace\STM32_Sensor8\Users\App\Sensor8_IIC_Init
+-I
+D:\Workspace\STM32_Sensor8\Users\App\BH172
 -I
 D:\IAR\arm\CMSIS\Include
 -DSTM32F10X_HD=1

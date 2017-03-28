@@ -324,6 +324,7 @@
           <state>$PROJ_DIR$\..\Users\App\SHT30_Driver</state>
           <state>$PROJ_DIR$\..\Users\App\Example_uart</state>
           <state>$PROJ_DIR$\..\Users\App\Sensor8_IIC_Init</state>
+          <state>$PROJ_DIR$\..\Users\App\BH172</state>
         </option>
         <option>
           <name>CCStdIncCheck</name>
@@ -1990,6 +1991,15 @@
     <name>users</name>
     <group>
       <name>App</name>
+      <group>
+        <name>BH1721</name>
+        <file>
+          <name>$PROJ_DIR$\..\Users\App\BH172\BH1721_Driver.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\Users\App\BH172\BH1721_Driver.h</name>
+        </file>
+      </group>
       <group>
         <name>Example_Uart</name>
         <file>

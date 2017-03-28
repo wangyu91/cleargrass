@@ -35,7 +35,7 @@ void main()
 //	u8 SHT30_SN[8];
 	u8 i;
 //	
-	float ftemp, fhumi;
+	float ftemp, fhumi, fLight;
 	u8 Succeed[8];
 //	Succeed = LED_Init();
 //	Succeed = SHT30_Init();
@@ -64,6 +64,10 @@ void main()
 	Succeed[6] = Sensor8_IIC6_Init();
 	Succeed[7] = Sensor8_IIC7_Init();
 
+	STM32_Delay_us(5);
+	GPIO_Pin_Config(RCC_APB2Periph_GPIOA, GPIO_Pin_3, GPIO_Mode_Out_PP, GPIO_Speed_50MHz, GPIOA);
+	GPIO_SetBits(GPIOA, GPIO_Pin_3);
+
 	for (i = 0; i < 8; i++)
 	{
 		printf("\r\n  Succeed Init IIC[%d] sn = %d\r\n", i, Succeed[i]);
@@ -71,39 +75,43 @@ void main()
 	
 	while (1)
 	{
+		//Succeed = SHT30_Get_Data(&ftemp, &fhumi);						// 读取数据
+		BH1721_Get_Data(&Sensor8_IIC_s, &fLight);						// 读取数据
+		STM32_Delay_ms(500);
+		printf("\r\n  Light Intensity = %f !\r\n", fLight);
 		
 		//Succeed = SHT30_Get_Data(&ftemp, &fhumi);						// 读取数据
 		Sensor8_IIC_Get_Data(&Sensor8_IIC_s, &ftemp, &fhumi);						// 读取数据
-		STM32_Delay_ms(100);
+		STM32_Delay_ms(500);
 		printf("\r\n  temperature = %f, humidity = %f !\r\n", ftemp, fhumi);
 
-		//Sensor8_IIC_Get_Data(&Sensor8_IIC1_s, &ftemp, &fhumi);						// 读取数据
-		STM32_Delay_ms(100);
-		printf("\r\n  temperature = %f, humidity = %f !\r\n", ftemp, fhumi);
+//		//Sensor8_IIC_Get_Data(&Sensor8_IIC1_s, &ftemp, &fhumi);						// 读取数据
+//		STM32_Delay_ms(100);
+//		printf("\r\n  temperature = %f, humidity = %f !\r\n", ftemp, fhumi);
 
-		Sensor8_IIC_Get_Data(&Sensor8_IIC2_s, &ftemp, &fhumi);						// 读取数据
-		STM32_Delay_ms(100);
-		printf("\r\n  temperature = %f, humidity = %f !\r\n", ftemp, fhumi);
+//		Sensor8_IIC_Get_Data(&Sensor8_IIC2_s, &ftemp, &fhumi);						// 读取数据
+//		STM32_Delay_ms(100);
+//		printf("\r\n  temperature = %f, humidity = %f !\r\n", ftemp, fhumi);
 
-		Sensor8_IIC_Get_Data(&Sensor8_IIC3_s, &ftemp, &fhumi);						// 读取数据
-		STM32_Delay_ms(100);
-		printf("\r\n  temperature = %f, humidity = %f !\r\n", ftemp, fhumi);
+//		Sensor8_IIC_Get_Data(&Sensor8_IIC3_s, &ftemp, &fhumi);						// 读取数据
+//		STM32_Delay_ms(100);
+//		printf("\r\n  temperature = %f, humidity = %f !\r\n", ftemp, fhumi);
 
-		Sensor8_IIC_Get_Data(&Sensor8_IIC4_s, &ftemp, &fhumi);						// 读取数据
-		STM32_Delay_ms(100);
-		printf("\r\n  temperature = %f, humidity = %f !\r\n", ftemp, fhumi);
+//		Sensor8_IIC_Get_Data(&Sensor8_IIC4_s, &ftemp, &fhumi);						// 读取数据
+//		STM32_Delay_ms(100);
+//		printf("\r\n  temperature = %f, humidity = %f !\r\n", ftemp, fhumi);
 
-		Sensor8_IIC_Get_Data(&Sensor8_IIC5_s, &ftemp, &fhumi);						// 读取数据
-		STM32_Delay_ms(100);
-		printf("\r\n  temperature = %f, humidity = %f !\r\n", ftemp, fhumi);
+//		Sensor8_IIC_Get_Data(&Sensor8_IIC5_s, &ftemp, &fhumi);						// 读取数据
+//		STM32_Delay_ms(100);
+//		printf("\r\n  temperature = %f, humidity = %f !\r\n", ftemp, fhumi);
 
-		Sensor8_IIC_Get_Data(&Sensor8_IIC6_s, &ftemp, &fhumi);						// 读取数据
-		STM32_Delay_ms(100);
-		printf("\r\n  temperature = %f, humidity = %f !\r\n", ftemp, fhumi);
+//		Sensor8_IIC_Get_Data(&Sensor8_IIC6_s, &ftemp, &fhumi);						// 读取数据
+//		STM32_Delay_ms(100);
+//		printf("\r\n  temperature = %f, humidity = %f !\r\n", ftemp, fhumi);
 
-		Sensor8_IIC_Get_Data(&Sensor8_IIC7_s, &ftemp, &fhumi);						// 读取数据
-		STM32_Delay_ms(100);
-		printf("\r\n  temperature = %f, humidity = %f !\r\n", ftemp, fhumi);
+//		Sensor8_IIC_Get_Data(&Sensor8_IIC7_s, &ftemp, &fhumi);						// 读取数据
+//		STM32_Delay_ms(100);
+//		printf("\r\n  temperature = %f, humidity = %f !\r\n", ftemp, fhumi);
 	}
 }
 /********************** End of File *******************************************/

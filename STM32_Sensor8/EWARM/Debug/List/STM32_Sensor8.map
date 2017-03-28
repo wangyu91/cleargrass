@@ -1,6 +1,6 @@
 ###############################################################################
 #
-# IAR ELF Linker V7.80.4.12462/W32 for ARM                27/Mar/2017  18:43:23
+# IAR ELF Linker V7.80.4.12462/W32 for ARM                28/Mar/2017  15:13:25
 # Copyright 2007-2017 IAR Systems AB.
 #
 #    Output file  =  
@@ -8,6 +8,7 @@
 #    Map file     =  
 #        D:\Workspace\STM32_Sensor8\EWARM\Debug\List\STM32_Sensor8.map
 #    Command line =  
+#        D:\Workspace\STM32_Sensor8\EWARM\Debug\Obj\BH1721_Driver.o
 #        D:\Workspace\STM32_Sensor8\EWARM\Debug\Obj\bsp_usart1.o
 #        D:\Workspace\STM32_Sensor8\EWARM\Debug\Obj\Global.o
 #        D:\Workspace\STM32_Sensor8\EWARM\Debug\Obj\GPIO_LED.o
@@ -60,7 +61,7 @@ initialize by copy { rw };
   .intvec             ro code  0x08000000   0x130  startup_stm32f10x_hd.o [1]
                              - 0x08000130   0x130
 
-"P1":                                      0x2cb9
+"P1":                                      0x2ca9
   .text               ro code  0x08000130   0xc1a  xprintflarge_nomb.o [3]
   .text               ro code  0x08000d4c    0x16  strchr.o [5]
   .text               ro code  0x08000d64    0x36  strlen.o [5]
@@ -80,41 +81,47 @@ initialize by copy { rw };
   .text               ro code  0x08001614    0xe8  DblAdd.o [4]
   .text               ro code  0x080016fc     0x2  xtls.o [3]
   .text               ro code  0x080016fe   0x28c  SW_IIC.o [1]
-  .text               ro code  0x0800198c   0x1d0  main.o [1]
-  .text               ro code  0x08001b5c    0xa0  bsp_usart1.o [1]
-  .text               ro code  0x08001bfc    0x24  printf.o [3]
-  .text               ro code  0x08001c20   0x174  Sensor8_IIC_Init.o [1]
-  .text               ro code  0x08001d94   0x128  Sensor8_IIC_Init2.o [1]
-  .text               ro code  0x08001ebc   0x11c  Sensor8_IIC_Init3.o [1]
-  .text               ro code  0x08001fd8   0x128  Sensor8_IIC_Init4.o [1]
-  .text               ro code  0x08002100   0x128  Sensor8_IIC_Init5.o [1]
-  .text               ro code  0x08002228   0x114  Sensor8_IIC_Init6.o [1]
-  .text               ro code  0x0800233c   0x114  Sensor8_IIC_Init7.o [1]
-  .text               ro code  0x08002450   0x128  SHT30_Driver.o [1]
-  .text               ro code  0x08002578    0x60  Global.o [1]
-  .text               ro code  0x080025d8    0x4e  FltToDbl.o [4]
-  .text               ro code  0x08002628    0xf4  stm32f10x_rcc.o [1]
-  .text               ro code  0x0800271c    0xe2  stm32f10x_gpio.o [1]
-  .text               ro code  0x08002800    0xfe  stm32f10x_usart.o [1]
-  .text               ro code  0x08002900    0x90  DblToFlt.o [4]
-  .text               ro code  0x08002990   0x158  system_stm32f10x.o [1]
-  .text               ro code  0x08002ae8    0x40  zero_init3.o [5]
-  .text               ro code  0x08002b28    0x38  packbits_init_single.o [5]
-  .rodata             const    0x08002b60    0x28  main.o [1]
-  .text               ro code  0x08002b88    0x28  data_init.o [5]
-  .rodata             const    0x08002bb0    0x24  main.o [1]
-  .iar.init_table     const    0x08002bd4    0x20  - Linker created -
-  .text               ro code  0x08002bf4    0x1a  cmain.o [5]
-  .text               ro code  0x08002c0e     0x4  low_level_init.o [3]
-  .text               ro code  0x08002c12     0x4  exit.o [3]
-  .text               ro code  0x08002c18     0xa  cexit.o [5]
-  .text               ro code  0x08002c24    0x14  exit.o [6]
-  .text               ro code  0x08002c38    0x16  xprout.o [3]
-  .text               ro code  0x08002c50     0xc  putchar.o [3]
-  .text               ro code  0x08002c5c    0x12  stm32f10x_it.o [1]
-  .text               ro code  0x08002c70    0x10  startup_stm32f10x_hd.o [1]
-  .rodata             const    0x08002c80     0xc  main.o [1]
-  .text               ro code  0x08002c8c     0xc  cstartup_M.o [5]
+  .text               ro code  0x0800198c   0x174  Sensor8_IIC_Init.o [1]
+  .text               ro code  0x08001b00    0x60  Global.o [1]
+  .text               ro code  0x08001b60    0xe2  stm32f10x_gpio.o [1]
+  .text               ro code  0x08001c44    0xf4  stm32f10x_rcc.o [1]
+  .text               ro code  0x08001d38   0x158  system_stm32f10x.o [1]
+  .text               ro code  0x08001e90   0x128  Sensor8_IIC_Init2.o [1]
+  .text               ro code  0x08001fb8   0x128  Sensor8_IIC_Init4.o [1]
+  .text               ro code  0x080020e0   0x128  Sensor8_IIC_Init5.o [1]
+  .text               ro code  0x08002208   0x128  SHT30_Driver.o [1]
+  .text               ro code  0x08002330    0x90  DblToFlt.o [4]
+  .text               ro code  0x080023c0    0x4e  FltToDbl.o [4]
+  .text               ro code  0x08002410   0x11c  Sensor8_IIC_Init3.o [1]
+  .text               ro code  0x0800252c   0x114  Sensor8_IIC_Init6.o [1]
+  .text               ro code  0x08002640   0x114  Sensor8_IIC_Init7.o [1]
+  .text               ro code  0x08002754    0xfe  stm32f10x_usart.o [1]
+  .text               ro code  0x08002854    0xe8  main.o [1]
+  .text               ro code  0x0800293c    0xa0  bsp_usart1.o [1]
+  .text               ro code  0x080029dc    0x24  printf.o [3]
+  .text               ro code  0x08002a00    0xb8  BH1721_Driver.o [1]
+  .text               ro code  0x08002ab8    0x40  zero_init3.o [5]
+  .text               ro code  0x08002af8    0x38  packbits_init_single.o [5]
+  .rodata             const    0x08002b30    0x28  main.o [1]
+  .text               ro code  0x08002b58    0x28  data_init.o [5]
+  .rodata             const    0x08002b80    0x24  main.o [1]
+  .iar.init_table     const    0x08002ba4    0x20  - Linker created -
+  .rodata             const    0x08002bc4    0x20  main.o [1]
+  .text               ro code  0x08002be4    0x1a  cmain.o [5]
+  .text               ro code  0x08002bfe     0x4  low_level_init.o [3]
+  .text               ro code  0x08002c02     0x4  exit.o [3]
+  .text               ro code  0x08002c08     0xa  cexit.o [5]
+  .text               ro code  0x08002c14    0x14  exit.o [6]
+  .text               ro code  0x08002c28    0x16  xprout.o [3]
+  .text               ro code  0x08002c40     0xc  putchar.o [3]
+  .text               ro code  0x08002c4c    0x12  stm32f10x_it.o [1]
+  .text               ro code  0x08002c60    0x10  startup_stm32f10x_hd.o [1]
+  .rodata             const    0x08002c70     0xc  main.o [1]
+  .text               ro code  0x08002c7c     0xc  cstartup_M.o [5]
+  .text               ro code  0x08002c88     0x4  startup_stm32f10x_hd.o [1]
+  .text               ro code  0x08002c8c     0x4  startup_stm32f10x_hd.o [1]
+  .text               ro code  0x08002c90     0x4  startup_stm32f10x_hd.o [1]
+  .text               ro code  0x08002c94     0x4  startup_stm32f10x_hd.o [1]
   .text               ro code  0x08002c98     0x4  startup_stm32f10x_hd.o [1]
   .text               ro code  0x08002c9c     0x4  startup_stm32f10x_hd.o [1]
   .text               ro code  0x08002ca0     0x4  startup_stm32f10x_hd.o [1]
@@ -180,14 +187,10 @@ initialize by copy { rw };
   .text               ro code  0x08002d90     0x4  startup_stm32f10x_hd.o [1]
   .text               ro code  0x08002d94     0x4  startup_stm32f10x_hd.o [1]
   .text               ro code  0x08002d98     0x4  startup_stm32f10x_hd.o [1]
-  .text               ro code  0x08002d9c     0x4  startup_stm32f10x_hd.o [1]
-  .text               ro code  0x08002da0     0x4  startup_stm32f10x_hd.o [1]
-  .text               ro code  0x08002da4     0x4  startup_stm32f10x_hd.o [1]
-  .text               ro code  0x08002da8     0x4  startup_stm32f10x_hd.o [1]
-  .rodata             const    0x08002dac     0x0  zero_init3.o [5]
-  .rodata             const    0x08002dac     0x0  packbits_init_single.o [5]
-  Initializer bytes   const    0x08002dac    0x3d  <for P2-1>
-                             - 0x08002de9  0x2cb9
+  .rodata             const    0x08002d9c     0x0  zero_init3.o [5]
+  .rodata             const    0x08002d9c     0x0  packbits_init_single.o [5]
+  Initializer bytes   const    0x08002d9c    0x3d  <for P2-1>
+                             - 0x08002dd9  0x2ca9
 
 "P2", part 1 of 3:                           0xdc
   P2-1                         0x20000000    0xdc  <Init block>
@@ -226,7 +229,7 @@ Zero (__iar_zero_init3)
 
 Copy/packbits (__iar_packbits_init_single3)
     1 source range, total size 0x3d (27% of destination):
-          0x08002dac   0x3d
+          0x08002d9c   0x3d
     1 destination range, total size 0xdc:
           0x20000000   0xdc
 
@@ -239,6 +242,7 @@ Copy/packbits (__iar_packbits_init_single3)
     Module                  ro code  ro data  rw data
     ------                  -------  -------  -------
 D:\Workspace\STM32_Sensor8\EWARM\Debug\Obj: [1]
+    BH1721_Driver.o             184
     Global.o                     96               280
     SHT30_Driver.o              296
     SW_IIC.o                    652
@@ -250,7 +254,7 @@ D:\Workspace\STM32_Sensor8\EWARM\Debug\Obj: [1]
     Sensor8_IIC_Init6.o         276
     Sensor8_IIC_Init7.o         276
     bsp_usart1.o                160
-    main.o                      464       88
+    main.o                      232      120
     startup_stm32f10x_hd.o      596
     stm32f10x_gpio.o            226
     stm32f10x_it.o               18
@@ -258,7 +262,7 @@ D:\Workspace\STM32_Sensor8\EWARM\Debug\Obj: [1]
     stm32f10x_usart.o           254
     system_stm32f10x.o          344
     -------------------------------------------------
-    Total:                    5 446       93      300
+    Total:                    5 398      125      300
 
 command line: [2]
     -------------------------------------------------
@@ -316,7 +320,7 @@ shb_l.a: [6]
     Gaps                         36
     Linker created                        32    4 096
 -----------------------------------------------------
-    Grand Total:             11 572      181    4 676
+    Grand Total:             11 524      213    4 676
 
 
 *******************************************************************************
@@ -325,35 +329,38 @@ shb_l.a: [6]
 
 Entry                      Address   Size  Type      Object
 -----                      -------   ----  ----      ------
-.iar.init_table$$Base   0x08002bd4          --   Gb  - Linker created -
-.iar.init_table$$Limit  0x08002bf4          --   Gb  - Linker created -
-?main                   0x08002bf5         Code  Gb  cmain.o [5]
+.iar.init_table$$Base   0x08002ba4          --   Gb  - Linker created -
+.iar.init_table$$Limit  0x08002bc4          --   Gb  - Linker created -
+?main                   0x08002be5         Code  Gb  cmain.o [5]
 ADCPrescTable           0x20000010    0x4  Data  Lc  stm32f10x_rcc.o [1]
 APBAHBPrescTable        0x20000000   0x10  Data  Lc  stm32f10x_rcc.o [1]
-BusFault_Handler        0x08002c63    0x2  Code  Gb  stm32f10x_it.o [1]
+BH1721_CalcData         0x08002a53   0x26  Code  Gb  BH1721_Driver.o [1]
+BH1721_Get_Data         0x08002a81   0x38  Code  Gb  BH1721_Driver.o [1]
+BH1721_Read_Register    0x08002a01   0x52  Code  Gb  BH1721_Driver.o [1]
+BusFault_Handler        0x08002c53    0x2  Code  Gb  stm32f10x_it.o [1]
 CSTACK$$Base            0x200000e0          --   Gb  - Linker created -
 CSTACK$$Limit           0x200010e0          --   Gb  - Linker created -
-DebugMon_Handler        0x08002c69    0x2  Code  Gb  stm32f10x_it.o [1]
-GPIO_Init               0x0800271d   0xc0  Code  Gb  stm32f10x_gpio.o [1]
-GPIO_Pin_Config         0x08002579   0x26  Code  Gb  Global.o [1]
-GPIO_ReadInputDataBit   0x080027dd   0x16  Code  Gb  stm32f10x_gpio.o [1]
-GPIO_ResetBits          0x080027f9    0x6  Code  Gb  stm32f10x_gpio.o [1]
-GPIO_SetBits            0x080027f3    0x6  Code  Gb  stm32f10x_gpio.o [1]
-HardFault_Handler       0x08002c5f    0x2  Code  Gb  stm32f10x_it.o [1]
+DebugMon_Handler        0x08002c59    0x2  Code  Gb  stm32f10x_it.o [1]
+GPIO_Init               0x08001b61   0xc0  Code  Gb  stm32f10x_gpio.o [1]
+GPIO_Pin_Config         0x08001b01   0x26  Code  Gb  Global.o [1]
+GPIO_ReadInputDataBit   0x08001c21   0x16  Code  Gb  stm32f10x_gpio.o [1]
+GPIO_ResetBits          0x08001c3d    0x6  Code  Gb  stm32f10x_gpio.o [1]
+GPIO_SetBits            0x08001c37    0x6  Code  Gb  stm32f10x_gpio.o [1]
+HardFault_Handler       0x08002c4f    0x2  Code  Gb  stm32f10x_it.o [1]
 LoadInt                 0x080006cb   0x6e  Code  Lc  xprintflarge_nomb.o [3]
-MemManage_Handler       0x08002c61    0x2  Code  Gb  stm32f10x_it.o [1]
-NMI_Handler             0x08002c5d    0x2  Code  Gb  stm32f10x_it.o [1]
-PendSV_Handler          0x08002c6b    0x2  Code  Gb  stm32f10x_it.o [1]
-RCC_APB2PeriphClockCmd  0x080026e3   0x20  Code  Gb  stm32f10x_rcc.o [1]
-RCC_GetClocksFreq       0x08002629   0xba  Code  Gb  stm32f10x_rcc.o [1]
-Region$$Table$$Base     0x08002bd4          --   Gb  - Linker created -
-Region$$Table$$Limit    0x08002bf4          --   Gb  - Linker created -
-SHT30_CalcHumi          0x08002485   0x24  Code  Gb  SHT30_Driver.o [1]
-SHT30_CalcTemp          0x08002451   0x34  Code  Gb  SHT30_Driver.o [1]
-SHT30_Check_CRC         0x080024a9   0x48  Code  Gb  SHT30_Driver.o [1]
-STM32_Delay_ms          0x080025bb   0x1e  Code  Gb  Global.o [1]
-STM32_Delay_us          0x0800259f   0x1c  Code  Gb  Global.o [1]
-SVC_Handler             0x08002c67    0x2  Code  Gb  stm32f10x_it.o [1]
+MemManage_Handler       0x08002c51    0x2  Code  Gb  stm32f10x_it.o [1]
+NMI_Handler             0x08002c4d    0x2  Code  Gb  stm32f10x_it.o [1]
+PendSV_Handler          0x08002c5b    0x2  Code  Gb  stm32f10x_it.o [1]
+RCC_APB2PeriphClockCmd  0x08001cff   0x20  Code  Gb  stm32f10x_rcc.o [1]
+RCC_GetClocksFreq       0x08001c45   0xba  Code  Gb  stm32f10x_rcc.o [1]
+Region$$Table$$Base     0x08002ba4          --   Gb  - Linker created -
+Region$$Table$$Limit    0x08002bc4          --   Gb  - Linker created -
+SHT30_CalcHumi          0x0800223d   0x24  Code  Gb  SHT30_Driver.o [1]
+SHT30_CalcTemp          0x08002209   0x34  Code  Gb  SHT30_Driver.o [1]
+SHT30_Check_CRC         0x08002261   0x48  Code  Gb  SHT30_Driver.o [1]
+STM32_Delay_ms          0x08001b43   0x1e  Code  Gb  Global.o [1]
+STM32_Delay_us          0x08001b27   0x1c  Code  Gb  Global.o [1]
+SVC_Handler             0x08002c57    0x2  Code  Gb  stm32f10x_it.o [1]
 SW_IIC_Init             0x080016ff   0x5e  Code  Gb  SW_IIC.o [1]
 SW_IIC_Read_Byte        0x0800185f   0x84  Code  Gb  SW_IIC.o [1]
 SW_IIC_Start            0x08001791   0x2e  Code  Gb  SW_IIC.o [1]
@@ -362,166 +369,166 @@ SW_IIC_Transfer         0x080018e3   0xa8  Code  Gb  SW_IIC.o [1]
 SW_IIC_Wait_SCL_Turn_High
                         0x0800175d   0x34  Code  Lc  SW_IIC.o [1]
 SW_IIC_Write_Byte       0x080017e5   0x7a  Code  Gb  SW_IIC.o [1]
-Sensor8_IIC2_Delay_us   0x08001d95    0xa  Code  Gb  Sensor8_IIC_Init2.o [1]
-Sensor8_IIC2_Init       0x08001e3f   0x4e  Code  Gb  Sensor8_IIC_Init2.o [1]
-Sensor8_IIC2_Pin_Init   0x08001d9f   0x18  Code  Gb  Sensor8_IIC_Init2.o [1]
-Sensor8_IIC2_SCL_Read   0x08001e31    0xe  Code  Gb  Sensor8_IIC_Init2.o [1]
-Sensor8_IIC2_SDA_Read   0x08001e23    0xe  Code  Gb  Sensor8_IIC_Init2.o [1]
+Sensor8_IIC2_Delay_us   0x08001e91    0xa  Code  Gb  Sensor8_IIC_Init2.o [1]
+Sensor8_IIC2_Init       0x08001f3b   0x4e  Code  Gb  Sensor8_IIC_Init2.o [1]
+Sensor8_IIC2_Pin_Init   0x08001e9b   0x18  Code  Gb  Sensor8_IIC_Init2.o [1]
+Sensor8_IIC2_SCL_Read   0x08001f2d    0xe  Code  Gb  Sensor8_IIC_Init2.o [1]
+Sensor8_IIC2_SDA_Read   0x08001f1f    0xe  Code  Gb  Sensor8_IIC_Init2.o [1]
 Sensor8_IIC2_Set_SCL_High
-                        0x08001dd3    0xe  Code  Gb  Sensor8_IIC_Init2.o [1]
+                        0x08001ecf    0xe  Code  Gb  Sensor8_IIC_Init2.o [1]
 Sensor8_IIC2_Set_SCL_Low
-                        0x08001de1    0xe  Code  Gb  Sensor8_IIC_Init2.o [1]
+                        0x08001edd    0xe  Code  Gb  Sensor8_IIC_Init2.o [1]
 Sensor8_IIC2_Set_SDA_High
-                        0x08001db7    0xe  Code  Gb  Sensor8_IIC_Init2.o [1]
+                        0x08001eb3    0xe  Code  Gb  Sensor8_IIC_Init2.o [1]
 Sensor8_IIC2_Set_SDA_Input
-                        0x08001def   0x1a  Code  Gb  Sensor8_IIC_Init2.o [1]
+                        0x08001eeb   0x1a  Code  Gb  Sensor8_IIC_Init2.o [1]
 Sensor8_IIC2_Set_SDA_Low
-                        0x08001dc5    0xe  Code  Gb  Sensor8_IIC_Init2.o [1]
+                        0x08001ec1    0xe  Code  Gb  Sensor8_IIC_Init2.o [1]
 Sensor8_IIC2_Set_SDA_Output
-                        0x08001e09   0x1a  Code  Gb  Sensor8_IIC_Init2.o [1]
+                        0x08001f05   0x1a  Code  Gb  Sensor8_IIC_Init2.o [1]
 Sensor8_IIC2_s          0x20001158   0x28  Data  Gb  Global.o [1]
-Sensor8_IIC3_Delay_us   0x08001ebd    0xa  Code  Gb  Sensor8_IIC_Init3.o [1]
-Sensor8_IIC3_Init       0x08001f5f   0x4e  Code  Gb  Sensor8_IIC_Init3.o [1]
-Sensor8_IIC3_Pin_Init   0x08001ec7   0x16  Code  Gb  Sensor8_IIC_Init3.o [1]
-Sensor8_IIC3_SCL_Read   0x08001f51    0xe  Code  Gb  Sensor8_IIC_Init3.o [1]
-Sensor8_IIC3_SDA_Read   0x08001f45    0xc  Code  Gb  Sensor8_IIC_Init3.o [1]
+Sensor8_IIC3_Delay_us   0x08002411    0xa  Code  Gb  Sensor8_IIC_Init3.o [1]
+Sensor8_IIC3_Init       0x080024b3   0x4e  Code  Gb  Sensor8_IIC_Init3.o [1]
+Sensor8_IIC3_Pin_Init   0x0800241b   0x16  Code  Gb  Sensor8_IIC_Init3.o [1]
+Sensor8_IIC3_SCL_Read   0x080024a5    0xe  Code  Gb  Sensor8_IIC_Init3.o [1]
+Sensor8_IIC3_SDA_Read   0x08002499    0xc  Code  Gb  Sensor8_IIC_Init3.o [1]
 Sensor8_IIC3_Set_SCL_High
-                        0x08001ef5    0xe  Code  Gb  Sensor8_IIC_Init3.o [1]
+                        0x08002449    0xe  Code  Gb  Sensor8_IIC_Init3.o [1]
 Sensor8_IIC3_Set_SCL_Low
-                        0x08001f03    0xe  Code  Gb  Sensor8_IIC_Init3.o [1]
+                        0x08002457    0xe  Code  Gb  Sensor8_IIC_Init3.o [1]
 Sensor8_IIC3_Set_SDA_High
-                        0x08001edd    0xc  Code  Gb  Sensor8_IIC_Init3.o [1]
+                        0x08002431    0xc  Code  Gb  Sensor8_IIC_Init3.o [1]
 Sensor8_IIC3_Set_SDA_Input
-                        0x08001f11   0x1a  Code  Gb  Sensor8_IIC_Init3.o [1]
+                        0x08002465   0x1a  Code  Gb  Sensor8_IIC_Init3.o [1]
 Sensor8_IIC3_Set_SDA_Low
-                        0x08001ee9    0xc  Code  Gb  Sensor8_IIC_Init3.o [1]
+                        0x0800243d    0xc  Code  Gb  Sensor8_IIC_Init3.o [1]
 Sensor8_IIC3_Set_SDA_Output
-                        0x08001f2b   0x1a  Code  Gb  Sensor8_IIC_Init3.o [1]
+                        0x0800247f   0x1a  Code  Gb  Sensor8_IIC_Init3.o [1]
 Sensor8_IIC3_s          0x20001180   0x28  Data  Gb  Global.o [1]
-Sensor8_IIC4_Delay_us   0x08001fd9    0xa  Code  Gb  Sensor8_IIC_Init4.o [1]
-Sensor8_IIC4_Init       0x08002081   0x4e  Code  Gb  Sensor8_IIC_Init4.o [1]
-Sensor8_IIC4_Pin_Init   0x08001fe3   0x16  Code  Gb  Sensor8_IIC_Init4.o [1]
-Sensor8_IIC4_SCL_Read   0x08002073    0xe  Code  Gb  Sensor8_IIC_Init4.o [1]
-Sensor8_IIC4_SDA_Read   0x08002065    0xe  Code  Gb  Sensor8_IIC_Init4.o [1]
+Sensor8_IIC4_Delay_us   0x08001fb9    0xa  Code  Gb  Sensor8_IIC_Init4.o [1]
+Sensor8_IIC4_Init       0x08002061   0x4e  Code  Gb  Sensor8_IIC_Init4.o [1]
+Sensor8_IIC4_Pin_Init   0x08001fc3   0x16  Code  Gb  Sensor8_IIC_Init4.o [1]
+Sensor8_IIC4_SCL_Read   0x08002053    0xe  Code  Gb  Sensor8_IIC_Init4.o [1]
+Sensor8_IIC4_SDA_Read   0x08002045    0xe  Code  Gb  Sensor8_IIC_Init4.o [1]
 Sensor8_IIC4_Set_SCL_High
-                        0x08002015    0xe  Code  Gb  Sensor8_IIC_Init4.o [1]
+                        0x08001ff5    0xe  Code  Gb  Sensor8_IIC_Init4.o [1]
 Sensor8_IIC4_Set_SCL_Low
-                        0x08002023    0xe  Code  Gb  Sensor8_IIC_Init4.o [1]
+                        0x08002003    0xe  Code  Gb  Sensor8_IIC_Init4.o [1]
 Sensor8_IIC4_Set_SDA_High
-                        0x08001ff9    0xe  Code  Gb  Sensor8_IIC_Init4.o [1]
+                        0x08001fd9    0xe  Code  Gb  Sensor8_IIC_Init4.o [1]
 Sensor8_IIC4_Set_SDA_Input
-                        0x08002031   0x1a  Code  Gb  Sensor8_IIC_Init4.o [1]
+                        0x08002011   0x1a  Code  Gb  Sensor8_IIC_Init4.o [1]
 Sensor8_IIC4_Set_SDA_Low
-                        0x08002007    0xe  Code  Gb  Sensor8_IIC_Init4.o [1]
+                        0x08001fe7    0xe  Code  Gb  Sensor8_IIC_Init4.o [1]
 Sensor8_IIC4_Set_SDA_Output
-                        0x0800204b   0x1a  Code  Gb  Sensor8_IIC_Init4.o [1]
+                        0x0800202b   0x1a  Code  Gb  Sensor8_IIC_Init4.o [1]
 Sensor8_IIC4_s          0x200011a8   0x28  Data  Gb  Global.o [1]
-Sensor8_IIC5_Delay_us   0x08002101    0xa  Code  Gb  Sensor8_IIC_Init5.o [1]
-Sensor8_IIC5_Init       0x080021a9   0x4e  Code  Gb  Sensor8_IIC_Init5.o [1]
-Sensor8_IIC5_Pin_Init   0x0800210b   0x16  Code  Gb  Sensor8_IIC_Init5.o [1]
-Sensor8_IIC5_SCL_Read   0x0800219b    0xe  Code  Gb  Sensor8_IIC_Init5.o [1]
-Sensor8_IIC5_SDA_Read   0x0800218d    0xe  Code  Gb  Sensor8_IIC_Init5.o [1]
+Sensor8_IIC5_Delay_us   0x080020e1    0xa  Code  Gb  Sensor8_IIC_Init5.o [1]
+Sensor8_IIC5_Init       0x08002189   0x4e  Code  Gb  Sensor8_IIC_Init5.o [1]
+Sensor8_IIC5_Pin_Init   0x080020eb   0x16  Code  Gb  Sensor8_IIC_Init5.o [1]
+Sensor8_IIC5_SCL_Read   0x0800217b    0xe  Code  Gb  Sensor8_IIC_Init5.o [1]
+Sensor8_IIC5_SDA_Read   0x0800216d    0xe  Code  Gb  Sensor8_IIC_Init5.o [1]
 Sensor8_IIC5_Set_SCL_High
-                        0x0800213d    0xe  Code  Gb  Sensor8_IIC_Init5.o [1]
+                        0x0800211d    0xe  Code  Gb  Sensor8_IIC_Init5.o [1]
 Sensor8_IIC5_Set_SCL_Low
-                        0x0800214b    0xe  Code  Gb  Sensor8_IIC_Init5.o [1]
+                        0x0800212b    0xe  Code  Gb  Sensor8_IIC_Init5.o [1]
 Sensor8_IIC5_Set_SDA_High
-                        0x08002121    0xe  Code  Gb  Sensor8_IIC_Init5.o [1]
+                        0x08002101    0xe  Code  Gb  Sensor8_IIC_Init5.o [1]
 Sensor8_IIC5_Set_SDA_Input
-                        0x08002159   0x1a  Code  Gb  Sensor8_IIC_Init5.o [1]
+                        0x08002139   0x1a  Code  Gb  Sensor8_IIC_Init5.o [1]
 Sensor8_IIC5_Set_SDA_Low
-                        0x0800212f    0xe  Code  Gb  Sensor8_IIC_Init5.o [1]
+                        0x0800210f    0xe  Code  Gb  Sensor8_IIC_Init5.o [1]
 Sensor8_IIC5_Set_SDA_Output
-                        0x08002173   0x1a  Code  Gb  Sensor8_IIC_Init5.o [1]
+                        0x08002153   0x1a  Code  Gb  Sensor8_IIC_Init5.o [1]
 Sensor8_IIC5_s          0x200011d0   0x28  Data  Gb  Global.o [1]
-Sensor8_IIC6_Delay_us   0x08002229    0xa  Code  Gb  Sensor8_IIC_Init6.o [1]
-Sensor8_IIC6_Init       0x080022c3   0x4e  Code  Gb  Sensor8_IIC_Init6.o [1]
-Sensor8_IIC6_Pin_Init   0x08002233   0x14  Code  Gb  Sensor8_IIC_Init6.o [1]
-Sensor8_IIC6_SCL_Read   0x080022b7    0xc  Code  Gb  Sensor8_IIC_Init6.o [1]
-Sensor8_IIC6_SDA_Read   0x080022ab    0xc  Code  Gb  Sensor8_IIC_Init6.o [1]
+Sensor8_IIC6_Delay_us   0x0800252d    0xa  Code  Gb  Sensor8_IIC_Init6.o [1]
+Sensor8_IIC6_Init       0x080025c7   0x4e  Code  Gb  Sensor8_IIC_Init6.o [1]
+Sensor8_IIC6_Pin_Init   0x08002537   0x14  Code  Gb  Sensor8_IIC_Init6.o [1]
+Sensor8_IIC6_SCL_Read   0x080025bb    0xc  Code  Gb  Sensor8_IIC_Init6.o [1]
+Sensor8_IIC6_SDA_Read   0x080025af    0xc  Code  Gb  Sensor8_IIC_Init6.o [1]
 Sensor8_IIC6_Set_SCL_High
-                        0x0800225f    0xc  Code  Gb  Sensor8_IIC_Init6.o [1]
+                        0x08002563    0xc  Code  Gb  Sensor8_IIC_Init6.o [1]
 Sensor8_IIC6_Set_SCL_Low
-                        0x0800226b    0xc  Code  Gb  Sensor8_IIC_Init6.o [1]
+                        0x0800256f    0xc  Code  Gb  Sensor8_IIC_Init6.o [1]
 Sensor8_IIC6_Set_SDA_High
-                        0x08002247    0xc  Code  Gb  Sensor8_IIC_Init6.o [1]
+                        0x0800254b    0xc  Code  Gb  Sensor8_IIC_Init6.o [1]
 Sensor8_IIC6_Set_SDA_Input
-                        0x08002277   0x1a  Code  Gb  Sensor8_IIC_Init6.o [1]
+                        0x0800257b   0x1a  Code  Gb  Sensor8_IIC_Init6.o [1]
 Sensor8_IIC6_Set_SDA_Low
-                        0x08002253    0xc  Code  Gb  Sensor8_IIC_Init6.o [1]
+                        0x08002557    0xc  Code  Gb  Sensor8_IIC_Init6.o [1]
 Sensor8_IIC6_Set_SDA_Output
-                        0x08002291   0x1a  Code  Gb  Sensor8_IIC_Init6.o [1]
+                        0x08002595   0x1a  Code  Gb  Sensor8_IIC_Init6.o [1]
 Sensor8_IIC6_s          0x200011f8   0x28  Data  Gb  Global.o [1]
-Sensor8_IIC7_Delay_us   0x0800233d    0xa  Code  Gb  Sensor8_IIC_Init7.o [1]
-Sensor8_IIC7_Init       0x080023d7   0x4e  Code  Gb  Sensor8_IIC_Init7.o [1]
-Sensor8_IIC7_Pin_Init   0x08002347   0x14  Code  Gb  Sensor8_IIC_Init7.o [1]
-Sensor8_IIC7_SCL_Read   0x080023cb    0xc  Code  Gb  Sensor8_IIC_Init7.o [1]
-Sensor8_IIC7_SDA_Read   0x080023bf    0xc  Code  Gb  Sensor8_IIC_Init7.o [1]
+Sensor8_IIC7_Delay_us   0x08002641    0xa  Code  Gb  Sensor8_IIC_Init7.o [1]
+Sensor8_IIC7_Init       0x080026db   0x4e  Code  Gb  Sensor8_IIC_Init7.o [1]
+Sensor8_IIC7_Pin_Init   0x0800264b   0x14  Code  Gb  Sensor8_IIC_Init7.o [1]
+Sensor8_IIC7_SCL_Read   0x080026cf    0xc  Code  Gb  Sensor8_IIC_Init7.o [1]
+Sensor8_IIC7_SDA_Read   0x080026c3    0xc  Code  Gb  Sensor8_IIC_Init7.o [1]
 Sensor8_IIC7_Set_SCL_High
-                        0x08002373    0xc  Code  Gb  Sensor8_IIC_Init7.o [1]
+                        0x08002677    0xc  Code  Gb  Sensor8_IIC_Init7.o [1]
 Sensor8_IIC7_Set_SCL_Low
-                        0x0800237f    0xc  Code  Gb  Sensor8_IIC_Init7.o [1]
+                        0x08002683    0xc  Code  Gb  Sensor8_IIC_Init7.o [1]
 Sensor8_IIC7_Set_SDA_High
-                        0x0800235b    0xc  Code  Gb  Sensor8_IIC_Init7.o [1]
+                        0x0800265f    0xc  Code  Gb  Sensor8_IIC_Init7.o [1]
 Sensor8_IIC7_Set_SDA_Input
-                        0x0800238b   0x1a  Code  Gb  Sensor8_IIC_Init7.o [1]
+                        0x0800268f   0x1a  Code  Gb  Sensor8_IIC_Init7.o [1]
 Sensor8_IIC7_Set_SDA_Low
-                        0x08002367    0xc  Code  Gb  Sensor8_IIC_Init7.o [1]
+                        0x0800266b    0xc  Code  Gb  Sensor8_IIC_Init7.o [1]
 Sensor8_IIC7_Set_SDA_Output
-                        0x080023a5   0x1a  Code  Gb  Sensor8_IIC_Init7.o [1]
+                        0x080026a9   0x1a  Code  Gb  Sensor8_IIC_Init7.o [1]
 Sensor8_IIC7_s          0x20001220   0x28  Data  Gb  Global.o [1]
-Sensor8_IIC_Delay_us    0x08001c21    0xa  Code  Gb  Sensor8_IIC_Init.o [1]
-Sensor8_IIC_Get_Data    0x08002501   0x78  Code  Gb  SHT30_Driver.o [1]
-Sensor8_IIC_Init        0x08001cbb   0x4e  Code  Gb  Sensor8_IIC_Init.o [1]
-Sensor8_IIC_Pin_Init    0x08001c2b   0x14  Code  Gb  Sensor8_IIC_Init.o [1]
+Sensor8_IIC_Delay_us    0x0800198d    0xa  Code  Gb  Sensor8_IIC_Init.o [1]
+Sensor8_IIC_Get_Data    0x080022b9   0x78  Code  Gb  SHT30_Driver.o [1]
+Sensor8_IIC_Init        0x08001a27   0x4e  Code  Gb  Sensor8_IIC_Init.o [1]
+Sensor8_IIC_Pin_Init    0x08001997   0x14  Code  Gb  Sensor8_IIC_Init.o [1]
 Sensor8_IIC_Read_Register
-                        0x08001d09   0x60  Code  Gb  Sensor8_IIC_Init.o [1]
-Sensor8_IIC_SCL_Read    0x08001caf    0xc  Code  Gb  Sensor8_IIC_Init.o [1]
-Sensor8_IIC_SDA_Read    0x08001ca3    0xc  Code  Gb  Sensor8_IIC_Init.o [1]
+                        0x08001a75   0x60  Code  Gb  Sensor8_IIC_Init.o [1]
+Sensor8_IIC_SCL_Read    0x08001a1b    0xc  Code  Gb  Sensor8_IIC_Init.o [1]
+Sensor8_IIC_SDA_Read    0x08001a0f    0xc  Code  Gb  Sensor8_IIC_Init.o [1]
 Sensor8_IIC_Set_SCL_High
-                        0x08001c57    0xc  Code  Gb  Sensor8_IIC_Init.o [1]
+                        0x080019c3    0xc  Code  Gb  Sensor8_IIC_Init.o [1]
 Sensor8_IIC_Set_SCL_Low
-                        0x08001c63    0xc  Code  Gb  Sensor8_IIC_Init.o [1]
+                        0x080019cf    0xc  Code  Gb  Sensor8_IIC_Init.o [1]
 Sensor8_IIC_Set_SDA_High
-                        0x08001c3f    0xc  Code  Gb  Sensor8_IIC_Init.o [1]
+                        0x080019ab    0xc  Code  Gb  Sensor8_IIC_Init.o [1]
 Sensor8_IIC_Set_SDA_Input
-                        0x08001c6f   0x1a  Code  Gb  Sensor8_IIC_Init.o [1]
+                        0x080019db   0x1a  Code  Gb  Sensor8_IIC_Init.o [1]
 Sensor8_IIC_Set_SDA_Low
-                        0x08001c4b    0xc  Code  Gb  Sensor8_IIC_Init.o [1]
+                        0x080019b7    0xc  Code  Gb  Sensor8_IIC_Init.o [1]
 Sensor8_IIC_Set_SDA_Output
-                        0x08001c89   0x1a  Code  Gb  Sensor8_IIC_Init.o [1]
+                        0x080019f5   0x1a  Code  Gb  Sensor8_IIC_Init.o [1]
 Sensor8_IIC_s           0x20001130   0x28  Data  Gb  Global.o [1]
-SetSysClock             0x080029e5    0x8  Code  Lc  system_stm32f10x.o [1]
-SetSysClockTo72         0x080029ed   0xe0  Code  Lc  system_stm32f10x.o [1]
-SysTick_Handler         0x08002c6d    0x2  Code  Gb  stm32f10x_it.o [1]
-SystemInit              0x08002991   0x54  Code  Gb  system_stm32f10x.o [1]
-USART1_Config           0x08001b5d   0x78  Code  Gb  bsp_usart1.o [1]
-USART_Cmd               0x080028c1   0x1c  Code  Gb  stm32f10x_usart.o [1]
-USART_GetFlagStatus     0x080028e5   0x1a  Code  Gb  stm32f10x_usart.o [1]
-USART_Init              0x08002801   0xba  Code  Gb  stm32f10x_usart.o [1]
-USART_SendData          0x080028dd    0x8  Code  Gb  stm32f10x_usart.o [1]
-UsageFault_Handler      0x08002c65    0x2  Code  Gb  stm32f10x_it.o [1]
+SetSysClock             0x08001d8d    0x8  Code  Lc  system_stm32f10x.o [1]
+SetSysClockTo72         0x08001d95   0xe0  Code  Lc  system_stm32f10x.o [1]
+SysTick_Handler         0x08002c5d    0x2  Code  Gb  stm32f10x_it.o [1]
+SystemInit              0x08001d39   0x54  Code  Gb  system_stm32f10x.o [1]
+USART1_Config           0x0800293d   0x78  Code  Gb  bsp_usart1.o [1]
+USART_Cmd               0x08002815   0x1c  Code  Gb  stm32f10x_usart.o [1]
+USART_GetFlagStatus     0x08002839   0x1a  Code  Gb  stm32f10x_usart.o [1]
+USART_Init              0x08002755   0xba  Code  Gb  stm32f10x_usart.o [1]
+USART_SendData          0x08002831    0x8  Code  Gb  stm32f10x_usart.o [1]
+UsageFault_Handler      0x08002c55    0x2  Code  Gb  stm32f10x_it.o [1]
 _GenldLargeNoMb         0x08000ac3  0x23e  Code  Lc  xprintflarge_nomb.o [3]
 _LdtobLargeNoMb         0x08000845  0x278  Code  Lc  xprintflarge_nomb.o [3]
 _LitobLargeNoMb         0x08000739  0x10a  Code  Lc  xprintflarge_nomb.o [3]
 _Locale_aeabi_lconv     0x200000a4   0x38  Data  Gb  localeconv.o [3]
 _Locale_lconv           0x20000054   0x50  Data  Gb  localeconv.o [3]
 _PrintfLargeNoMb        0x08000131  0x594  Code  Gb  xprintflarge_nomb.o [3]
-_Prout                  0x08002c39   0x16  Code  Gb  xprout.o [3]
+_Prout                  0x08002c29   0x16  Code  Gb  xprout.o [3]
 _PutcharsLargeNoMb      0x08000d01   0x2e  Code  Lc  xprintflarge_nomb.o [3]
 __aeabi_cdcmple         0x08000fa1         Code  Gb  DblCmpLe.o [4]
-__aeabi_d2f             0x08002901         Code  Gb  DblToFlt.o [4]
+__aeabi_d2f             0x08002331         Code  Gb  DblToFlt.o [4]
 __aeabi_d2uiz           0x080013cd         Code  Gb  DblToI32.o [4]
 __aeabi_dadd            0x08001615         Code  Gb  DblAdd.o [4]
 __aeabi_ddiv            0x08001175         Code  Gb  DblDiv.o [4]
 __aeabi_dmul            0x08000fd1         Code  Gb  DblMul.o [4]
 __aeabi_dsub            0x08001415         Code  Gb  DblSub.o [4]
-__aeabi_f2d             0x080025d9         Code  Gb  FltToDbl.o [4]
+__aeabi_f2d             0x080023c1         Code  Gb  FltToDbl.o [4]
 __aeabi_ldiv0           0x08001611         Code  Gb  I64DivZer.o [5]
 __aeabi_ui2d            0x080013f9         Code  Gb  I32ToDbl.o [4]
 __aeabi_uldivmod        0x08000df5         Code  Gb  I64DivMod.o [5]
-__cmain                 0x08002bf5         Code  Gb  cmain.o [5]
-__exit                  0x08002c25   0x14  Code  Gb  exit.o [6]
+__cmain                 0x08002be5         Code  Gb  cmain.o [5]
+__exit                  0x08002c15   0x14  Code  Gb  exit.o [6]
 __iar_Dnorm             0x08000f5b   0x44  Code  Gb  xdnorm.o [4]
 __iar_Locale_lconv_init
                         0x08001595   0x3a  Code  Gb  localeconv.o [3]
@@ -530,14 +537,14 @@ __iar_Stdout            0x20000014   0x40  Data  Gb  xfiles.o [3]
 __iar_Strchr            0x08000d4d         Code  Gb  strchr.o [5]
 __iar_d2uiz             0x080013d9         Code  Gb  DblToI32.o [4]
 __iar_dadd              0x08001629         Code  Gb  DblAdd.o [4]
-__iar_data_init3        0x08002b89   0x28  Code  Gb  data_init.o [5]
+__iar_data_init3        0x08002b59   0x28  Code  Gb  data_init.o [5]
 __iar_dlib_perthread_access
                         0x080016fd    0x2  Code  Gb  xtls.o [3]
 __iar_dsub              0x08001429         Code  Gb  DblSub.o [4]
 __iar_dsubStart         0x0800143b         Code  Gb  DblSub.o [4]
 __iar_packbits_init_single3
-                        0x08002b29   0x38  Code  Gb  packbits_init_single.o [5]
-__iar_program_start     0x08002c8d         Code  Gb  cstartup_M.o [5]
+                        0x08002af9   0x38  Code  Gb  packbits_init_single.o [5]
+__iar_program_start     0x08002c7d         Code  Gb  cstartup_M.o [5]
 __iar_ui2d              0x080013fd         Code  Gb  I32ToDbl.o [4]
 __iar_unaligned___aeabi_memcpy
                         0x08000ee5         Code  Gb  ABImemcpy_unaligned.o [5]
@@ -545,21 +552,21 @@ __iar_unaligned___aeabi_memcpy4
                         0x08000f05         Code  Gb  ABImemcpy_unaligned.o [5]
 __iar_unaligned___aeabi_memcpy8
                         0x08000f05         Code  Gb  ABImemcpy_unaligned.o [5]
-__iar_zero_init3        0x08002ae9   0x40  Code  Gb  zero_init3.o [5]
-__low_level_init        0x08002c0f    0x4  Code  Gb  low_level_init.o [3]
+__iar_zero_init3        0x08002ab9   0x40  Code  Gb  zero_init3.o [5]
+__low_level_init        0x08002bff    0x4  Code  Gb  low_level_init.o [3]
 __vector_table          0x08000000         Data  Gb  startup_stm32f10x_hd.o [1]
-_call_main              0x08002c01         Code  Gb  cmain.o [5]
-_exit                   0x08002c19         Code  Gb  cexit.o [5]
-_main                   0x08002c0b         Code  Gb  cmain.o [5]
+_call_main              0x08002bf1         Code  Gb  cmain.o [5]
+_exit                   0x08002c09         Code  Gb  cexit.o [5]
+_main                   0x08002bfb         Code  Gb  cmain.o [5]
 div                     0x08001601    0xe  Code  Gb  div.o [3]
-exit                    0x08002c13    0x4  Code  Gb  exit.o [3]
-fputc                   0x08001bd5   0x20  Code  Gb  bsp_usart1.o [1]
+exit                    0x08002c03    0x4  Code  Gb  exit.o [3]
+fputc                   0x080029b5   0x20  Code  Gb  bsp_usart1.o [1]
 localeconv              0x080015cf   0x16  Code  Gb  localeconv.o [3]
-main                    0x0800198d  0x1d0  Code  Gb  main.o [1]
+main                    0x08002855   0xe8  Code  Gb  main.o [1]
 memchr                  0x08000d9d         Code  Gb  memchr.o [5]
 obuf                    0x200010e0   0x50  Data  Lc  xfiles.o [3]
-printf                  0x08001bfd   0x24  Code  Gb  printf.o [3]
-putchar                 0x08002c51    0xc  Code  Gb  putchar.o [3]
+printf                  0x080029dd   0x24  Code  Gb  printf.o [3]
+putchar                 0x08002c41    0xc  Code  Gb  putchar.o [3]
 strchr                  0x08000d4d         Code  Gb  strchr.o [5]
 strlen                  0x08000d65         Code  Gb  strlen.o [5]
 
@@ -571,8 +578,8 @@ strlen                  0x08000d65         Code  Gb  strlen.o [5]
 [5] = rt7M_tl.a
 [6] = shb_l.a
 
-  11 572 bytes of readonly  code memory
-     181 bytes of readonly  data memory
+  11 524 bytes of readonly  code memory
+     213 bytes of readonly  data memory
    4 676 bytes of readwrite data memory
 
 Errors: none
