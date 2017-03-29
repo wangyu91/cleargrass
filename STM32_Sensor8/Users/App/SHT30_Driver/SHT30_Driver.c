@@ -21,7 +21,10 @@ u8 	  SHT30_Get_Data(float *fTemp, float *fHumi);                 		// »ñÈ¡ÎÂÊª¶
 float SHT30_CalcTemp(u16 usValue);                              		// ¼ÆËãÎÂ¶È
 float SHT30_CalcHumi(u16 usValue);										// ¼ÆËãÊª¶È
 
-u8 	  Sensor8_IIC_Get_Data(SW_IIC_t *IIC_s, float *fTemp, float *fHumi);
+u8 	  SHT30_IIC_Get_Data(SW_IIC_t *IIC_s, float *fTemp, float *fHumi);
+
+u8	  SHT30_IIC_Read_Register(SW_IIC_t* IIC_s, u8 Chip_Addr, u16 usRead_Addr, u8* pBuffer, u16 usRead_Len);// ¶Á¼Ä´æÆ÷
+u8    SHT30_IIC_Write_Register(u8 usWrite_Addr, u8* pBuffer, u8 usWrite_Len);// Ð´¼Ä´æÆ÷
 /* Private functions ---------------------------------------------------------*/
 /*******************************************************************************
 *                           ÍõÓî@2017-03-23
@@ -195,19 +198,19 @@ u8 SHT30_Soft_Reset(void)
 
 /*******************************************************************************
 *                           ÍõÓî@2017-03-23
-* Function Name  :  SHT30_Get_Data
+* Function Name  :  SHT30_IIC_Get_Data
 * Description    :  »ñÈ¡ÎÂÊª¶È
 * Input          :  float *fTemp    ÎÂ¶ÈÊý¾Ý
 *                   float *fHumi    Êª¶ÈÊý¾Ý
 * Output         :  None
 * Return         :  1³É¹¦ 0Ê§°Ü
 *******************************************************************************/
-u8 Sensor8_IIC_Get_Data(SW_IIC_t *IIC_s, float *fTemp, float *fHumi)
+u8 SHT30_IIC_Get_Data(SW_IIC_t *IIC_s, float *fTemp, float *fHumi)
 {
     u8 ucResult = 0;
     u8 ucRead_Data[6];
     
-    ucResult = Sensor8_IIC_Read_Register(IIC_s, 0x44, CMD_MEAS_CLOCKSTR_L, ucRead_Data, 6);
+    ucResult = SHT30_IIC_Read_Register(IIC_s, 0x44, CMD_MEAS_CLOCKSTR_L, ucRead_Data, 6);
     
 	u8 i;
 	
@@ -229,7 +232,92 @@ u8 Sensor8_IIC_Get_Data(SW_IIC_t *IIC_s, float *fTemp, float *fHumi)
     return(ucResult);
 
 }
-// End of u8 SHT30_Get_Data(float *fTemp, float *fHumi)
+// End of u8 SHT30_IIC_Get_Data(float *fTemp, float *fHumi)
 
+
+/*******************************************************************************
+*                           ÍõÓî@2017-03-21
+* Function Name  :  SHT30_IIC_Read_Register
+* Description    :  ¶Á¼Ä´æÆ÷
+* Input          :  SW_IIC_t*	IIC_s	Ñ¡IICÏß
+*					u8 Chip_Addr	Ð¾Æ¬µØÖ·
+*					u16 usRead_Addr Òª¶ÁÈ¡µÄµØÖ·
+*                   u8* pBuffer     »º´æÖ¸Õë
+*                   u16 usRead_Len  ¶ÁÈ¡³¤¶È
+* Output         :  None
+* Return         :  1³É¹¦ 0Ê§°Ü
+*******************************************************************************/
+u8 SHT30_IIC_Read_Register(SW_IIC_t* IIC_s, u8 Chip_Addr, u16 usRead_Addr, u8* pBuffer, u16 usRead_Len)
+{
+    u8 Transfer_Succeeded = 1;
+    u8 ucRead_Addr[2];
+    u8 Write_Addr;
+    u8 Read_Addr;
+
+	Write_Addr = Chip_Addr << 1;
+	Read_Addr  = Write_Addr | 0x01;
+    
+    if(usRead_Len == 0)
+    {
+        return 1;
+    }
+    
+    ucRead_Addr[0] = (usRead_Addr >> 8) & 0xFF;
+    ucRead_Addr[1] = (usRead_Addr >> 0) & 0xFF;
+    Transfer_Succeeded &= SW_IIC_Transfer(IIC_s, Write_Addr, ucRead_Addr, 2, SW_IIC_DONT_SEND_STOP);
+    Transfer_Succeeded &= SW_IIC_Transfer(IIC_s, Read_Addr, pBuffer, usRead_Len, SW_IIC_NEED_SEND_STOP);
+
+	//printf("pBuffer = %d", *pBuffer);
+    STM32_Delay_us(100);
+
+    return Transfer_Succeeded;
+    
+}
+// End of u8 SHT30_IIC_Read_Register(u16 usRead_Addr, u8* pBuffer, u16 usRead_Len)
+
+/*******************************************************************************
+*                           ÍõÓî@2017-03-21
+* Function Name  :  SHT30_IIC_Write_Register
+* Description    :  Ð´Ð¾Æ¬¼Ä´æÆ÷
+* Input          :  u16 usWrite_Addr    ÒªÐ´ÈëµÄµØÖ·
+*                   u8* pBuffer         »º´æÖ¸Õë
+*                   u16 usWrite_Len     Ð´Èë³¤¶È 
+* Output         :  None
+* Return         :  1³É¹¦ 0Ê§°Ü
+*******************************************************************************/
+u8 SHT30_IIC_Write_Register(u8 usWrite_Addr, u8* pBuffer, u8 usWrite_Len)
+{
+    unsigned char Transfer_Succeeded = 1;
+    u8 ucWrite_Addr[2];
+
+    ucWrite_Addr[0] = (usWrite_Addr >> 8) & 0xFF;
+    ucWrite_Addr[1] = (usWrite_Addr >> 0) & 0xFF;
+    
+    // ·¢ËÍÐ´ÃüÁî
+    Transfer_Succeeded &= SW_IIC_Transfer(&Sensor8_IIC_s, SHT30_WRITE_ADDR, ucWrite_Addr, 2, SW_IIC_DONT_SEND_STOP);
+    
+    // ³¤¶È±£»¤
+    if (usWrite_Len == 0)
+    {
+        return 0;
+    }
+
+    // ·¢ËÍÊý¾Ý
+    while (usWrite_Len-- && Transfer_Succeeded)
+    {
+        Transfer_Succeeded &= SW_IIC_Write_Byte(&Sensor8_IIC_s, *pBuffer);
+        pBuffer++;
+    }
+
+
+    // ·¢ËÍÍ£Ö¹Î»
+    Transfer_Succeeded &= SW_IIC_Stop(&Sensor8_IIC_s);
+
+    STM32_Delay_us(100);
+    
+    return Transfer_Succeeded;
+    
+}
+// End of u8 SHT30_IIC_Write_Register(u8 usWrite_Addr, u8* pBuffer, u8 usWrite_Len)
 
 /******************* (C) COPYRIGHT 2017 ÍõÓî **************END OF FILE*********/

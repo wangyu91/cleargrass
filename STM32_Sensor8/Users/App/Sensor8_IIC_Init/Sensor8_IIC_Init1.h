@@ -21,10 +21,10 @@
 #define     SHT30_READ_ADDR             (SHT30_WRITE_ADDR | 0x01)       // SHT30读地址
 #define     SENSOR8_TIMEOUT 			(5 * 1000)                      // 超时周期us
 
-#define		Sensor8_IIC1_GPIO_RCC		RCC_APB2Periph_GPIOA
+#define		Sensor8_IIC1_GPIO_RCC		RCC_APB2Periph_GPIOC
 #define 	Sensor8_IIC1_SDA			GPIO_Pin_7
-#define 	Sensor8_IIC1_SCL			GPIO_Pin_6
-#define 	Sensor8_GPIO1				GPIOA
+#define 	Sensor8_IIC1_SCL			GPIO_Pin_8
+#define 	Sensor8_GPIO1				GPIOC
 /* Private typedef -----------------------------------------------------------*/
 // Sensor Commands
 

@@ -79,8 +79,8 @@ void Sensor8_IIC5_Pin_Init(void)
 {
     
     // 设置管脚为开漏模式
-    GPIO_Pin_Config(Sensor8_IIC5_GPIO_RCC, Sensor8_IIC5_SDA|Sensor8_IIC5_SCL, GPIO_Mode_Out_OD, GPIO_Speed_50MHz, Sensor8_GPIO5);   // SDA|A5脚 SCL|A4脚 开漏输出 速率50MHz 
-   // GPIO_Pin_Config(Sensor8_IIC_GPIO_C, Sensor8_IIC_SCL, GPIO_Mode_Out_PP, GPIO_Speed_50MHz, Sensor8_IIC_GPIO);	// SCL A6脚
+    GPIO_Pin_Config(Sensor8_IIC5_GPIO_RCC, Sensor8_IIC5_SDA, GPIO_Mode_Out_OD, GPIO_Speed_50MHz, Sensor8_GPIO5);   // SDA|G15脚 开漏输出 速率50MHz 
+    GPIO_Pin_Config(Sensor8_IIC5_GPIO_RCC_SCL, Sensor8_IIC5_SCL, GPIO_Mode_Out_OD, GPIO_Speed_50MHz, Sensor8_GPIO5_SCL);	// SCL|B5脚
 }
 // End of u8  Sensor8_IIC_Pin_Init(void)
 
@@ -124,7 +124,7 @@ void Sensor8_IIC5_Set_SDA_Low(void)
 *******************************************************************************/
 void Sensor8_IIC5_Set_SCL_High(void)
 {
-    GPIO_SetBits(Sensor8_GPIO5, Sensor8_IIC5_SCL);
+    GPIO_SetBits(Sensor8_GPIO5_SCL, Sensor8_IIC5_SCL);
     
 }
 // End of void Sensor8_IIC_SCL_High(void)
@@ -139,7 +139,7 @@ void Sensor8_IIC5_Set_SCL_High(void)
 *******************************************************************************/
 void Sensor8_IIC5_Set_SCL_Low(void)
 {
-    GPIO_ResetBits(Sensor8_GPIO5, Sensor8_IIC5_SCL);
+    GPIO_ResetBits(Sensor8_GPIO5_SCL, Sensor8_IIC5_SCL);
     
 }
 // End of void Sensor8_IIC_SCL_Low(void)
@@ -154,7 +154,7 @@ void Sensor8_IIC5_Set_SCL_Low(void)
 *******************************************************************************/
 void Sensor8_IIC5_Set_SDA_Input(void)
 {
-    Sensor8_GPIO5->CRH &= 0x0FFFFFFF;									// B组管脚 PIN15[31:28]
+    Sensor8_GPIO5->CRH &= 0x0FFFFFFF;									// G组管脚 PIN15[31:28]
     Sensor8_GPIO5->CRH |= 8 << 28;										// 设为上拉输入模式
 }
 // End of void Sensor8_IIC_Set_SDA_Input(void)
@@ -169,7 +169,7 @@ void Sensor8_IIC5_Set_SDA_Input(void)
 *******************************************************************************/
 void Sensor8_IIC5_Set_SDA_Output(void)
 {
-     Sensor8_GPIO5->CRH &= 0x0FFFFFFF;									// B组管脚 PIN15[31:28]
+     Sensor8_GPIO5->CRH &= 0x0FFFFFFF;									// G组管脚 PIN15[31:28]
    	 Sensor8_GPIO5->CRH |= 3 << 28;										// 设为推挽输出模式 
 }
 // End of void Sensor8_IIC_Set_SDA_Output(void)
@@ -213,7 +213,7 @@ u8 Sensor8_IIC5_SDA_Read(void)
 *******************************************************************************/
 u8 Sensor8_IIC5_SCL_Read(void)
 {
-    return(GPIO_ReadInputDataBit(Sensor8_GPIO5, Sensor8_IIC5_SCL));
+    return(GPIO_ReadInputDataBit(Sensor8_GPIO5_SCL, Sensor8_IIC5_SCL));
     
 }
 // End of u8 Sensor8_IIC_SCL_Read(void)

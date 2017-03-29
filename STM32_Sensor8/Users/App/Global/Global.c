@@ -70,7 +70,7 @@ void STM32_Delay_us(uint16_t time_us)
 
 	while(time_us--)
 	{
-		i = 5;
+		i = 3;
 		while(i--);
 	}
 }

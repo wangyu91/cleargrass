@@ -23,11 +23,10 @@
 #define SHT30_GPIO			GPIOA										// SHT30¹Ü½Å×é
 #define SHT30_TIMEOUT		(5 * 1000)									// ³¬Ê±
 
-#define Sensor8_IIC_GPIO_RCC	RCC_APB2Periph_GPIOA
-#define Sensor8_IIC_SDA			GPIO_Pin_5
-#define Sensor8_IIC_SCL			GPIO_Pin_4
-#define Sensor8_GPIO			GPIOA
 //#define Sensor8_TIMEOUT			(5 * 1000)
+
+#define IIC8_SHT30														// Debug 
+#define IIC8_BH1721
 
 /* Private Variables ---------------------------------------------------------*/
 extern SW_IIC_t LED_t;

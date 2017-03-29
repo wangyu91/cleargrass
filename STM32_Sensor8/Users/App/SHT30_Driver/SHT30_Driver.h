@@ -71,7 +71,10 @@ extern  u8 SHT30_Read_SN(u8 *ucSN);                                     // 读取S
 extern  u8 SHT30_Soft_Reset(void);                                      // 软复位
 extern  u8 SHT30_Get_Data(float *fTemp, float *fHumi);            	    // 获取温湿度
 
-extern  u8 Sensor8_IIC_Get_Data(SW_IIC_t *IIC_s, float *fTemp, float *fHumi);			// 读IIC数据
+extern  u8 SHT30_IIC_Get_Data(SW_IIC_t *IIC_s, float *fTemp, float *fHumi);			// 读IIC数据
+
+extern  u8 SHT30_IIC_Read_Register(SW_IIC_t* IIC_s, u8 Chip_Addr, u16 usRead_Addr, u8* pBuffer, u16 usRead_Len);// 读寄存器
+extern  u8 SHT30_IIC_Write_Register(u8 usWrite_Addr, u8* pBuffer, u8 usWrite_Len);// 写寄存器
 
 #endif /* __SHT30_H */
 

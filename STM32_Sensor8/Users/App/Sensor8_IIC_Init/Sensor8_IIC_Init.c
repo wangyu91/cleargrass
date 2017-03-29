@@ -31,8 +31,6 @@ u8   Sensor8_IIC_SCL_Read(void);                                          	// 读
 
 void Sensor8_IIC_Variable_Init(void);                                     	// SHT30变量初始化
 u8   Sensor8_IIC_Init(void);                                         			// SHT30端口初始化    
-u8 Sensor8_IIC_Read_Register(SW_IIC_t* IIC_s, u8 Chip_Addr, u16 usRead_Addr, u8* pBuffer, u16 usRead_Len);// 读寄存器
-u8 Sensor8_IIC_Write_Register(u8 usWrite_Addr, u8* pBuffer, u8 usWrite_Len);// 写寄存器
 /* Private functions ---------------------------------------------------------*/
 
 
@@ -79,7 +77,7 @@ void Sensor8_IIC_Pin_Init(void)
 {
     
     // 设置管脚为开漏模式
-    GPIO_Pin_Config(Sensor8_IIC_GPIO_RCC, Sensor8_IIC_SDA|Sensor8_IIC_SCL, GPIO_Mode_Out_OD, GPIO_Speed_50MHz, Sensor8_GPIO);   // SDA|A5脚 SCL|A4脚 开漏输出 速率50MHz 
+    GPIO_Pin_Config(Sensor8_IIC_GPIO_RCC, Sensor8_IIC_SDA|Sensor8_IIC_SCL, GPIO_Mode_Out_OD, GPIO_Speed_50MHz, Sensor8_GPIO);   // SDA|G6脚 SCL|G7脚 开漏输出 速率50MHz 
    // GPIO_Pin_Config(Sensor8_IIC_GPIO_C, Sensor8_IIC_SCL, GPIO_Mode_Out_PP, GPIO_Speed_50MHz, Sensor8_IIC_GPIO);	// SCL A6脚
 }
 // End of u8  Sensor8_IIC_Pin_Init(void)
@@ -154,8 +152,8 @@ void Sensor8_IIC_Set_SCL_Low(void)
 *******************************************************************************/
 void Sensor8_IIC_Set_SDA_Input(void)
 {
-    Sensor8_GPIO->CRL &= 0xFF0FFFFF;									// A组管脚 PIN5[23:20]
-    Sensor8_GPIO->CRL |= 8 << 20;										// 设为上拉输入模式
+    Sensor8_GPIO->CRL &= 0xF0FFFFFF;									// G组管脚 PIN6[27:24]
+    Sensor8_GPIO->CRL |= 8 << 24;										// 设为上拉输入模式
 }
 // End of void Sensor8_IIC_Set_SDA_Input(void)
 
@@ -169,8 +167,8 @@ void Sensor8_IIC_Set_SDA_Input(void)
 *******************************************************************************/
 void Sensor8_IIC_Set_SDA_Output(void)
 {
-     Sensor8_GPIO->CRL &= 0xFF0FFFFF;									// A组管脚 PIN5[23:20]
-   	 Sensor8_GPIO->CRL |= 3 << 20;										// 设为推挽输出模式 
+     Sensor8_GPIO->CRL &= 0xF0FFFFFF;									// G组管脚 PIN6[27:24]
+   	 Sensor8_GPIO->CRL |= 3 << 24;										// 设为推挽输出模式 
 }
 // End of void Sensor8_IIC_Set_SDA_Output(void)
 
@@ -267,90 +265,4 @@ void Sensor8_IIC_Variable_Init(void)
   
 }// End of void Sensor8_IIC_Variable_Init(void)
 
-
-/*******************************************************************************
-*                           王宇@2017-03-21
-* Function Name  :  Sensor8_IIC_Read_Register
-* Description    :  读寄存器
-* Input          :  u8 Chip_Addr	芯片地址
-*					u16 usRead_Addr 要读取的地址
-*                   u8* pBuffer     缓存指针
-*                   u16 usRead_Len  读取长度
-* Output         :  None
-* Return         :  1成功 0失败
-*******************************************************************************/
-u8 Sensor8_IIC_Read_Register(SW_IIC_t* IIC_s, u8 Chip_Addr, u16 usRead_Addr, u8* pBuffer, u16 usRead_Len)
-{
-    u8 Transfer_Succeeded = 1;
-    u8 ucRead_Addr[2];
-    u8 Write_Addr;
-    u8 Read_Addr;
-
-	Write_Addr = Chip_Addr << 1;
-	Read_Addr  = Write_Addr | 0x01;
-    
-    if(usRead_Len == 0)
-    {
-        return 1;
-    }
-    
-    ucRead_Addr[0] = (usRead_Addr >> 8) & 0xFF;
-    ucRead_Addr[1] = (usRead_Addr >> 0) & 0xFF;
-    Transfer_Succeeded &= SW_IIC_Transfer(IIC_s, Write_Addr, ucRead_Addr, 2, SW_IIC_DONT_SEND_STOP);
-    Transfer_Succeeded &= SW_IIC_Transfer(IIC_s, Read_Addr, pBuffer, usRead_Len, SW_IIC_NEED_SEND_STOP);
-
-	//printf("pBuffer = %d", *pBuffer);
-    STM32_Delay_us(100);
-
-    return Transfer_Succeeded;
-    
-}
-// End of u8 Sensor8_IIC_Read_Register(u16 usRead_Addr, u8* pBuffer, u16 usRead_Len)
-
-/*******************************************************************************
-*                           王宇@2017-03-21
-* Function Name  :  Sensor8_IIC_Write_Register
-* Description    :  写芯片寄存器
-* Input          :  u16 usWrite_Addr    要写入的地址
-*                   u8* pBuffer         缓存指针
-*                   u16 usWrite_Len     写入长度 
-* Output         :  None
-* Return         :  1成功 0失败
-*******************************************************************************/
-u8 Sensor8_IIC_Write_Register(u8 usWrite_Addr, u8* pBuffer, u8 usWrite_Len)
-{
-    unsigned char Transfer_Succeeded = 1;
-    u8 ucWrite_Addr[2];
-
-    ucWrite_Addr[0] = (usWrite_Addr >> 8) & 0xFF;
-    ucWrite_Addr[1] = (usWrite_Addr >> 0) & 0xFF;
-    
-    // 发送写命令
-    Transfer_Succeeded &= SW_IIC_Transfer(&Sensor8_IIC_s, SHT30_WRITE_ADDR, ucWrite_Addr, 2, SW_IIC_DONT_SEND_STOP);
-    
-    // 长度保护
-    if (usWrite_Len == 0)
-    {
-        return 0;
-    }
-
-    // 发送数据
-    while (usWrite_Len-- && Transfer_Succeeded)
-    {
-        Transfer_Succeeded &= SW_IIC_Write_Byte(&Sensor8_IIC_s, *pBuffer);
-        pBuffer++;
-    }
-
-
-    // 发送停止位
-    Transfer_Succeeded &= SW_IIC_Stop(&Sensor8_IIC_s);
-
-    STM32_Delay_us(100);
-    
-    return Transfer_Succeeded;
-    
-}
-// End of u8 Temp_Humi_Write_Register(u8 usWrite_Addr, u8* pBuffer, u8 usWrite_Len)
-
 /******************* (C) COPYRIGHT 2017 王宇 **************END OF FILE*********/
-

@@ -325,6 +325,7 @@
           <state>$PROJ_DIR$\..\Users\App\Example_uart</state>
           <state>$PROJ_DIR$\..\Users\App\Sensor8_IIC_Init</state>
           <state>$PROJ_DIR$\..\Users\App\BH172</state>
+          <state>$PROJ_DIR$\..\Users\App\TVOC</state>
         </option>
         <option>
           <name>CCStdIncCheck</name>
@@ -2100,6 +2101,15 @@
         </file>
         <file>
           <name>$PROJ_DIR$\..\Users\App\Soft_IIC\SW_IIC.h</name>
+        </file>
+      </group>
+      <group>
+        <name>TVOC</name>
+        <file>
+          <name>$PROJ_DIR$\..\Users\App\TVOC\sgpc1x.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\Users\App\TVOC\sgpc1x.h</name>
         </file>
       </group>
     </group>

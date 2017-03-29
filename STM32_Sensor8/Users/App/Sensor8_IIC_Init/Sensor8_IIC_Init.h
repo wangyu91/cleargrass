@@ -21,6 +21,10 @@
 #define     SHT30_READ_ADDR             (SHT30_WRITE_ADDR | 0x01)       // SHT30读地址
 #define     SENSOR8_TIMEOUT 			(5 * 1000)                      // 超时周期us
 
+#define 	Sensor8_IIC_GPIO_RCC		RCC_APB2Periph_GPIOG			// G组管脚
+#define 	Sensor8_IIC_SDA				GPIO_Pin_6						// SDA0 PG6
+#define 	Sensor8_IIC_SCL				GPIO_Pin_7						// SCL0 PG7
+#define 	Sensor8_GPIO				GPIOG
 /* Private typedef -----------------------------------------------------------*/
 // Sensor Commands
 
@@ -29,8 +33,6 @@
 /* Private function prototypes -----------------------------------------------*/
 extern  void SHT30_Variable_Init(void);                             	// 温湿度变量初始化
 extern  u8 Sensor8_IIC_Init(void);                                   	// 管脚初始化
-extern  u8 Sensor8_IIC_Read_Register(SW_IIC_t* IIC_s, u8 Chip_Addr, u16 usRead_Addr, u8* pBuffer, u16 usRead_Len);// 读寄存器
-extern  u8 Sensor8_IIC_Write_Register(u8 usWrite_Addr, u8* pBuffer, u8 usWrite_Len);// 写寄存器
 
 #endif /* __SHT30_INIT_H */
 

@@ -79,7 +79,7 @@ void Sensor8_IIC4_Pin_Init(void)
 {
     
     // 设置管脚为开漏模式
-    GPIO_Pin_Config(Sensor8_IIC4_GPIO_RCC, Sensor8_IIC4_SDA|Sensor8_IIC4_SCL, GPIO_Mode_Out_OD, GPIO_Speed_50MHz, Sensor8_GPIO4);   // SDA|A5脚 SCL|A4脚 开漏输出 速率50MHz 
+    GPIO_Pin_Config(Sensor8_IIC4_GPIO_RCC, Sensor8_IIC4_SDA|Sensor8_IIC4_SCL, GPIO_Mode_Out_OD, GPIO_Speed_50MHz, Sensor8_GPIO4);   // SDA|G11脚 SCL|G12脚 开漏输出 速率50MHz 
    // GPIO_Pin_Config(Sensor8_IIC_GPIO_C, Sensor8_IIC_SCL, GPIO_Mode_Out_PP, GPIO_Speed_50MHz, Sensor8_IIC_GPIO);	// SCL A6脚
 }
 // End of u8  Sensor8_IIC_Pin_Init(void)
@@ -154,8 +154,8 @@ void Sensor8_IIC4_Set_SCL_Low(void)
 *******************************************************************************/
 void Sensor8_IIC4_Set_SDA_Input(void)
 {
-    Sensor8_GPIO4->CRH &= 0xFF0FFFFF;									// B组管脚 PIN13[23:20]
-    Sensor8_GPIO4->CRH |= 8 << 20;										// 设为上拉输入模式
+    Sensor8_GPIO4->CRH &= 0xFFFF0FFF;									// G组管脚 PIN11[15:12]
+    Sensor8_GPIO4->CRH |= 8 << 12;										// 设为上拉输入模式
 }
 // End of void Sensor8_IIC_Set_SDA_Input(void)
 
@@ -169,8 +169,8 @@ void Sensor8_IIC4_Set_SDA_Input(void)
 *******************************************************************************/
 void Sensor8_IIC4_Set_SDA_Output(void)
 {
-     Sensor8_GPIO4->CRH &= 0xFF0FFFFF;									// B组管脚 PIN13[23:20]
-   	 Sensor8_GPIO4->CRH |= 3 << 20;										// 设为推挽输出模式 
+     Sensor8_GPIO4->CRH &= 0xFFFF0FFF;									// G组管脚 PIN11[15:12]
+   	 Sensor8_GPIO4->CRH |= 3 << 12;										// 设为推挽输出模式 
 }
 // End of void Sensor8_IIC_Set_SDA_Output(void)
 
