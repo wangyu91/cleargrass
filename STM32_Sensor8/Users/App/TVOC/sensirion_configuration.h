@@ -28,6 +28,9 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+#include "stdint.h"
+#include "Global.h"
+
 #ifndef SENSIRION_CONFIGURATION_H
 #define SENSIRION_CONFIGURATION_H
 
@@ -46,6 +49,11 @@ extern "C" {
  * ports cannot support a 200 kHz output rate.
  */
 #define I2C_CLOCK_PERIOD_USEC 10
+
+#define		Sgpc10_IIC2_GPIO_RCC		RCC_APB2Periph_GPIOD
+#define 	Sgpc10_IIC2_SDA				GPIO_Pin_7
+#define 	Sgpc10_IIC2_SCL				GPIO_Pin_6
+#define 	Sgpc10_GPIO2				GPIOD
 
 /**
  * Typedef section for types commonly defined in <stdint.h>
@@ -67,7 +75,7 @@ extern "C" {
 * implementation.
 */
 #ifndef USE_SENSIRION_STDINT_TYPES
-#define USE_SENSIRION_STDINT_TYPES 1
+#define USE_SENSIRION_STDINT_TYPES 0
 #endif /* USE_SENSIRION_STDINT_TYPES */
 
 #if USE_SENSIRION_STDINT_TYPES

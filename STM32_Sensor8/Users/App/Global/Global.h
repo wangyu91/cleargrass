@@ -14,6 +14,12 @@
 #include "SW_IIC.h"
 #include "SHT30_Init.h"
 #include "SHT30_Driver.h"
+
+#include "Sgpc1x.h"
+//#include "Sensirion_configuration.h"
+#include "Sensirion_common.h"
+
+
 //#include "GPIO_LED.h"
 
 /* Private Defines -----------------------------------------------------------*/
@@ -25,8 +31,8 @@
 
 //#define Sensor8_TIMEOUT			(5 * 1000)
 
-#define IIC8_SHT30														// Debug 
-#define IIC8_BH1721
+//#define IIC8_SHT30														// Debug 
+//#define IIC8_BH1721
 
 /* Private Variables ---------------------------------------------------------*/
 extern SW_IIC_t LED_t;

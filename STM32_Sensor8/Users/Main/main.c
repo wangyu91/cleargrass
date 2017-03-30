@@ -36,21 +36,38 @@ void Sys_Init(void)
 {
 	u8 Succeed[8];
 	u8 i;
+
+//	GPIO_Pin_Config(RCC_APB2Periph_GPIOG, GPIO_Pin_8, GPIO_Mode_Out_PP, GPIO_Speed_50MHz, GPIOG);	// RED0 PG8
+//	GPIO_Pin_Config(RCC_APB2Periph_GPIOC, GPIO_Pin_6, GPIO_Mode_Out_PP, GPIO_Speed_50MHz, GPIOC);	// GREEN0 PC6
 	
 	// 初始化8条IIC
 //	Succeed[0] = Sensor8_IIC_Init();
-	Succeed[1] = Sensor8_IIC1_Init();
+//	Succeed[1] = Sensor8_IIC1_Init();
 	Succeed[2] = Sensor8_IIC2_Init();
 //	Succeed[3] = Sensor8_IIC3_Init();
 //	Succeed[4] = Sensor8_IIC4_Init();
-	Succeed[5] = Sensor8_IIC5_Init();
+//	Succeed[5] = Sensor8_IIC5_Init();
 //	Succeed[6] = Sensor8_IIC6_Init();
 //	Succeed[7] = Sensor8_IIC7_Init();
-	
+//	
 	for (i = 0; i < 8; i++)
 	{
 		printf("\r\n  Succeed Init IIC[%d]  %d\r\n", i, Succeed[i]);	// 打印初始化信息 成功1 失败0
 	}
+
+//	for (i = 0; i < 8; i++)
+//	{
+//		if (Succeed[i])
+//		{
+//			GPIO_ResetBits(GPIOC, GPIO_Pin_6);
+//			STM32_Delay_ms(10);
+//		}
+//		else
+//		{
+//			GPIO_ResetBits(GPIOG, GPIO_Pin_8);
+//			STM32_Delay_ms(10);
+//		}
+//	}
 
 	STM32_Delay_us(5);
 
@@ -78,9 +95,9 @@ u8 IIC8_Get_SHT30_Data(void)
 //	STM32_Delay_ms(20);
 //	printf("\r\n IIC_0  temperature = %f, humidity = %f !\r\n", ftemp, fhumi);
 
-	Succeed &= SHT30_IIC_Get_Data(&Sensor8_IIC1_s, &ftemp, &fhumi);						// 读取数据
-	STM32_Delay_ms(20);
-	printf("\r\n IIC_1  temperature = %f, humidity = %f !\r\n", ftemp, fhumi);
+//	Succeed &= SHT30_IIC_Get_Data(&Sensor8_IIC1_s, &ftemp, &fhumi);						// 读取数据
+//	STM32_Delay_ms(20);
+//	printf("\r\n IIC_1  temperature = %f, humidity = %f !\r\n", ftemp, fhumi);
 
 	Succeed &= SHT30_IIC_Get_Data(&Sensor8_IIC2_s, &ftemp, &fhumi);						// 读取数据
 	STM32_Delay_ms(20);
@@ -94,9 +111,9 @@ u8 IIC8_Get_SHT30_Data(void)
 //	STM32_Delay_ms(20);
 //	printf("\r\n IIC_4  temperature = %f, humidity = %f !\r\n", ftemp, fhumi);
 
-	Succeed &= SHT30_IIC_Get_Data(&Sensor8_IIC5_s, &ftemp, &fhumi);						// 读取数据
-	STM32_Delay_ms(20);
-	printf("\r\n IIC_5  temperature = %f, humidity = %f !\r\n", ftemp, fhumi);
+//	Succeed &= SHT30_IIC_Get_Data(&Sensor8_IIC5_s, &ftemp, &fhumi);						// 读取数据
+//	STM32_Delay_ms(20);
+//	printf("\r\n IIC_5  temperature = %f, humidity = %f !\r\n", ftemp, fhumi);
 
 //	Succeed &= SHT30_IIC_Get_Data(&Sensor8_IIC6_s, &ftemp, &fhumi);						// 读取数据
 //	STM32_Delay_ms(20);
@@ -128,9 +145,9 @@ u8 IIC8_Get_BH1721_Data(void)
 //	STM32_Delay_ms(20);
 //	printf("\r\n  IIC0 Light Intensity = %f !\r\n", fLight[0]);
 
-	Succeed &= BH1721_Get_Data(&Sensor8_IIC1_s, &fLight[1]);						// 读取数据
-	STM32_Delay_ms(20);
-	printf("\r\n  IIC1 Light Intensity = %f !\r\n", fLight[1]);
+//	Succeed &= BH1721_Get_Data(&Sensor8_IIC1_s, &fLight[1]);						// 读取数据
+//	STM32_Delay_ms(20);
+//	printf("\r\n  IIC1 Light Intensity = %f !\r\n", fLight[1]);
 
 	Succeed &= BH1721_Get_Data(&Sensor8_IIC2_s, &fLight[2]);						// 读取数据
 	STM32_Delay_ms(20);
@@ -144,9 +161,9 @@ u8 IIC8_Get_BH1721_Data(void)
 //	STM32_Delay_ms(20);
 //	printf("\r\n  IIC4 Light Intensity = %f !\r\n", fLight[4]);
 
-	Succeed &= BH1721_Get_Data(&Sensor8_IIC5_s, &fLight[5]);						// 读取数据
-	STM32_Delay_ms(20);
-	printf("\r\n  IIC5 Light Intensity = %f !\r\n", fLight[5]);
+//	Succeed &= BH1721_Get_Data(&Sensor8_IIC5_s, &fLight[5]);						// 读取数据
+//	STM32_Delay_ms(20);
+//	printf("\r\n  IIC5 Light Intensity = %f !\r\n", fLight[5]);
 
 //	Succeed &= BH1721_Get_Data(&Sensor8_IIC6_s, &fLight[6]);						// 读取数据
 //	STM32_Delay_ms(20);
@@ -172,11 +189,12 @@ u8 IIC8_Get_BH1721_Data(void)
 void main()
 {
 	u8 Succeed;
+	u16 TVOC, Co2; 
 	
 	USART1_Config();
 	printf("\r\n  test!\r\n");											// 测试UART通信
 
-	Sys_Init();
+//	Sys_Init();
 
 	#ifdef IIC8_SHT30
 		Succeed = IIC8_Get_SHT30_Data();
@@ -197,11 +215,25 @@ void main()
 		}
 		
 	#endif
+
+	s16 TVOC_Succeed;
+	u64 TVOC_SN;
 	
-	while (1)
+	TVOC_Succeed = sgp_probe();
+	printf("\r\n TVOC Succeed = %d !\r\n", TVOC_Succeed);
+	STM32_Delay_ms(500);
+	sgp_get_serial_id(&TVOC_SN);
+	printf("\r\n TVOC Serial ID = %x !\r\n", TVOC_SN);
+//	
+	while (TVOC_Succeed == 0)
 	{
 //		IIC8_Get_SHT30_Data();
 //		IIC8_Get_BH1721_Data();
+
+    TVOC_Succeed = sgp_measure_iaq_blocking_read(&TVOC, &Co2);
+	printf("\r\n IIC_2  TVOC = %d, Co2 = %d !\r\n", TVOC, Co2);
+	STM32_Delay_ms(500);
+	
 	}
 }
 

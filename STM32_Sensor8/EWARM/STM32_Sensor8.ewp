@@ -2106,10 +2106,37 @@
       <group>
         <name>TVOC</name>
         <file>
+          <name>$PROJ_DIR$\..\Users\App\TVOC\i2c.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\Users\App\TVOC\sensirion_common.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\Users\App\TVOC\Sensirion_common.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\Users\App\TVOC\sensirion_configuration.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\Users\App\TVOC\sensirion_configuration.h</name>
+        </file>
+        <file>
           <name>$PROJ_DIR$\..\Users\App\TVOC\sgpc1x.c</name>
         </file>
         <file>
           <name>$PROJ_DIR$\..\Users\App\TVOC\sgpc1x.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\Users\App\TVOC\sgpc1x_featureset.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\Users\App\TVOC\sgpc1x_featureset.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\Users\App\TVOC\sw_i2c.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\Users\App\TVOC\sw_i2c_gpio.h</name>
         </file>
       </group>
     </group>

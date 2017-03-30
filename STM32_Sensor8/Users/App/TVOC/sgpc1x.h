@@ -31,11 +31,6 @@
 #ifndef SGPC1X_H
 #define SGPC1X_H
 #include "sensirion_configuration.h"
-#include "SW_IIC.h"
-
-#define SGP_ADDR	0x58
-#define SGP_WRITE_ADDR	(SGP_ADDR << 1)
-#define SGP_READ_ADDR	(SGP_WRITE_ADDR | 0x01)
 
 s16 sgp_probe(void);
 s16 sgp_iaq_init(void);
@@ -46,7 +41,7 @@ void sgp_get_serial_id(u64 *serial_id);
 s16 sgp_get_iaq_baseline(u32 *baseline);
 s16 sgp_set_iaq_baseline(u32 baseline);
 
-extern s16 sgp_measure_iaq_blocking_read(SW_IIC_t* IIC_s, u16 *tvoc_ppb, u16 *co2_eq_ppm);
+s16 sgp_measure_iaq_blocking_read(u16 *tvoc_ppb, u16 *co2_eq_ppm);
 s16 sgp_measure_iaq(void);
 s16 sgp_read_iaq(u16 *tvoc_ppb, u16 *co2_eq_ppm);
 

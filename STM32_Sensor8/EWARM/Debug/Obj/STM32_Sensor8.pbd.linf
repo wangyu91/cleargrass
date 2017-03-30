@@ -5,6 +5,8 @@ D:\Workspace\STM32_Sensor8\EWARM\Debug\Obj\Global.pbi
 D:\Workspace\STM32_Sensor8\EWARM\Debug\Obj\GPIO_LED.pbi
 D:\Workspace\STM32_Sensor8\EWARM\Debug\Obj\main.pbi
 D:\Workspace\STM32_Sensor8\EWARM\Debug\Obj\misc.pbi
+D:\Workspace\STM32_Sensor8\EWARM\Debug\Obj\sensirion_common.pbi
+D:\Workspace\STM32_Sensor8\EWARM\Debug\Obj\sensirion_configuration.pbi
 D:\Workspace\STM32_Sensor8\EWARM\Debug\Obj\Sensor8_IIC_Init.pbi
 D:\Workspace\STM32_Sensor8\EWARM\Debug\Obj\Sensor8_IIC_Init1.pbi
 D:\Workspace\STM32_Sensor8\EWARM\Debug\Obj\Sensor8_IIC_Init2.pbi
@@ -14,11 +16,13 @@ D:\Workspace\STM32_Sensor8\EWARM\Debug\Obj\Sensor8_IIC_Init5.pbi
 D:\Workspace\STM32_Sensor8\EWARM\Debug\Obj\Sensor8_IIC_Init6.pbi
 D:\Workspace\STM32_Sensor8\EWARM\Debug\Obj\Sensor8_IIC_Init7.pbi
 D:\Workspace\STM32_Sensor8\EWARM\Debug\Obj\sgpc1x.pbi
+D:\Workspace\STM32_Sensor8\EWARM\Debug\Obj\sgpc1x_featureset.pbi
 D:\Workspace\STM32_Sensor8\EWARM\Debug\Obj\SHT30_Driver.pbi
 D:\Workspace\STM32_Sensor8\EWARM\Debug\Obj\SHT30_Init.pbi
 D:\Workspace\STM32_Sensor8\EWARM\Debug\Obj\stm32f10x_gpio.pbi
 D:\Workspace\STM32_Sensor8\EWARM\Debug\Obj\stm32f10x_it.pbi
 D:\Workspace\STM32_Sensor8\EWARM\Debug\Obj\stm32f10x_rcc.pbi
 D:\Workspace\STM32_Sensor8\EWARM\Debug\Obj\stm32f10x_usart.pbi
+D:\Workspace\STM32_Sensor8\EWARM\Debug\Obj\sw_i2c.pbi
 D:\Workspace\STM32_Sensor8\EWARM\Debug\Obj\SW_IIC.pbi
 D:\Workspace\STM32_Sensor8\EWARM\Debug\Obj\system_stm32f10x.pbi

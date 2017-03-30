@@ -65,7 +65,7 @@ struct sgp_profile {
 };
 
 struct sgp_otp_featureset {
-    struct sgp_profile **profiles;
+    const struct sgp_profile **profiles;
     u16 number_of_profiles;
 };
 
