@@ -212,8 +212,6 @@ u8 SHT30_IIC_Get_Data(SW_IIC_t *IIC_s, float *fTemp, float *fHumi)
     
     ucResult = SHT30_IIC_Read_Register(IIC_s, 0x44, CMD_MEAS_CLOCKSTR_L, ucRead_Data, 6);
     
-	u8 i;
-	
     if (ucResult)
     {
         // Í¨¹ýÁËCRC

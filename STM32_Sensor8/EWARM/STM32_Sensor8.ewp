@@ -326,6 +326,7 @@
           <state>$PROJ_DIR$\..\Users\App\Sensor8_IIC_Init</state>
           <state>$PROJ_DIR$\..\Users\App\BH172</state>
           <state>$PROJ_DIR$\..\Users\App\TVOC</state>
+          <state>$PROJ_DIR$\..\Users\App</state>
         </option>
         <option>
           <name>CCStdIncCheck</name>
@@ -2020,15 +2021,6 @@
         </file>
       </group>
       <group>
-        <name>GPIO_LED</name>
-        <file>
-          <name>$PROJ_DIR$\..\Users\App\GPIO_LED\GPIO_LED.c</name>
-        </file>
-        <file>
-          <name>$PROJ_DIR$\..\Users\App\GPIO_LED\GPIO_LED.h</name>
-        </file>
-      </group>
-      <group>
         <name>Sensor8_IIC_Init</name>
         <file>
           <name>$PROJ_DIR$\..\Users\App\Sensor8_IIC_Init\Sensor8_IIC_Init.c</name>
@@ -2077,6 +2069,15 @@
         </file>
         <file>
           <name>$PROJ_DIR$\..\Users\App\Sensor8_IIC_Init\Sensor8_IIC_Init7.h</name>
+        </file>
+      </group>
+      <group>
+        <name>Sgpc10</name>
+        <file>
+          <name>$PROJ_DIR$\..\Users\App\Sgpc10_TVOC\Sgpc10_Driver.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\Users\App\Sgpc10_TVOC\Sgpc10_Driver.h</name>
         </file>
       </group>
       <group>

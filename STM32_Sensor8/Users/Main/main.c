@@ -20,8 +20,8 @@
 
 /* Private Function Prototype ------------------------------------------------*/
 void Sys_Init(void);													// 系统初始化
-u8	 IIC8_Get_SHT30_Data(void);											// 获取SHT30数据
-u8	 IIC8_Get_BH1721_Data(void);										// 获取BH1721数据
+//u8	 IIC8_Get_SHT30_Data(void);											// 获取SHT30数据
+void IIC8_Test(void);
 
 /* Private Functions ---------------------------------------------------------*/
 /*******************************************************************************
@@ -37,144 +37,184 @@ void Sys_Init(void)
 	u8 Succeed[8];
 	u8 i;
 
-//	GPIO_Pin_Config(RCC_APB2Periph_GPIOG, GPIO_Pin_8, GPIO_Mode_Out_PP, GPIO_Speed_50MHz, GPIOG);	// RED0 PG8
-//	GPIO_Pin_Config(RCC_APB2Periph_GPIOC, GPIO_Pin_6, GPIO_Mode_Out_PP, GPIO_Speed_50MHz, GPIOC);	// GREEN0 PC6
-	
 	// 初始化8条IIC
-//	Succeed[0] = Sensor8_IIC_Init();
-//	Succeed[1] = Sensor8_IIC1_Init();
+	Succeed[0] = Sensor8_IIC_Init();
+	Succeed[1] = Sensor8_IIC1_Init();
 	Succeed[2] = Sensor8_IIC2_Init();
-//	Succeed[3] = Sensor8_IIC3_Init();
-//	Succeed[4] = Sensor8_IIC4_Init();
-//	Succeed[5] = Sensor8_IIC5_Init();
-//	Succeed[6] = Sensor8_IIC6_Init();
-//	Succeed[7] = Sensor8_IIC7_Init();
-//	
+	Succeed[3] = Sensor8_IIC3_Init();
+	Succeed[4] = Sensor8_IIC4_Init();
+	Succeed[5] = Sensor8_IIC5_Init();
+	Succeed[6] = Sensor8_IIC6_Init();
+	Succeed[7] = Sensor8_IIC7_Init();
+	
 	for (i = 0; i < 8; i++)
 	{
 		printf("\r\n  Succeed Init IIC[%d]  %d\r\n", i, Succeed[i]);	// 打印初始化信息 成功1 失败0
 	}
 
-//	for (i = 0; i < 8; i++)
-//	{
-//		if (Succeed[i])
-//		{
-//			GPIO_ResetBits(GPIOC, GPIO_Pin_6);
-//			STM32_Delay_ms(10);
-//		}
-//		else
-//		{
-//			GPIO_ResetBits(GPIOG, GPIO_Pin_8);
-//			STM32_Delay_ms(10);
-//		}
-//	}
+	Sgpc10_Init_Air_Quality(&Sensor8_IIC_s);
+	Sgpc10_Init_Air_Quality(&Sensor8_IIC1_s);
+	Sgpc10_Init_Air_Quality(&Sensor8_IIC2_s);
+	Sgpc10_Init_Air_Quality(&Sensor8_IIC3_s);
+	Sgpc10_Init_Air_Quality(&Sensor8_IIC4_s);
+	Sgpc10_Init_Air_Quality(&Sensor8_IIC5_s);
+	Sgpc10_Init_Air_Quality(&Sensor8_IIC6_s);
+	Sgpc10_Init_Air_Quality(&Sensor8_IIC7_s);
 
 	STM32_Delay_us(5);
 
 	// 初始化BH1721 DVI线
-	GPIO_Pin_Config(RCC_APB2Periph_GPIOA, GPIO_Pin_3, GPIO_Mode_Out_PP, GPIO_Speed_50MHz, GPIOA);
-	GPIO_SetBits(GPIOA, GPIO_Pin_3);
-	
+	GPIO_Pin_Config(RCC_APB2Periph_GPIOC, GPIO_Pin_10 | GPIO_Pin_11 | GPIO_Pin_12, GPIO_Mode_Out_PP, GPIO_Speed_50MHz, GPIOC);
+	GPIO_SetBits(GPIOC, GPIO_Pin_10 | GPIO_Pin_11 | GPIO_Pin_12);
+	GPIO_Pin_Config(RCC_APB2Periph_GPIOB, GPIO_Pin_8 | GPIO_Pin_9, GPIO_Mode_Out_PP, GPIO_Speed_50MHz, GPIOB);
+	GPIO_SetBits(GPIOB, GPIO_Pin_8 | GPIO_Pin_9);
+	GPIO_Pin_Config(RCC_APB2Periph_GPIOE, GPIO_Pin_0 | GPIO_Pin_1 | GPIO_Pin_3, GPIO_Mode_Out_PP, GPIO_Speed_50MHz, GPIOE);
+	GPIO_SetBits(GPIOE, GPIO_Pin_0 | GPIO_Pin_1 | GPIO_Pin_3);
 }
 // end of void Sys_Init(void)
 
 /*******************************************************************************
 *                           王宇@2017-03-29
-* Function Name  :  IIC8_Get_SHT30_Data
-* Description    :  获取8条IIC上的SHT30数据
+* Function Name  :  IIC8_Test
+* Description    :  测试8条IIC上的数据
 * Input          :  None
 * Output         :  None
 * Return         :  成功1 失败0
 *******************************************************************************/
-u8 IIC8_Get_SHT30_Data(void)
+void IIC8_Test(void)
 {
-	u8		Succeed = 1;
-	float   ftemp, fhumi;
-//	
-//	Succeed &= SHT30_IIC_Get_Data(&Sensor8_IIC_s, &ftemp, &fhumi);						// 读取数据
-//	STM32_Delay_ms(20);
-//	printf("\r\n IIC_0  temperature = %f, humidity = %f !\r\n", ftemp, fhumi);
-
-//	Succeed &= SHT30_IIC_Get_Data(&Sensor8_IIC1_s, &ftemp, &fhumi);						// 读取数据
-//	STM32_Delay_ms(20);
-//	printf("\r\n IIC_1  temperature = %f, humidity = %f !\r\n", ftemp, fhumi);
-
-	Succeed &= SHT30_IIC_Get_Data(&Sensor8_IIC2_s, &ftemp, &fhumi);						// 读取数据
-	STM32_Delay_ms(20);
-	printf("\r\n IIC_2  temperature = %f, humidity = %f !\r\n", ftemp, fhumi);
-
-//	Succeed &= SHT30_IIC_Get_Data(&Sensor8_IIC3_s, &ftemp, &fhumi);						// 读取数据
-//	STM32_Delay_ms(20);
-//	printf("\r\n IIC_3  temperature = %f, humidity = %f !\r\n", ftemp, fhumi);
-
-//	Succeed &= SHT30_IIC_Get_Data(&Sensor8_IIC4_s, &ftemp, &fhumi);						// 读取数据
-//	STM32_Delay_ms(20);
-//	printf("\r\n IIC_4  temperature = %f, humidity = %f !\r\n", ftemp, fhumi);
-
-//	Succeed &= SHT30_IIC_Get_Data(&Sensor8_IIC5_s, &ftemp, &fhumi);						// 读取数据
-//	STM32_Delay_ms(20);
-//	printf("\r\n IIC_5  temperature = %f, humidity = %f !\r\n", ftemp, fhumi);
-
-//	Succeed &= SHT30_IIC_Get_Data(&Sensor8_IIC6_s, &ftemp, &fhumi);						// 读取数据
-//	STM32_Delay_ms(20);
-//	printf("\r\n IIC_6  temperature = %f, humidity = %f !\r\n", ftemp, fhumi);
-
-//	Succeed &= SHT30_IIC_Get_Data(&Sensor8_IIC7_s, &ftemp, &fhumi);						// 读取数据
-//	STM32_Delay_ms(20);
-//	printf("\r\n IIC_7  temperature = %f, humidity = %f !\r\n", ftemp, fhumi);
-
-	return(Succeed);
-	
-}
-// end of u8 IIC8_Get_SHT30_Data(void)
-
-/*******************************************************************************
-*                           王宇@2017-03-29
-* Function Name  :  IIC8_Get_BH1721_Data
-* Description    :  获取8条IIC上的BH1721数据
-* Input          :  None
-* Output         :  None
-* Return         :  成功1 失败0
-*******************************************************************************/
-u8 IIC8_Get_BH1721_Data(void)
-{
-	u8		Succeed = 1;
+	u8		Succeed[8];
+	u16		TVOC[8], CO2[8];
 	float   fLight[8];
+	float   ftemp[8], fhumi[8];
+
+#ifdef IIC8_BH1721
+	Succeed[0] = BH1721_Get_Data(&Sensor8_IIC_s, &fLight[0]);						// 读取数据
+	Succeed[1] = BH1721_Get_Data(&Sensor8_IIC1_s, &fLight[1]);
+	Succeed[2] = BH1721_Get_Data(&Sensor8_IIC1_s, &fLight[2]);
+	Succeed[3] = BH1721_Get_Data(&Sensor8_IIC1_s, &fLight[3]);
+	Succeed[4] = BH1721_Get_Data(&Sensor8_IIC1_s, &fLight[4]);
+	Succeed[5] = BH1721_Get_Data(&Sensor8_IIC1_s, &fLight[5]);
+	Succeed[6] = BH1721_Get_Data(&Sensor8_IIC1_s, &fLight[6]);
+	Succeed[7] = BH1721_Get_Data(&Sensor8_IIC1_s, &fLight[7]);
+#endif
+#ifdef IIC8_SHT30
+	Succeed[0] = SHT30_IIC_Get_Data(&Sensor8_IIC_s, &ftemp[0], &fhumi[1]);
+	Succeed[1] = SHT30_IIC_Get_Data(&Sensor8_IIC1_s, &ftemp[1], &fhumi[1]);
+	Succeed[2] = SHT30_IIC_Get_Data(&Sensor8_IIC2_s, &ftemp[2], &fhumi[2]);
+	Succeed[3] = SHT30_IIC_Get_Data(&Sensor8_IIC3_s, &ftemp[3], &fhumi[3]);
+	Succeed[4] = SHT30_IIC_Get_Data(&Sensor8_IIC4_s, &ftemp[4], &fhumi[4]);
+	Succeed[5] = SHT30_IIC_Get_Data(&Sensor8_IIC5_s, &ftemp[5], &fhumi[5]);
+	Succeed[6] = SHT30_IIC_Get_Data(&Sensor8_IIC6_s, &ftemp[6], &fhumi[6]);
+	Succeed[7] = SHT30_IIC_Get_Data(&Sensor8_IIC7_s, &ftemp[7], &fhumi[7]);
+#endif
+#ifdef IIC8_SGPC10
+	Succeed[0] = Sgpc10_Get_Data(&Sensor8_IIC_s, &TVOC[0], &CO2[0]);
+	Succeed[1] = Sgpc10_Get_Data(&Sensor8_IIC1_s, &TVOC[1], &CO2[1]);
+	Succeed[2] = Sgpc10_Get_Data(&Sensor8_IIC2_s, &TVOC[2], &CO2[2]);
+	Succeed[3] = Sgpc10_Get_Data(&Sensor8_IIC3_s, &TVOC[3], &CO2[3]);
+	Succeed[4] = Sgpc10_Get_Data(&Sensor8_IIC4_s, &TVOC[4], &CO2[4]);
+	Succeed[5] = Sgpc10_Get_Data(&Sensor8_IIC5_s, &TVOC[5], &CO2[5]);
+	Succeed[6] = Sgpc10_Get_Data(&Sensor8_IIC6_s, &TVOC[6], &CO2[6]);
+	Succeed[7] = Sgpc10_Get_Data(&Sensor8_IIC7_s, &TVOC[7], &CO2[7]);
+#endif
 	
-//	Succeed &= BH1721_Get_Data(&Sensor8_IIC_s, &fLight[0]);						// 读取数据
-//	STM32_Delay_ms(20);
-//	printf("\r\n  IIC0 Light Intensity = %f !\r\n", fLight[0]);
+	// 成功亮绿灯 失败红灯
+	if (Succeed[0])
+	{
+		GPIO_Pin_Config(RCC_APB2Periph_GPIOC, GPIO_Pin_6, GPIO_Mode_Out_PP, GPIO_Speed_50MHz, GPIOC);
+		GPIO_ResetBits(GPIOC, GPIO_Pin_6);
+	}
+	else
+	{
+		GPIO_Pin_Config(RCC_APB2Periph_GPIOG, RED0_PIN, GPIO_Mode_Out_PP, GPIO_Speed_50MHz, RED0_GPIO);
+		GPIO_ResetBits(RED0_GPIO, RED0_PIN);
+	}
+		
+	if (Succeed[1])
+	{
+		GPIO_Pin_Config(RCC_APB2Periph_GPIOA, GPIO_Pin_8, GPIO_Mode_Out_PP, GPIO_Speed_50MHz, GPIOA);
+		GPIO_ResetBits(GPIOA, GPIO_Pin_8);
+	}
+	else
+	{
+		GPIO_Pin_Config(RCC_APB2Periph_GPIOC, RED1_PIN, GPIO_Mode_Out_PP, GPIO_Speed_50MHz, RED1_GPIO);
+		GPIO_ResetBits(RED1_GPIO, RED1_PIN);
+	}
 
-//	Succeed &= BH1721_Get_Data(&Sensor8_IIC1_s, &fLight[1]);						// 读取数据
-//	STM32_Delay_ms(20);
-//	printf("\r\n  IIC1 Light Intensity = %f !\r\n", fLight[1]);
+	if (Succeed[2])
+	{
+		GPIO_Pin_Config(RCC_APB2Periph_GPIOA, GPIO_Pin_12, GPIO_Mode_Out_PP, GPIO_Speed_50MHz, GPIOA);
+		GPIO_ResetBits(GPIOA, GPIO_Pin_12);
+	}
+	else
+	{
+		GPIO_Pin_Config(RCC_APB2Periph_GPIOA, RED2_PIN, GPIO_Mode_Out_PP, GPIO_Speed_50MHz, RED2_GPIO);
+		GPIO_ResetBits(RED2_GPIO, RED2_PIN);
+	}
 
-	Succeed &= BH1721_Get_Data(&Sensor8_IIC2_s, &fLight[2]);						// 读取数据
-	STM32_Delay_ms(20);
-	printf("\r\n  IIC2 Light Intensity = %f !\r\n", fLight[2]);
+	if (Succeed[3])
+	{
+		GPIO_Pin_Config(RCC_APB2Periph_GPIOD, GPIO_Pin_3, GPIO_Mode_Out_PP, GPIO_Speed_50MHz, GPIOD);
+		GPIO_ResetBits(GPIOD, GPIO_Pin_3);
+	}
+	else
+	{
+		GPIO_Pin_Config(RCC_APB2Periph_GPIOD, RED3_PIN, GPIO_Mode_Out_PP, GPIO_Speed_50MHz, RED3_GPIO);
+		GPIO_ResetBits(RED3_GPIO, RED3_PIN);
+	}
 
-//	Succeed &= BH1721_Get_Data(&Sensor8_IIC3_s, &fLight[3]);						// 读取数据
-//	STM32_Delay_ms(20);
-//	printf("\r\n  IIC3 Light Intensity = %f !\r\n", fLight[3]);
-
-//	Succeed &= BH1721_Get_Data(&Sensor8_IIC4_s, &fLight[4]);						// 读取数据
-//	STM32_Delay_ms(20);
-//	printf("\r\n  IIC4 Light Intensity = %f !\r\n", fLight[4]);
-
-//	Succeed &= BH1721_Get_Data(&Sensor8_IIC5_s, &fLight[5]);						// 读取数据
-//	STM32_Delay_ms(20);
-//	printf("\r\n  IIC5 Light Intensity = %f !\r\n", fLight[5]);
-
-//	Succeed &= BH1721_Get_Data(&Sensor8_IIC6_s, &fLight[6]);						// 读取数据
-//	STM32_Delay_ms(20);
-//	printf("\r\n  IIC6 Light Intensity = %f !\r\n", fLight[6]);
-
-//	Succeed &= BH1721_Get_Data(&Sensor8_IIC7_s, &fLight[7]);						// 读取数据
-//	STM32_Delay_ms(20);
-//	printf("\r\n  IIC7 Light Intensity = %f !\r\n", fLight[7]);
+	if (Succeed[4])
+	{
+		GPIO_Pin_Config(RCC_APB2Periph_GPIOG, GPIO_Pin_14, GPIO_Mode_Out_PP, GPIO_Speed_50MHz, GPIOG);
+		GPIO_ResetBits(GPIOG, GPIO_Pin_14);
+	}
+	else
+	{
+		GPIO_Pin_Config(RCC_APB2Periph_GPIOG, RED4_PIN, GPIO_Mode_Out_PP, GPIO_Speed_50MHz, RED4_GPIO);
+		GPIO_ResetBits(RED4_GPIO, RED4_PIN);
+	}
 	
-	return(Succeed);
+	if (Succeed[5])
+	{
+		GPIO_Pin_Config(RCC_APB2Periph_GPIOB, GPIO_Pin_7, GPIO_Mode_Out_PP, GPIO_Speed_50MHz, GPIOB);
+		GPIO_ResetBits(GPIOB, GPIO_Pin_7);
+	}
+	else
+	{
+		GPIO_Pin_Config(RCC_APB2Periph_GPIOB, RED5_PIN, GPIO_Mode_Out_PP, GPIO_Speed_50MHz, RED5_GPIO);
+		GPIO_ResetBits(RED5_GPIO, RED5_PIN);
+	}
+
+	if (Succeed[6])
+	{
+		GPIO_Pin_Config(RCC_APB2Periph_GPIOC, GPIO_Pin_15, GPIO_Mode_Out_PP, GPIO_Speed_50MHz, GPIOC);
+		GPIO_ResetBits(GPIOC, GPIO_Pin_15);
+	}
+	else
+	{
+		GPIO_Pin_Config(RCC_APB2Periph_GPIOC, RED6_PIN, GPIO_Mode_Out_PP, GPIO_Speed_50MHz, RED6_GPIO);
+		GPIO_ResetBits(RED6_GPIO, RED6_PIN);
+	}
+
+	if (Succeed[7])
+	{
+		GPIO_Pin_Config(RCC_APB2Periph_GPIOF, GPIO_Pin_3, GPIO_Mode_Out_PP, GPIO_Speed_50MHz, GPIOF);
+		GPIO_ResetBits(GPIOF, GPIO_Pin_3);
+	}
+	else
+	{
+		GPIO_Pin_Config(RCC_APB2Periph_GPIOF, RED7_PIN, GPIO_Mode_Out_PP, GPIO_Speed_50MHz, RED7_GPIO);
+		GPIO_ResetBits(RED7_GPIO, RED7_PIN);
+	}
 	
+//	return(Succeed);
+//	while(1)
+//	{
+//		Sgpc10_Get_Data(&Sensor8_IIC2_s, &TVOC[2], &CO2[2]);
+//		printf("\r\n  TVOC = %d, CO2 = %d !\r\n", TVOC[2], CO2[2]);
+//		STM32_Delay_ms(500);
+//	}
 }
 // end of u8 IIC8_Get_BH1721_Data(void)
 
@@ -188,53 +228,13 @@ u8 IIC8_Get_BH1721_Data(void)
 *******************************************************************************/
 void main()
 {
-	u8 Succeed;
-	u16 TVOC, Co2; 
-	
 	USART1_Config();
 	printf("\r\n  test!\r\n");											// 测试UART通信
 
-//	Sys_Init();
-
-	#ifdef IIC8_SHT30
-		Succeed = IIC8_Get_SHT30_Data();
-
-		if (Succeed == 0)
-		{
-			printf("\r\n  error in some IIC !\r\n");
-		}
+	Sys_Init();
+	IIC8_Test();
 		
-	#endif
-
-	#ifdef IIC8_BH1721
-		Succeed = IIC8_Get_BH1721_Data();
-
-		if (Succeed == 0)
-		{
-			printf("\r\n  error in some IIC !\r\n");
-		}
-		
-	#endif
-
-	s16 TVOC_Succeed;
-	u64 TVOC_SN;
-	
-	TVOC_Succeed = sgp_probe();
-	printf("\r\n TVOC Succeed = %d !\r\n", TVOC_Succeed);
-	STM32_Delay_ms(500);
-	sgp_get_serial_id(&TVOC_SN);
-	printf("\r\n TVOC Serial ID = %x !\r\n", TVOC_SN);
-//	
-	while (TVOC_Succeed == 0)
-	{
-//		IIC8_Get_SHT30_Data();
-//		IIC8_Get_BH1721_Data();
-
-    TVOC_Succeed = sgp_measure_iaq_blocking_read(&TVOC, &Co2);
-	printf("\r\n IIC_2  TVOC = %d, Co2 = %d !\r\n", TVOC, Co2);
-	STM32_Delay_ms(500);
-	
-	}
+	while(1);
 }
 
 /******************* (C) COPYRIGHT 2017 王宇 **************END OF FILE*********/

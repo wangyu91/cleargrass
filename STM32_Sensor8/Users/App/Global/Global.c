@@ -27,7 +27,7 @@ void GPIO_Pin_Config(uint32_t RCC_APB2P_GPIOx, uint16_t Pin, uint32_t Mode, uint
 void STM32_Delay_us(uint16_t time_us);									// ¥÷—” ± Œ¢√Î
 void STM32_Delay_ms(uint16_t time_ms);									// ∫¡√Î
 
-static void IIC_Delay(unsigned char count);								// —” ±
+//static void IIC_Delay(unsigned char count);								// —” ±
 
 /* Private Functions ---------------------------------------------------------*/
 /*******************************************************************************

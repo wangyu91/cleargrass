@@ -154,8 +154,9 @@ void Sensor8_IIC7_Set_SCL_Low(void)
 *******************************************************************************/
 void Sensor8_IIC7_Set_SDA_Input(void)
 {
-    Sensor8_GPIO7->CRL &= 0xFFFFFFF0;									// F组管脚 PIN0[3:0]
-    Sensor8_GPIO7->CRL |= 8 << 0;										// 设为上拉输入模式
+//    Sensor8_GPIO7->CRL &= 0xFFFFFFF0;									// F组管脚 PIN0[3:0]
+//    Sensor8_GPIO7->CRL |= 8 << 0;										// 设为上拉输入模式
+    GPIO_SetBits(Sensor8_GPIO7, Sensor8_IIC7_SDA);
 }
 // End of void Sensor8_IIC_Set_SDA_Input(void)
 
@@ -169,8 +170,9 @@ void Sensor8_IIC7_Set_SDA_Input(void)
 *******************************************************************************/
 void Sensor8_IIC7_Set_SDA_Output(void)
 {
-     Sensor8_GPIO7->CRL &= 0xFFFFFFF0;									// F组管脚 PIN0[3:0]
-   	 Sensor8_GPIO7->CRL |= 3 << 0;										// 设为推挽输出模式 
+//     Sensor8_GPIO7->CRL &= 0xFFFFFFF0;									// F组管脚 PIN0[3:0]
+//   	 Sensor8_GPIO7->CRL |= 3 << 0;										// 设为推挽输出模式 
+   	 GPIO_ResetBits(Sensor8_GPIO7, Sensor8_IIC7_SDA);
 }
 // End of void Sensor8_IIC_Set_SDA_Output(void)
 

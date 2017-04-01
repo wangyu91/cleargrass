@@ -21,6 +21,12 @@
 #define     SHT30_READ_ADDR             (SHT30_WRITE_ADDR | 0x01)       // SHT30读地址
 #define     TEMP_HUMI_MAX_TIMEOUT_LOOPS (5 * 1000)                      // 超时周期us
 
+#define		SHT30_GPIO_RCC				RCC_APB2Periph_GPIOG
+#define		SHT30_SDA					GPIO_Pin_0
+#define		SHT30_SCL					GPIO_Pin_1
+#define		SHT30_GPIO					GPIOG
+#define		SHT30_TIMEOUT				(5 * 1000)
+
 /* Private typedef -----------------------------------------------------------*/
 // Sensor Commands
 

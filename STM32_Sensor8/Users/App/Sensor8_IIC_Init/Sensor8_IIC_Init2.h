@@ -22,8 +22,8 @@
 #define     SENSOR8_TIMEOUT 			(5 * 1000)                      // ³¬Ê±ÖÜÆÚus
 
 #define		Sensor8_IIC2_GPIO_RCC		RCC_APB2Periph_GPIOD
-#define 	Sensor8_IIC2_SDA			GPIO_Pin_5
-#define 	Sensor8_IIC2_SCL			GPIO_Pin_4
+#define 	Sensor8_IIC2_SDA			GPIO_Pin_7
+#define 	Sensor8_IIC2_SCL			GPIO_Pin_6
 #define 	Sensor8_GPIO2				GPIOD
 /* Private typedef -----------------------------------------------------------*/
 // Sensor Commands

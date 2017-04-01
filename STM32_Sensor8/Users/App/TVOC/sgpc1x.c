@@ -718,8 +718,6 @@ s16 sgp_probe() {
     /* try to read the serial ID */
     err = sgp_i2c_read_from_cmd(&sgp_cmd_get_serial_id, 10000,
                                 client_data.buf, SGP_SERIAL_ID_LEN);
-    printf("\r\n Succeed = %d !\r\n", err);
-                    
     if (err == STATUS_FAIL)
         return err;
     client_data.info.serial_id = be64_to_cpu(*((u64*)client_data.buf)) >> 16;
