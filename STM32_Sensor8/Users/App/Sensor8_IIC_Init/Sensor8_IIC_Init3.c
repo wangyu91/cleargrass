@@ -170,8 +170,8 @@ void Sensor8_IIC3_Set_SDA_Input(void)
 *******************************************************************************/
 void Sensor8_IIC3_Set_SDA_Output(void)
 {
-//     Sensor8_GPIO3->CRL &= 0xFFFFFFF0;									// D组管脚 PIN0[3:0]
-//   	 Sensor8_GPIO3->CRL |= 3 << 0;										// 设为推挽输出模式
+//     Sensor8_GPIO3->CRL &= 0xFFFFFFF0;								// D组管脚 PIN0[3:0]
+//   	 Sensor8_GPIO3->CRL |= 3 << 0;									// 设为推挽输出模式
    	 GPIO_ResetBits(Sensor8_GPIO3, Sensor8_IIC3_SDA);
 }
 // End of void Sensor8_IIC_Set_SDA_Output(void)
@@ -232,7 +232,7 @@ u8 Sensor8_IIC3_Init(void)
 {
     u8 Transfer_Succeeded; 
 
-	Sensor8_IIC3_Pin_Init();													// 初始化管脚
+	Sensor8_IIC3_Pin_Init();											// 初始化管脚
 	
 	// 配置结构体
 //    Sensor8_IIC3_s.Dealy                 = Sensor8_IIC_Delay;
@@ -249,7 +249,7 @@ u8 Sensor8_IIC3_Init(void)
     Sensor8_IIC3_s.SCL_Read              = Sensor8_IIC3_SCL_Read;
     Sensor8_IIC3_s.Wait_Scl_Free_Timeout = SENSOR8_TIMEOUT;
     
-    Transfer_Succeeded = SW_IIC_Init(&Sensor8_IIC3_s);							// 初始化IIC通信
+    Transfer_Succeeded = SW_IIC_Init(&Sensor8_IIC3_s);					// 初始化IIC通信
     
     return (Transfer_Succeeded);
        

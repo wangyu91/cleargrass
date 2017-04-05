@@ -16,11 +16,7 @@
 #include "SHT30_Driver.h"
 
 #include "Sgpc1x.h"
-//#include "Sensirion_configuration.h"
 #include "Sensirion_common.h"
-
-
-//#include "GPIO_LED.h"
 
 /* Private Defines -----------------------------------------------------------*/
 #define RED0_PIN			GPIO_Pin_8
@@ -40,8 +36,8 @@
 #define RED7_PIN			GPIO_Pin_2
 #define RED7_GPIO			GPIOF
 
-#define IIC8_SHT30														// Debug 
-//#define IIC8_BH1721
+#define IIC8_SHT30														// Debug 测试
+#define IIC8_BH1721
 #define IIC8_SGPC10
 
 /* Private Variables ---------------------------------------------------------*/
@@ -54,6 +50,8 @@ extern SW_IIC_t Sensor8_IIC4_s;
 extern SW_IIC_t Sensor8_IIC5_s;
 extern SW_IIC_t Sensor8_IIC6_s;
 extern SW_IIC_t Sensor8_IIC7_s;
+
+extern u16		System_Time_Delay;										// 系统延时变量
 /* Private Typedefs ----------------------------------------------------------*/
 
 /* Private Function Prototypes -----------------------------------------------*/

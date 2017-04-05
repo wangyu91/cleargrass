@@ -20,7 +20,7 @@ u8 	Sgpc10_Read_Register(SW_IIC_t* IIC_s, u8 Chip_Addr, u16 usRead_Addr, u8* pBu
 //float	BH1721_CalcData(u16 usValue);									// 计算原始数据
 u8 Sgpc10_Init_Air_Quality(SW_IIC_t* IIC_s);							// 检测空气质量初始化
 
-u8 	Sgpc10_Get_Data(SW_IIC_t *IIC_s, u16 *Tvoc_Data, u16 *Co2_Data);							// 获取空气质量
+u8 	Sgpc10_Get_Data(SW_IIC_t *IIC_s, u16 *Tvoc_Data, u16 *Co2_Data);	// 获取空气质量
 /* Private functions ---------------------------------------------------------*/
 /*******************************************************************************
 *                           王宇@2017-03-31
@@ -52,6 +52,7 @@ u8 Sgpc10_Read_Register(SW_IIC_t* IIC_s, u8 Chip_Addr, u16 usRead_Addr, u8* pBuf
     ucRead_Addr[1] = (usRead_Addr >> 0) & 0xFF;
     
     Succeed &= SW_IIC_Transfer(IIC_s, Write_Addr, ucRead_Addr, 2, SW_IIC_DONT_SEND_STOP);	// 需要发送停止信号
+	// 获取数据需要至少23ms
     STM32_Delay_ms(30);
     Succeed &= SW_IIC_Transfer(IIC_s, Read_Addr, pBuffer, usRead_Len, SW_IIC_NEED_SEND_STOP);
 
@@ -95,9 +96,9 @@ u8 Sgpc10_Init_Air_Quality(SW_IIC_t* IIC_s)
 	u8 Succeed = 1;
 	u8 ucWrite_Addr[2];
 
-    ucWrite_Addr[0] = (CMD_INIT_AIR_QUALITY >> 8) & 0xFF;
-    ucWrite_Addr[1] = (CMD_INIT_AIR_QUALITY >> 0) & 0xFF;
-	Succeed &= SW_IIC_Transfer(IIC_s, SGPC10_WRITE_ADDR, ucWrite_Addr, 2, SW_IIC_NEED_SEND_STOP);
+    ucWrite_Addr[0]  =  (CMD_INIT_AIR_QUALITY >> 8) & 0xFF;
+    ucWrite_Addr[1]  =  (CMD_INIT_AIR_QUALITY >> 0) & 0xFF;
+	Succeed		    &=  SW_IIC_Transfer(IIC_s, SGPC10_WRITE_ADDR, ucWrite_Addr, 2, SW_IIC_NEED_SEND_STOP);
 
 	return Succeed;
 }

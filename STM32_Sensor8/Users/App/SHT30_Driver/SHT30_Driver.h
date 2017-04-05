@@ -79,5 +79,3 @@ extern  u8 SHT30_IIC_Write_Register(u8 usWrite_Addr, u8* pBuffer, u8 usWrite_Len
 #endif /* __SHT30_H */
 
 /******************* (C) COPYRIGHT 2017 Õı”Ó *****END OF FILE******************/
-
-

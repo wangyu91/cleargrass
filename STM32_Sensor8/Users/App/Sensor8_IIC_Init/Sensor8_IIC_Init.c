@@ -16,21 +16,21 @@
 
 
 /* Private function prototypes -----------------------------------------------*/
-//void Sensor8_IIC_Delay(void);                                            	// 延时
-void Sensor8_IIC_Delay_us(void);                                          	// us延时
-void Sensor8_IIC_Pin_Init(void);                                          	// 管脚初始化
-void Sensor8_IIC_Set_SDA_High(void);                                          // 拉高数据线
-void Sensor8_IIC_Set_SDA_Low(void);                                           // 拉低数据线
-void Sensor8_IIC_Set_SCL_High(void);                                          // 拉高时钟
-void Sensor8_IIC_Set_SCL_Low(void);                                           // 拉低时钟
-void Sensor8_IIC_Set_SDA_Input(void);                                     	// 设置SDA为输入模式
-void Sensor8_IIC_Set_SDA_Output(void);                                    	// 设置SDA为输出模式
-//void Sensor8_IIC_Set_SCL_Output(void);                                    	// 设置SCL为输出模式
-u8   Sensor8_IIC_SDA_Read(void);                                          	// 读取SDA电平
-u8   Sensor8_IIC_SCL_Read(void);                                          	// 读取SCL电平
+//void Sensor8_IIC_Delay(void);                                       	// 延时
+void Sensor8_IIC_Delay_us(void);										// us延时
+void Sensor8_IIC_Pin_Init(void);                                      	// 管脚初始化
+void Sensor8_IIC_Set_SDA_High(void);                                    // 拉高数据线
+void Sensor8_IIC_Set_SDA_Low(void);                                     // 拉低数据线
+void Sensor8_IIC_Set_SCL_High(void);                                    // 拉高时钟
+void Sensor8_IIC_Set_SCL_Low(void);                                     // 拉低时钟
+void Sensor8_IIC_Set_SDA_Input(void);                                  	// 设置SDA为输入模式
+void Sensor8_IIC_Set_SDA_Output(void);                                 	// 设置SDA为输出模式
+//void Sensor8_IIC_Set_SCL_Output(void);                               	// 设置SCL为输出模式
+u8   Sensor8_IIC_SDA_Read(void);                                      	// 读取SDA电平
+u8   Sensor8_IIC_SCL_Read(void);                                       	// 读取SCL电平
 
-void Sensor8_IIC_Variable_Init(void);                                     	// SHT30变量初始化
-u8   Sensor8_IIC_Init(void);                                         			// SHT30端口初始化    
+void Sensor8_IIC_Variable_Init(void);                                  	// SHT30变量初始化
+u8   Sensor8_IIC_Init(void);                                   			// SHT30端口初始化    
 /* Private functions ---------------------------------------------------------*/
 
 
@@ -169,7 +169,7 @@ void Sensor8_IIC_Set_SDA_Input(void)
 void Sensor8_IIC_Set_SDA_Output(void)
 {
 //     Sensor8_GPIO->CRL &= 0xF0FFFFFF;									// G组管脚 PIN6[27:24]
-//   	 Sensor8_GPIO->CRL |= 3 << 24;										// 设为推挽输出模式
+//   	 Sensor8_GPIO->CRL |= 3 << 24;									// 设为推挽输出模式
    	 GPIO_ResetBits(Sensor8_GPIO, Sensor8_IIC_SDA);
 }
 // End of void Sensor8_IIC_Set_SDA_Output(void)
@@ -230,7 +230,7 @@ u8 Sensor8_IIC_Init(void)
 {
     u8 Transfer_Succeeded; 
 
-	Sensor8_IIC_Pin_Init();													// 初始化管脚
+	Sensor8_IIC_Pin_Init();												// 初始化管脚
 	
 	// 配置结构体
 //    Sensor8_IIC_s.Dealy                 = Sensor8_IIC_Delay;
@@ -247,7 +247,7 @@ u8 Sensor8_IIC_Init(void)
     Sensor8_IIC_s.SCL_Read              = Sensor8_IIC_SCL_Read;
     Sensor8_IIC_s.Wait_Scl_Free_Timeout = SENSOR8_TIMEOUT;
     
-    Transfer_Succeeded = SW_IIC_Init(&Sensor8_IIC_s);							// 初始化IIC通信
+    Transfer_Succeeded = SW_IIC_Init(&Sensor8_IIC_s);					// 初始化IIC通信
     
     return (Transfer_Succeeded);
        

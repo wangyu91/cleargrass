@@ -34,6 +34,8 @@ D:\Workspace\STM32_Sensor8\EWARM\..\Users\App\TVOC
 -I
 D:\Workspace\STM32_Sensor8\EWARM\..\Users\App
 -I
+D:\Workspace\STM32_Sensor8\EWARM\..\Users\App\Timer
+-I
 D:\IAR\arm\CMSIS\Include
 -I
 D:\IAR\arm\inc
@@ -71,6 +73,8 @@ D:\Workspace\STM32_Sensor8\Users\App\BH172
 D:\Workspace\STM32_Sensor8\Users\App\TVOC
 -I
 D:\Workspace\STM32_Sensor8\Users\App
+-I
+D:\Workspace\STM32_Sensor8\Users\App\Timer
 -I
 D:\IAR\arm\CMSIS\Include
 -DSTM32F10X_HD=1

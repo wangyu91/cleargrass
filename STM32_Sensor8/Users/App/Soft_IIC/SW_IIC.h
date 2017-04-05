@@ -59,5 +59,3 @@ extern  unsigned char SW_IIC_Transfer(SW_IIC_t * SW_IIC_s, unsigned char Chip_Ad
 #endif /* __SW_IIC_H */
 
 /******************* (C) COPYRIGHT 2017 Õı”Ó *****END OF FILE******************/
-
-

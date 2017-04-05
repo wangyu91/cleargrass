@@ -20,8 +20,7 @@
 
 /* Private Function Prototype ------------------------------------------------*/
 void Sys_Init(void);													// 系统初始化
-//u8	 IIC8_Get_SHT30_Data(void);											// 获取SHT30数据
-void IIC8_Test(void);
+void IIC8_Test(void);													// 测试8条IIC线路
 
 /* Private Functions ---------------------------------------------------------*/
 /*******************************************************************************
@@ -51,7 +50,7 @@ void Sys_Init(void)
 	{
 		printf("\r\n  Succeed Init IIC[%d]  %d\r\n", i, Succeed[i]);	// 打印初始化信息 成功1 失败0
 	}
-
+	// 每次上电或软复位后需重新初始化空气质量数据
 	Sgpc10_Init_Air_Quality(&Sensor8_IIC_s);
 	Sgpc10_Init_Air_Quality(&Sensor8_IIC1_s);
 	Sgpc10_Init_Air_Quality(&Sensor8_IIC2_s);
@@ -84,12 +83,13 @@ void Sys_Init(void)
 void IIC8_Test(void)
 {
 	u8		Succeed[8];
-	u16		TVOC[8], CO2[8];
-	float   fLight[8];
-	float   ftemp[8], fhumi[8];
+	u16		TVOC[8], CO2[8];											// TVOC CO2
+	float   fLight[8];													// 光学
+	float   ftemp[8], fhumi[8];											// 温度 湿度
 
+	// 读取数据 返回判断值
 #ifdef IIC8_BH1721
-	Succeed[0] = BH1721_Get_Data(&Sensor8_IIC_s, &fLight[0]);						// 读取数据
+	Succeed[0] = BH1721_Get_Data(&Sensor8_IIC_s, &fLight[0]);						
 	Succeed[1] = BH1721_Get_Data(&Sensor8_IIC1_s, &fLight[1]);
 	Succeed[2] = BH1721_Get_Data(&Sensor8_IIC1_s, &fLight[2]);
 	Succeed[3] = BH1721_Get_Data(&Sensor8_IIC1_s, &fLight[3]);
@@ -228,13 +228,40 @@ void IIC8_Test(void)
 *******************************************************************************/
 void main()
 {
+	// 配置uart通信
 	USART1_Config();
-	printf("\r\n  test!\r\n");											// 测试UART通信
+	printf("\r\n  test!\r\n");											
 
+	// 初始化计数值
+//	System_Time_Delay = 0;
+	
+	// 计数器初始化
+//	Timer_Init();
+	// 系统初始化 配置管脚
 	Sys_Init();
+	// 测试8条线上的传感器
 	IIC8_Test();
-		
-	while(1);
+
+	// 延时测试管脚 PD03
+//	GPIO_Pin_Config(RCC_APB2Periph_GPIOD, GPIO_Pin_4, GPIO_Mode_Out_PP, GPIO_Speed_50MHz, GPIOD);
+	// 开始计数器
+//	Sys_Timer_On();
+	
+	while(1)
+	{
+		// 测试读取TVOC正常数据用时
+//		Sgpc10_Get_Data(&Sensor8_IIC2_s, &TVOC, &CO2);
+//		printf("\r\n  TVOC = %d, CO2 = %d !\r\n", TVOC, CO2);
+//		
+//		if ((TVOC != 30) | (CO2 != 400))
+//		{
+//			Sys_Timer_Off();
+//			break;
+//		}
+//		STM32_Delay_ms(500);
+	}
+
+//	printf("\r\n	get data need %d ms ! \r\n", System_Time_Delay);
 }
 
 /******************* (C) COPYRIGHT 2017 王宇 **************END OF FILE*********/

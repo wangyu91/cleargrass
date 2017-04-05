@@ -2475,6 +2475,15 @@
         </file>
       </group>
       <group>
+        <name>Timer</name>
+        <file>
+          <name>$PROJ_DIR$\..\Users\App\Timer\Sys_Timer.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\Users\App\Timer\Sys_Timer.h</name>
+        </file>
+      </group>
+      <group>
         <name>TVOC</name>
         <file>
           <name>$PROJ_DIR$\..\Users\App\TVOC\i2c.h</name>
@@ -2526,7 +2535,7 @@
         <name>$PROJ_DIR$\..\Users\Main\stm32f10x_it.c</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\..\Users\Main\stm32f10x_it.h</name>
+        <name>$PROJ_DIR$\..\Users\Main\Stm32f10x_it.h</name>
       </file>
     </group>
   </group>

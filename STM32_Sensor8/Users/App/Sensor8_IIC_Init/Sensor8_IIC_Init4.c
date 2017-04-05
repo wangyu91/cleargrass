@@ -155,7 +155,7 @@ void Sensor8_IIC4_Set_SCL_Low(void)
 void Sensor8_IIC4_Set_SDA_Input(void)
 {
 //    Sensor8_GPIO4->CRH &= 0xFFFF0FFF;									// G组管脚 PIN11[15:12]
-//    Sensor8_GPIO4->CRH |= 8 << 12;										// 设为上拉输入模式
+//    Sensor8_GPIO4->CRH |= 8 << 12;									// 设为上拉输入模式
     GPIO_SetBits(Sensor8_GPIO4, Sensor8_IIC4_SDA);
 }
 // End of void Sensor8_IIC_Set_SDA_Input(void)
@@ -170,8 +170,8 @@ void Sensor8_IIC4_Set_SDA_Input(void)
 *******************************************************************************/
 void Sensor8_IIC4_Set_SDA_Output(void)
 {
-//     Sensor8_GPIO4->CRH &= 0xFFFF0FFF;									// G组管脚 PIN11[15:12]
-//   	 Sensor8_GPIO4->CRH |= 3 << 12;										// 设为推挽输出模式
+//     Sensor8_GPIO4->CRH &= 0xFFFF0FFF;								// G组管脚 PIN11[15:12]
+//   	 Sensor8_GPIO4->CRH |= 3 << 12;									// 设为推挽输出模式
    	 GPIO_ResetBits(Sensor8_GPIO4, Sensor8_IIC4_SDA);
 }
 // End of void Sensor8_IIC_Set_SDA_Output(void)
@@ -232,7 +232,7 @@ u8 Sensor8_IIC4_Init(void)
 {
     u8 Transfer_Succeeded; 
 
-	Sensor8_IIC4_Pin_Init();													// 初始化管脚
+	Sensor8_IIC4_Pin_Init();											// 初始化管脚
 	
 	// 配置结构体
 //    Sensor8_IIC4_s.Dealy                 = Sensor8_IIC_Delay;
@@ -249,7 +249,7 @@ u8 Sensor8_IIC4_Init(void)
     Sensor8_IIC4_s.SCL_Read              = Sensor8_IIC4_SCL_Read;
     Sensor8_IIC4_s.Wait_Scl_Free_Timeout = SENSOR8_TIMEOUT;
     
-    Transfer_Succeeded = SW_IIC_Init(&Sensor8_IIC4_s);							// 初始化IIC通信
+    Transfer_Succeeded = SW_IIC_Init(&Sensor8_IIC4_s);					// 初始化IIC通信
     
     return (Transfer_Succeeded);
        
