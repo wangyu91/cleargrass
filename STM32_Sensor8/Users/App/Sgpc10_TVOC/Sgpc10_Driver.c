@@ -20,7 +20,7 @@ u8 	Sgpc10_Read_Register(SW_IIC_t* IIC_s, u8 Chip_Addr, u16 usRead_Addr, u8* pBu
 //float	BH1721_CalcData(u16 usValue);									// 计算原始数据
 u8 Sgpc10_Init_Air_Quality(SW_IIC_t* IIC_s);							// 检测空气质量初始化
 
-u8 	Sgpc10_Get_Data(SW_IIC_t *IIC_s, u16 *Tvoc_Data, u16 *Co2_Data);	// 获取空气质量
+u8 Sgpc10_Get_Data(SW_IIC_t *IIC_s, u16 *Tvoc_Data, u16 *Co2_Data);		// 获取空气质量
 /* Private functions ---------------------------------------------------------*/
 /*******************************************************************************
 *                           王宇@2017-03-31
@@ -145,5 +145,3 @@ u8 Sgpc10_Get_Data(SW_IIC_t *IIC_s, u16 *Tvoc_Data, u16 *Co2_Data)
 // end of u8 Sgpc10_Get_Data(SW_IIC_t *IIC_s, float *fLight)
 
 /******************* (C) COPYRIGHT 2017 王宇 **************END OF FILE*********/
-
-

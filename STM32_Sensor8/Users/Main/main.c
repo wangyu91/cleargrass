@@ -91,12 +91,12 @@ void IIC8_Test(void)
 #ifdef IIC8_BH1721
 	Succeed[0] = BH1721_Get_Data(&Sensor8_IIC_s, &fLight[0]);						
 	Succeed[1] = BH1721_Get_Data(&Sensor8_IIC1_s, &fLight[1]);
-	Succeed[2] = BH1721_Get_Data(&Sensor8_IIC1_s, &fLight[2]);
-	Succeed[3] = BH1721_Get_Data(&Sensor8_IIC1_s, &fLight[3]);
-	Succeed[4] = BH1721_Get_Data(&Sensor8_IIC1_s, &fLight[4]);
-	Succeed[5] = BH1721_Get_Data(&Sensor8_IIC1_s, &fLight[5]);
-	Succeed[6] = BH1721_Get_Data(&Sensor8_IIC1_s, &fLight[6]);
-	Succeed[7] = BH1721_Get_Data(&Sensor8_IIC1_s, &fLight[7]);
+	Succeed[2] = BH1721_Get_Data(&Sensor8_IIC2_s, &fLight[2]);
+	Succeed[3] = BH1721_Get_Data(&Sensor8_IIC3_s, &fLight[3]);
+	Succeed[4] = BH1721_Get_Data(&Sensor8_IIC4_s, &fLight[4]);
+	Succeed[5] = BH1721_Get_Data(&Sensor8_IIC5_s, &fLight[5]);
+	Succeed[6] = BH1721_Get_Data(&Sensor8_IIC6_s, &fLight[6]);
+	Succeed[7] = BH1721_Get_Data(&Sensor8_IIC7_s, &fLight[7]);
 #endif
 #ifdef IIC8_SHT30
 	Succeed[0] = SHT30_IIC_Get_Data(&Sensor8_IIC_s, &ftemp[0], &fhumi[1]);
@@ -209,12 +209,12 @@ void IIC8_Test(void)
 	}
 	
 //	return(Succeed);
-//	while(1)
-//	{
-//		Sgpc10_Get_Data(&Sensor8_IIC2_s, &TVOC[2], &CO2[2]);
-//		printf("\r\n  TVOC = %d, CO2 = %d !\r\n", TVOC[2], CO2[2]);
-//		STM32_Delay_ms(500);
-//	}
+	while(1)
+	{
+		Sgpc10_Get_Data(&Sensor8_IIC_s, &TVOC[0], &CO2[0]);
+		printf("\r\n  TVOC = %d, CO2 = %d !\r\n", TVOC[0], CO2[0]);
+		STM32_Delay_ms(500);
+	}
 }
 // end of u8 IIC8_Get_BH1721_Data(void)
 

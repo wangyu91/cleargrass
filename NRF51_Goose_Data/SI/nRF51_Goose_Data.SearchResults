@@ -1,0 +1,17 @@
+---- ss_pin Matches (17 in 3 files) ----
+KH25V1635F_Driver.c (d:\workspace\nrf51_goose_data\users\app\spi_flash):    spi_config.ss_pin   			= KH25_PIN_CS;
+Nrf_drv_spi.c (d:\workspace\nrf51_goose_data\library\drivers_nrf\spi_master):    uint8_t         ss_pin;
+Nrf_drv_spi.c (d:\workspace\nrf51_goose_data\library\drivers_nrf\spi_master):    if (p_config->ss_pin != NRF_DRV_SPI_PIN_NOT_USED)
+Nrf_drv_spi.c (d:\workspace\nrf51_goose_data\library\drivers_nrf\spi_master):        nrf_gpio_pin_set(p_config->ss_pin);
+Nrf_drv_spi.c (d:\workspace\nrf51_goose_data\library\drivers_nrf\spi_master):        nrf_gpio_cfg_output(p_config->ss_pin);
+Nrf_drv_spi.c (d:\workspace\nrf51_goose_data\library\drivers_nrf\spi_master):    m_cb[p_instance->drv_inst_idx].ss_pin = p_config->ss_pin;
+Nrf_drv_spi.c (d:\workspace\nrf51_goose_data\library\drivers_nrf\spi_master):    if (p_cb->ss_pin != NRF_DRV_SPI_PIN_NOT_USED)
+Nrf_drv_spi.c (d:\workspace\nrf51_goose_data\library\drivers_nrf\spi_master):        nrf_gpio_pin_set(p_cb->ss_pin);
+Nrf_drv_spi.c (d:\workspace\nrf51_goose_data\library\drivers_nrf\spi_master):        if (p_cb->ss_pin != NRF_DRV_SPI_PIN_NOT_USED)
+Nrf_drv_spi.c (d:\workspace\nrf51_goose_data\library\drivers_nrf\spi_master):            nrf_gpio_pin_set(p_cb->ss_pin);
+Nrf_drv_spi.c (d:\workspace\nrf51_goose_data\library\drivers_nrf\spi_master):        if (p_cb->ss_pin != NRF_DRV_SPI_PIN_NOT_USED)
+Nrf_drv_spi.c (d:\workspace\nrf51_goose_data\library\drivers_nrf\spi_master):            nrf_gpio_pin_set(p_cb->ss_pin);
+Nrf_drv_spi.c (d:\workspace\nrf51_goose_data\library\drivers_nrf\spi_master):    if (p_cb->ss_pin != NRF_DRV_SPI_PIN_NOT_USED)
+Nrf_drv_spi.c (d:\workspace\nrf51_goose_data\library\drivers_nrf\spi_master):        nrf_gpio_pin_clear(p_cb->ss_pin);
+Nrf_drv_spi.h (d:\workspace\nrf51_goose_data\library\drivers_nrf\spi_master):    uint8_t ss_pin;       ///< Slave Select pin number (optional).
+Nrf_drv_spi.h (d:\workspace\nrf51_goose_data\library\drivers_nrf\spi_master):    .ss_pin       = NRF_DRV_SPI_PIN_NOT_USED,                \

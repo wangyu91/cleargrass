@@ -1,0 +1,13 @@
+"D:\IAR\arm\bin\armproc.dll" 
+
+"D:\IAR\arm\bin\armjlink2.dll" 
+
+"D:\Workspace\NRF51_Goose_Data\EWARM\Debug\Exe\nRF51_Goose_Data.out" 
+
+--plugin "D:\IAR\arm\bin\armbat.dll" 
+
+--flash_loader "D:\IAR\arm\config\flashloader\NordicSemi\FlashNRF51822.board" 
+
+
+
+
