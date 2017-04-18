@@ -4,6 +4,8 @@ D:\Workspace\NRF51_Goose_Data\EWARM\Debug\Obj\app_error_weak.pbi
 D:\Workspace\NRF51_Goose_Data\EWARM\Debug\Obj\app_util_platform.pbi
 D:\Workspace\NRF51_Goose_Data\EWARM\Debug\Obj\boards.pbi
 D:\Workspace\NRF51_Goose_Data\EWARM\Debug\Obj\Global.pbi
+D:\Workspace\NRF51_Goose_Data\EWARM\Debug\Obj\Goose_IIC_Init.pbi
+D:\Workspace\NRF51_Goose_Data\EWARM\Debug\Obj\KH25_Flash_Store.pbi
 D:\Workspace\NRF51_Goose_Data\EWARM\Debug\Obj\KH25V1635F_Driver.pbi
 D:\Workspace\NRF51_Goose_Data\EWARM\Debug\Obj\main.pbi
 D:\Workspace\NRF51_Goose_Data\EWARM\Debug\Obj\nrf_assert.pbi
@@ -12,7 +14,9 @@ D:\Workspace\NRF51_Goose_Data\EWARM\Debug\Obj\nrf_drv_common.pbi
 D:\Workspace\NRF51_Goose_Data\EWARM\Debug\Obj\nrf_drv_power.pbi
 D:\Workspace\NRF51_Goose_Data\EWARM\Debug\Obj\nrf_drv_spi.pbi
 D:\Workspace\NRF51_Goose_Data\EWARM\Debug\Obj\nrf_drv_uart.pbi
+D:\Workspace\NRF51_Goose_Data\EWARM\Debug\Obj\PCF8563_Driver.pbi
 D:\Workspace\NRF51_Goose_Data\EWARM\Debug\Obj\sdk_errors.pbi
 D:\Workspace\NRF51_Goose_Data\EWARM\Debug\Obj\sdk_mapped_flags.pbi
 D:\Workspace\NRF51_Goose_Data\EWARM\Debug\Obj\simple_uart.pbi
+D:\Workspace\NRF51_Goose_Data\EWARM\Debug\Obj\SW_IIC.pbi
 D:\Workspace\NRF51_Goose_Data\EWARM\Debug\Obj\system_nrf51.pbi

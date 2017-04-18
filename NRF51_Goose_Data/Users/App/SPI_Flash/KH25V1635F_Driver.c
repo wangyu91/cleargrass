@@ -9,6 +9,7 @@
 *******************************************************************************/
 /* Includes ------------------------------------------------------------------*/
 #include "KH25V1635F_Driver.h"
+#include "nrf_gpio.h"
 //#include "Global.h"
 
 /* Private variables ---------------------------------------------------------*/
@@ -22,9 +23,13 @@ void KH25_WaiteForWriteEnd(void);										// 等待写空闲
 void KH25_Read251_Data(u32 Addr, u8* DataBuffer, u8 DataLen);			// 读取数据	251字节
 void KH25_Read_Data(u32 Addr, u8* DataBuffer, u32 DataLen);				// 读取数据 任意
 void KH25_Erase(u8 Erase_Size, u32 Addr);								// 擦除区
+void KH25_Chip_Erase(void);												// 芯片擦除
+void KH25_Chip_Init(void);												// 芯片初始化
 void KH25_Page251_Program(u32 Addr, u8* DataBuff, u8 Data_Len);			// 页写251字节
 void KH25_Page_Program(u32 Addr, u8* DataBuff, u8 Data_Len);			// 页写256字节
 void KH25_Write_WithNoRead(u32 Addr, u8* DataBuff, u32 Data_Len);		// 任意地址写任意数据 不读取
+void KH25_DeepDownMode_Enter(void);										// 进入低功耗模式
+void KH25_DeepDownMode_Exit(void);										// 退出低功耗模式
 
 /* Private functions ---------------------------------------------------------*/
 /*******************************************************************************
@@ -52,6 +57,12 @@ void KH25_Flash_Init(void)
 
     // 初始化SPI
     APP_ERROR_CHECK(nrf_drv_spi_init(&spi, &spi_config, NULL));
+
+    nrf_gpio_cfg_output(KH25_PIN_WP);
+	nrf_gpio_pin_write(KH25_PIN_WP, 1);
+	nrf_gpio_cfg_output(KH25_PIN_HOLD);
+	nrf_gpio_pin_write(KH25_PIN_HOLD, 1);
+	
 }
 // end of void KH25_Flash_Init(void)
 
@@ -127,7 +138,7 @@ void KH25_WaiteForWriteEnd(void)
 
 	StaRegBuffer = KH25_Read_Status_Reg();
 	// 读取状态寄存器最低位 WIP 
-	while ((0x01 & StaRegBuffer) == 0x01)						// 循环检查WIP直到为0
+	while ((0x01 & StaRegBuffer) == 0x01)								// 循环检查WIP直到为0
 	{
 		StaRegBuffer = KH25_Read_Status_Reg();
 //		printf("\r\n	StateReg = %X !", StaRegBuffer);
@@ -158,6 +169,7 @@ void KH25_Read251_Data(u32 Addr, u8* DataBuffer, u8 DataLen)
 	
 	nrf_drv_spi_transfer(&spi, CMDRead, 4, ReadBuffer, DataLen + 4);
 
+	// 传递有效数据 从第四字节开始
 	while (DataLen--)
 	{
 	    *DataBuffer = *(ReadBuffer + i);
@@ -185,9 +197,9 @@ void KH25_Read_Data(u32 Addr, u8* DataBuffer, u32 DataLen)
 	{
 		KH25_Read251_Data(Addr, DataBuffer, 251);
 
-		Addr = Addr + 251;
+		Addr       = Addr       + 251;
 		DataBuffer = DataBuffer + 251;
-		DataLen = DataLen - 251;
+		DataLen    = DataLen    - 251;
 	}
 
 	KH25_Read251_Data(Addr, DataBuffer, DataLen);
@@ -199,7 +211,7 @@ void KH25_Read_Data(u32 Addr, u8* DataBuffer, u32 DataLen)
 * Function Name  :  KH25_Erase
 * Description    :  擦除区块
 * Input          :  u8 		Erase_Size	擦除大小 4,32,64(K)
-*					u32		Addr		数据起始地址
+*					u32		Addr		页起始地址
 * Output         :  None
 * Return         :  None
 *******************************************************************************/
@@ -235,6 +247,50 @@ void KH25_Erase(u8 Erase_Size, u32 Addr)
 	nrf_drv_spi_transfer(&spi, CMDSectorErase, 4, NULL, 0);
 }
 // end of void KH25_Erase(u8 Erase_Size, u32 Addr)
+
+/*******************************************************************************
+*                           王宇@2017-04-18
+* Function Name  :  KH25_Chipe_Erase
+* Description    :  芯片擦除
+* Input          :  None
+* Output         :  None
+* Return         :  None
+*******************************************************************************/
+void KH25_Chip_Erase(void)
+{
+	u8 CMD_ChipErase = CMD_CHIP_ERASE;
+	
+    KH25_WaiteForWriteEnd();
+    // 写使能
+    KH25_Write_Enable();
+	// 1Byte命令 
+	nrf_drv_spi_transfer(&spi, &CMD_ChipErase, 1, NULL, 0);
+	// 等待空闲
+	KH25_WaiteForWriteEnd();
+
+}
+// end of void KH25_Chip_Erase(void)
+
+/*******************************************************************************
+*                           王宇@2017-04-18
+* Function Name  :  KH25_Chip_Init
+* Description    :  芯片擦除
+* Input          :  None
+* Output         :  None
+* Return         :  None
+*******************************************************************************/
+void KH25_Chip_Init(void)
+{
+	u8 Data_Buff[2];
+	// 读取检索页头两个字节
+	KH25_Read_Data(0x001FF000, Data_Buff, 2);
+	// 判断是否存储过历史数据 
+	if ((Data_Buff[0] == 0xFF) && (Data_Buff[1] == 0xFF))
+	{
+		KH25_Chip_Erase();
+	}
+}
+// end of void KH25_Chip_Init(void)
 
 /*******************************************************************************
 *                           王宇@2017-04-12
@@ -276,6 +332,8 @@ void KH25_Page251_Program(u32 Addr, u8* DataBuff, u8 Data_Len)
 	KH25_Write_Enable();
 
 	nrf_drv_spi_transfer(&spi, Send_Buffer, Data_Len + 4, NULL, 0);
+
+	KH25_WaiteForWriteEnd();
 }
 // end of void KH25_Page251_Program(u32 Addr, u8* DataBuff, u8 Data_Len)
 
@@ -317,24 +375,34 @@ void KH25_Write_WithNoRead(u32 Addr, u8* DataBuff, u32 Data_Len)
 {
 	u32 Addr_New, Data_Len_New;
 	u8* pDataBuff_New;
-	u8  Data_Len_Page1;
+	u8  DataLen_Page1remain;
 
 	Addr_New 	  = Addr;
 	pDataBuff_New = DataBuff;
 	Data_Len_New  = Data_Len;
 
 	// 是否从页首开始
-	if ((Addr & PageSize) != 0)
+	if (((Addr >> 0) & PageSize) != 0)
 	{
-		// 非页首
-		Data_Len_Page1 = PageSize - (Addr & PageSize);
-		// 计算新地址 数据起始 数据长度
-		Addr_New 	   = Addr     + Data_Len_Page1;
-		pDataBuff_New  = DataBuff + Data_Len_Page1;
-		Data_Len_New   = Data_Len - Data_Len_Page1;
+		// 非页首 计算剩余空间
+		DataLen_Page1remain = PageSize - ((Addr >> 0) & PageSize);
 
-		// 起始第一页写入 首地址[7:0]非0
-		KH25_Page_Program(Addr, DataBuff, Data_Len_Page1);
+		// 判断剩余空间是否足够
+		if (Data_Len <= DataLen_Page1remain)
+		{
+			// 足够 直接写入
+			KH25_Page_Program(Addr, DataBuff, Data_Len);
+			return;
+		}
+		else 
+		{
+			// 不足 计算新地址 数据起始 数据长度
+			Addr_New 	   = Addr     + DataLen_Page1remain;
+			pDataBuff_New  = DataBuff + DataLen_Page1remain;
+			Data_Len_New   = Data_Len - DataLen_Page1remain;
+			// 起始第一页写入 首地址[7:0]非0
+			KH25_Page_Program(Addr, DataBuff, DataLen_Page1remain);
+		}
 	}
 
 	// 数据是否大于一页
@@ -353,5 +421,47 @@ void KH25_Write_WithNoRead(u32 Addr, u8* DataBuff, u32 Data_Len)
 	
 }
 // end of void KH25_Write_WithNoRead(u32 Addr, u8* DataBuff, u32 Data_Len)
+
+/*******************************************************************************
+*                           王宇@2017-04-18
+* Function Name  :  KH25_DeepDownMode_Enter
+* Description    :  进入低功耗模式
+* Input          :  None
+* Output         :  None
+* Return         :  None
+*******************************************************************************/
+void KH25_DeepDownMode_Enter(void)
+{
+	u8 CMD_DDMEnter = CMD_DDM_ENTER;
+
+	// 1Byte命令 
+	nrf_drv_spi_transfer(&spi, &CMD_DDMEnter, 1, NULL, 0);
+
+	nrf_delay_us(tDP);
+}
+// end of void KH25_DeepDownMode_Enter(void)
+
+/*******************************************************************************
+*                           王宇@2017-04-18
+* Function Name  :  KH25_DeepDownMode_Exit
+* Description    :  进入低功耗模式
+* Input          :  None
+* Output         :  None
+* Return         :  None
+*******************************************************************************/
+void KH25_DeepDownMode_Exit(void)
+{
+	// 等待有效操作时间
+	nrf_delay_us(tDPDD);
+
+	nrf_gpio_pin_clear(KH25_PIN_CS);
+
+	nrf_delay_us(tCRDP);
+
+	nrf_gpio_pin_set(KH25_PIN_CS);
+
+	nrf_delay_us(tRDP);
+}
+// end of void KH25_DeepDownMode_Exit(void)
 
 /******************* (C) COPYRIGHT 2017 王宇 *****END OF FILE******************/

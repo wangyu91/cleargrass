@@ -362,6 +362,9 @@
           <state>$PROJ_DIR$\..\Library\drivers_nrf\hal</state>
           <state>$PROJ_DIR$\..\Users\App\Global</state>
           <state>$PROJ_DIR$\..\Users\App\SPI_Flash</state>
+          <state>$PROJ_DIR$\..\Users\App\Goose_IIC_Init</state>
+          <state>$PROJ_DIR$\..\Users\App\PCF8563</state>
+          <state>$PROJ_DIR$\..\Users\App\Soft_IIC</state>
         </option>
         <option>
           <name>CCStdIncCheck</name>
@@ -1994,6 +1997,15 @@
       </file>
     </group>
     <group>
+      <name>Goose_IIC_Init</name>
+      <file>
+        <name>$PROJ_DIR$\..\Users\App\Goose_IIC_Init\Goose_IIC_Init.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\..\Users\App\Goose_IIC_Init\Goose_IIC_Init.h</name>
+      </file>
+    </group>
+    <group>
       <name>KH25V1635F_Driver</name>
       <file>
         <name>$PROJ_DIR$\..\Users\App\SPI_Flash\KH25V1635F_Driver.c</name>
@@ -2003,12 +2015,39 @@
       </file>
     </group>
     <group>
+      <name>PCF8563_Driver</name>
+      <file>
+        <name>$PROJ_DIR$\..\Users\App\PCF8563\PCF8563_Driver.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\..\Users\App\PCF8563\PCF8563_Driver.h</name>
+      </file>
+    </group>
+    <group>
+      <name>Store_History_Data</name>
+      <file>
+        <name>$PROJ_DIR$\..\Users\App\SPI_Flash\KH25_Flash_Store.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\..\Users\App\SPI_Flash\KH25_Flash_Store.h</name>
+      </file>
+    </group>
+    <group>
+      <name>SW_IIC</name>
+      <file>
+        <name>$PROJ_DIR$\..\Users\App\Soft_IIC\SW_IIC.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\..\Users\App\Soft_IIC\SW_IIC.h</name>
+      </file>
+    </group>
+    <group>
       <name>Uart</name>
       <file>
         <name>$PROJ_DIR$\..\Users\App\Uart\simple_uart.c</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\..\Users\App\Uart\Simple_uart.h</name>
+        <name>$PROJ_DIR$\..\Users\App\Uart\simple_uart.h</name>
       </file>
     </group>
   </group>

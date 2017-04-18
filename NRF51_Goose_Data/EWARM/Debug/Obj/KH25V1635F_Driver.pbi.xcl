@@ -92,6 +92,12 @@ D:\Workspace\NRF51_Goose_Data\EWARM\..\Users\App\Global
 -I
 D:\Workspace\NRF51_Goose_Data\EWARM\..\Users\App\SPI_Flash
 -I
+D:\Workspace\NRF51_Goose_Data\EWARM\..\Users\App\Goose_IIC_Init
+-I
+D:\Workspace\NRF51_Goose_Data\EWARM\..\Users\App\PCF8563
+-I
+D:\Workspace\NRF51_Goose_Data\EWARM\..\Users\App\Soft_IIC
+-I
 D:\IAR\arm\CMSIS\Include
 -I
 D:\IAR\arm\inc
@@ -187,6 +193,12 @@ D:\Workspace\NRF51_Goose_Data\Library\drivers_nrf\hal
 D:\Workspace\NRF51_Goose_Data\Users\App\Global
 -I
 D:\Workspace\NRF51_Goose_Data\Users\App\SPI_Flash
+-I
+D:\Workspace\NRF51_Goose_Data\Users\App\Goose_IIC_Init
+-I
+D:\Workspace\NRF51_Goose_Data\Users\App\PCF8563
+-I
+D:\Workspace\NRF51_Goose_Data\Users\App\Soft_IIC
 -I
 D:\IAR\arm\CMSIS\Include
 -DDEBUG=1

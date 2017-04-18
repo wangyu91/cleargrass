@@ -36,9 +36,9 @@
 #define RED7_PIN			GPIO_Pin_2
 #define RED7_GPIO			GPIOF
 
-//#define IIC8_SHT30														// Debug ≤‚ ‘
+#define IIC8_SHT30														// Debug ≤‚ ‘
 //#define IIC8_BH1721
-#define IIC8_SGPC10
+//#define IIC8_SGPC10
 
 /* Private Variables ---------------------------------------------------------*/
 extern SW_IIC_t SHT30_s;												// SHT30 Ω·ππÃÂ

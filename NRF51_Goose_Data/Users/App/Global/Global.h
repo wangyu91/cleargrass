@@ -13,15 +13,17 @@
 /* Includes ------------------------------------------------------------------*/
 #include "Nrf_drv_spi.h"
 #include "Global_Typedef.h"
-//#include "KH25V1635F_Driver.h"
 #include "app_error.h"
+#include "SW_IIC.h"
+#include "PCF8563_Driver.h"
 
 /* Private Defines -----------------------------------------------------------*/
 #define		SPI_INSTANCE		0										// SPI实体0
 
 /* Private Variables ---------------------------------------------------------*/
-extern const nrf_drv_spi_t spi;											// SPI实体
-
+extern const nrf_drv_spi_t  spi;										// SPI实体
+extern SW_IIC_t				Goose_IIC_s;								// IIC结构体
+extern Date_t 				Date_Buff_s;								// RTC结构体
 /* Private Typedefs ----------------------------------------------------------*/
 
 /* Private Function Prototypes -----------------------------------------------*/

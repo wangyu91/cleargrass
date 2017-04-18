@@ -1,6 +1,6 @@
 ###############################################################################
 #
-# IAR ELF Linker V7.80.4.12462/W32 for ARM                06/Apr/2017  20:02:01
+# IAR ELF Linker V7.80.4.12462/W32 for ARM                17/Apr/2017  19:48:40
 # Copyright 2007-2017 IAR Systems AB.
 #
 #    Output file  =  
@@ -287,9 +287,9 @@ Goose_IIC_s             0x200010a8   0x28  Data  Gb  Global.o [1]
 HardFault_Handler       0x08000e6b    0x2  Code  Gb  stm32f10x_it.o [1]
 MemManage_Handler       0x08000e6d    0x2  Code  Gb  stm32f10x_it.o [1]
 NMI_Handler             0x08000e69    0x2  Code  Gb  stm32f10x_it.o [1]
-PCF563_Get_Date         0x08000735   0x44  Code  Gb  PCF8563_Driver.o [1]
-PCF563_Set_Date         0x08000779   0x40  Code  Gb  PCF8563_Driver.o [1]
+PCF8563_Get_Date        0x08000735   0x44  Code  Gb  PCF8563_Driver.o [1]
 PCF8563_Read_Register   0x0800069d   0x46  Code  Gb  PCF8563_Driver.o [1]
+PCF8563_Set_Date        0x08000779   0x40  Code  Gb  PCF8563_Driver.o [1]
 PCF8563_Write_Register  0x080006e3   0x4e  Code  Gb  PCF8563_Driver.o [1]
 PendSV_Handler          0x08000e77    0x2  Code  Gb  stm32f10x_it.o [1]
 RCC_APB2PeriphClockCmd  0x080008d3   0x20  Code  Gb  stm32f10x_rcc.o [1]

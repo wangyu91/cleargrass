@@ -22,6 +22,7 @@
 #include "nrf_log_ctrl.h"
 #include "Simple_uart.h"
 #include "Global.h"
+#include "PCF8563_Driver.h"
 
 /**
  * @brief SPI user event handler.
@@ -31,58 +32,81 @@
 int main(void)
 {
     bsp_board_leds_init();
-    nrf_gpio_cfg_output(27);
-	nrf_gpio_pin_write(27, 1);
-	nrf_gpio_cfg_output(29);
-	nrf_gpio_pin_write(29, 1);
 
     APP_ERROR_CHECK(NRF_LOG_INIT(NULL));
+    simple_uart_config(8, 9, 10, 11, 0);
 
 	uint32_t retcode = 1;
-	uint16_t re;
-	uint8_t tr;
-	u8 i;
-	u32 Addr_test 	 = 0x00008000;
-//	u8  Data_Write[] = {0x00,0x01,0x02,0x03,0x04,0x05,0x06,0x07,0x08,0x09,0x0A,0x0B,0x0C,0x0D,0x0E,0x0F,
-//						0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00};
-	u8 Data_Buff[600];
-
-	for (i = 0; i < 255; i++)
-	{
-		Data_Buff[i] = i;
-	}
-
-	for (i = 0; i < 255; i++)
-	{
-		Data_Buff[i + 255] = 255 - i;
-	}
+//	uint16_t re;
+//	uint8_t tr;
+	u32 i,j;
+	u32 Addr_test 	  = 0x00000000;
+	u8  Start_Addr[2] = {0x00, 0x00};
 	
-	u8 Buffer[300];
+	u8 Buffer[512];
+//	Date_t Dnow;
+//	Dnow.Seconds = 0x00;
+//	Dnow.Minutes = 0x22;
+//	Dnow.Hours	 = 0x20;
+//	Dnow.Days    = 0x17;
+//	Dnow.Months  = 0x04;
+//	Dnow.Years   = 0x17;
+//	Dnow.WeekDay = 0x02;
 	
-	memset(Buffer, 0, 300);
-	
-	simple_uart_config(8, 9, 10, 11, 0);
-//    
+//	memset(Buffer, 0, 300);
+    
     NRF_LOG_INFO("SPI example\r\n");
 
-	KH25_Flash_Init();
-	KH25_GetID(&tr, &re);
-
-//	KH25_Erase(4, Addr_test);
-//	KH25_Page_Program(Addr_test, Data_Buff, 255);
-	KH25_Write_WithNoRead(Addr_test, Data_Buff, 600);
-	KH25_WaiteForWriteEnd();
-	KH25_Read_Data(Addr_test, Buffer, 300);
+    retcode = Goose_IIC_Init();
+//    PCF8563_Read_Register(0x00, &tr, 1);
+//    printf("\r\n	tr = %X!\r\n", tr);
+//    tr = 0x00;
+//    PCF8563_Write_Register(0x06, &(Dnow.WeekDay), 1);
+//    PCF8563_Read_Register(0x00, &tr, 1);
+//    printf("\r\n	tr = %X!\r\n", tr);
+//    retcode = PCF8563_Set_Date(&Dnow);
+//	while(retcode)
+//	{
+//    	retcode = PCF8563_Get_Date(&Dnow);
+//		printf("PCF8563 RTC year%x mon/%x day/%x hour%x min%x sec%x\r\n",Dnow.Years, Dnow.Months, Dnow.Days, Dnow.Hours, Dnow.Minutes, Dnow.Seconds);
+//	}
 	
-    printf("\r\n	tr = %X, re = %X !\r\n", tr, re);
+	KH25_Flash_Init();
+	KH25_Chip_Init();
+//	KH25_GetID(&tr, &re);
 
-	for (i = 0; i < 255; i++)
-	{
-		printf("\r\n	Buffer[%d] = %X !\r\n", i, Buffer[i]);
-	}
+	KH25_Erase(4, Addr_test);
+	KH25_Erase(4, 0x00001000);
+	KH25_Erase(4, 0x001FF000);
+	KH25_Page_Program(0x001FF000, Start_Addr, 2);
 
-	for (i = 0; i < 45; i++)
+	Store_History_Data();
+//	nrf_delay_ms(1000);
+//	Store_History_Data();
+//	nrf_delay_ms(1000);
+//	Store_History_Data();
+//	nrf_delay_ms(1000);
+//	Store_History_Data();
+
+	KH25_WaiteForWriteEnd();
+	KH25_Read_Data(0x00000000, Buffer, 512);
+	
+//    printf("\r\n	tr = %X, re = %X !\r\n", tr, re);
+
+//	for (i = 0; i < 500; i++)
+//	{
+//		printf("\r\n Buffer[%d] = %X \n\r", i, Buffer[i]);
+//	}
+	j = 0;
+	while(j < 3)
 	{
-		printf("\r\n	Buffer[%d] = %X !\r\n", i + 255, Buffer[i + 255]);
+		KH25_Read_Data(0x00000000 + j * 512, Buffer, 512);
+		
+		for (i = 0; i < 512; i += 8)
+		{
+			printf("\r\n %X, %X, %X, %X, %X, %X, %X, %X, Times %d\n\r", Buffer[i],Buffer[i+1],Buffer[i+2],Buffer[i+3],Buffer[i+4],Buffer[i+5],Buffer[i+6],Buffer[i+7], j);
+		}
+
+		j++;
 	}
 }
