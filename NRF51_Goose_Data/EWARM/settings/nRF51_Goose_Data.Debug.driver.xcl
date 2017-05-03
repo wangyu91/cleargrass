@@ -6,11 +6,11 @@
 
 "-p" 
 
-"D:\IAR\arm\CONFIG\debugger\NordicSemi\nrf51822_xxac.ddf" 
+"D:\IAR\arm\CONFIG\debugger\NordicSemi\nrf51422_xxac.ddf" 
 
 "--semihosting" 
 
-"--device=nrf51822_xxac" 
+"--device=nrf51422_xxac" 
 
 "--drv_communication=USB0" 
 

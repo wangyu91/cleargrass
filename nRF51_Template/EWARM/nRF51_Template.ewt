@@ -2333,10 +2333,28 @@
           <name>$PROJ_DIR$\..\Library\ble\ble_advertising\ble_advertising.h</name>
         </file>
         <file>
+          <name>$PROJ_DIR$\..\Library\ble\ble_advertising\ble_advertising_dox_config.h</name>
+        </file>
+        <file>
           <name>$PROJ_DIR$\..\Library\ble\common\ble_conn_params.c</name>
         </file>
         <file>
           <name>$PROJ_DIR$\..\Library\ble\common\ble_conn_params.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\Library\ble\common\ble_conn_state.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\Library\ble\common\ble_conn_state.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\Library\ble\common\ble_date_time.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\Library\ble\common\ble_gatt_db.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\Library\ble\common\ble_sensor_location.h</name>
         </file>
         <file>
           <name>$PROJ_DIR$\..\Library\ble\common\ble_srv_common.c</name>
@@ -2345,6 +2363,18 @@
           <name>$PROJ_DIR$\..\Library\ble\common\ble_srv_common.h</name>
         </file>
       </group>
+    </group>
+    <group>
+      <name>Boards</name>
+      <file>
+        <name>$PROJ_DIR$\..\Library\boards\boards.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\..\Library\boards\boards.h</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\..\Library\boards\pca10028.h</name>
+      </file>
     </group>
     <group>
       <name>Device</name>
@@ -2734,9 +2764,6 @@
         <group>
           <name>SoftDevice_Handler</name>
           <file>
-            <name>$PROJ_DIR$\..\Library\softdevice\common\softdevice_handler\ant_stack_handler_types.h</name>
-          </file>
-          <file>
             <name>$PROJ_DIR$\..\Library\softdevice\common\softdevice_handler\app_ram_base.h</name>
           </file>
           <file>
@@ -2878,7 +2905,7 @@
       <name>$PROJ_DIR$\..\Users\Main\iar_startup_nrf51.s</name>
     </file>
     <file>
-      <name>$PROJ_DIR$\..\..\NRF51_Goose_Data\Users\Main\main.c</name>
+      <name>$PROJ_DIR$\..\Users\Main\main.c</name>
     </file>
     <file>
       <name>$PROJ_DIR$\..\Users\Main\sdk_config.h</name>

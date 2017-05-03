@@ -23,6 +23,7 @@
 
 /* Private function prototypes -----------------------------------------------*/
 void Store_History_Data(void);
+void Get_Current_Data(u8* Data_Buff);
 
 #endif /* __KH25_FLASH_STORE_H */
 

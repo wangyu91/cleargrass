@@ -1,0 +1,478 @@
+###############################################################################
+#
+# IAR ELF Linker V7.80.4.12462/W32 for ARM                28/Apr/2017  18:06:21
+# Copyright 2007-2017 IAR Systems AB.
+#
+#    Output file  =  
+#        D:\Workspace\nRF51_Timer\EWARM\Debug\Exe\nRF51_Template.out
+#    Map file     =  
+#        D:\Workspace\nRF51_Timer\EWARM\Debug\List\nRF51_Template.map
+#    Command line =  
+#        D:\Workspace\nRF51_Timer\EWARM\Debug\Obj\app_button.o
+#        D:\Workspace\nRF51_Timer\EWARM\Debug\Obj\app_error.o
+#        D:\Workspace\nRF51_Timer\EWARM\Debug\Obj\app_error_weak.o
+#        D:\Workspace\nRF51_Timer\EWARM\Debug\Obj\app_gpiote.o
+#        D:\Workspace\nRF51_Timer\EWARM\Debug\Obj\app_pwm.o
+#        D:\Workspace\nRF51_Timer\EWARM\Debug\Obj\app_scheduler.o
+#        D:\Workspace\nRF51_Timer\EWARM\Debug\Obj\app_simple_timer.o
+#        D:\Workspace\nRF51_Timer\EWARM\Debug\Obj\app_timer.o
+#        D:\Workspace\nRF51_Timer\EWARM\Debug\Obj\app_timer_appsh.o
+#        D:\Workspace\nRF51_Timer\EWARM\Debug\Obj\app_twi.o
+#        D:\Workspace\nRF51_Timer\EWARM\Debug\Obj\app_util_platform.o
+#        D:\Workspace\nRF51_Timer\EWARM\Debug\Obj\ble_advdata.o
+#        D:\Workspace\nRF51_Timer\EWARM\Debug\Obj\ble_advertising.o
+#        D:\Workspace\nRF51_Timer\EWARM\Debug\Obj\ble_conn_params.o
+#        D:\Workspace\nRF51_Timer\EWARM\Debug\Obj\ble_conn_state.o
+#        D:\Workspace\nRF51_Timer\EWARM\Debug\Obj\ble_srv_common.o
+#        D:\Workspace\nRF51_Timer\EWARM\Debug\Obj\boards.o
+#        D:\Workspace\nRF51_Timer\EWARM\Debug\Obj\fds.o
+#        D:\Workspace\nRF51_Timer\EWARM\Debug\Obj\fstorage.o
+#        D:\Workspace\nRF51_Timer\EWARM\Debug\Obj\iar_startup_nrf51.o
+#        D:\Workspace\nRF51_Timer\EWARM\Debug\Obj\main.o
+#        D:\Workspace\nRF51_Timer\EWARM\Debug\Obj\nrf_adc.o
+#        D:\Workspace\nRF51_Timer\EWARM\Debug\Obj\nrf_assert.o
+#        D:\Workspace\nRF51_Timer\EWARM\Debug\Obj\nrf_drv_clock.o
+#        D:\Workspace\nRF51_Timer\EWARM\Debug\Obj\nrf_drv_common.o
+#        D:\Workspace\nRF51_Timer\EWARM\Debug\Obj\nrf_drv_gpiote.o
+#        D:\Workspace\nRF51_Timer\EWARM\Debug\Obj\nrf_drv_power.o
+#        D:\Workspace\nRF51_Timer\EWARM\Debug\Obj\nrf_drv_ppi.o
+#        D:\Workspace\nRF51_Timer\EWARM\Debug\Obj\nrf_drv_rng.o
+#        D:\Workspace\nRF51_Timer\EWARM\Debug\Obj\nrf_drv_timer.o
+#        D:\Workspace\nRF51_Timer\EWARM\Debug\Obj\nrf_drv_twi.o
+#        D:\Workspace\nRF51_Timer\EWARM\Debug\Obj\nrf_drv_uart.o
+#        D:\Workspace\nRF51_Timer\EWARM\Debug\Obj\nrf_log_backend_serial.o
+#        D:\Workspace\nRF51_Timer\EWARM\Debug\Obj\nrf_log_frontend.o
+#        D:\Workspace\nRF51_Timer\EWARM\Debug\Obj\nrf_nvic.o
+#        D:\Workspace\nRF51_Timer\EWARM\Debug\Obj\nrf_queue.o
+#        D:\Workspace\nRF51_Timer\EWARM\Debug\Obj\nrf_soc.o
+#        D:\Workspace\nRF51_Timer\EWARM\Debug\Obj\sdk_errors.o
+#        D:\Workspace\nRF51_Timer\EWARM\Debug\Obj\sdk_mapped_flags.o
+#        D:\Workspace\nRF51_Timer\EWARM\Debug\Obj\softdevice_handler.o
+#        D:\Workspace\nRF51_Timer\EWARM\Debug\Obj\softdevice_handler_appsh.o
+#        D:\Workspace\nRF51_Timer\EWARM\Debug\Obj\system_nrf51.o -o
+#        D:\Workspace\nRF51_Timer\EWARM\Debug\Exe\nRF51_Template.out --map
+#        D:\Workspace\nRF51_Timer\EWARM\Debug\List\nRF51_Template.map --config
+#        D:\Workspace\nRF51_Timer\Users\Main\simple_timer_iar_nRF5x.icf
+#        --semihosting --entry __iar_program_start --vfe
+#
+###############################################################################
+
+*******************************************************************************
+*** RUNTIME MODEL ATTRIBUTES
+***
+
+CppFlavor       = *
+__SystemLibrary = DLib
+
+
+*******************************************************************************
+*** PLACEMENT SUMMARY
+***
+
+"A0":  place at 0x00000000 { ro section .intvec };
+"P1":  place in [from 0x00000000 to 0x0003ffff] { ro };
+"P2":  place in [from 0x20000000 to 0x20007fff] { rw, block CSTACK, block HEAP };
+initialize by copy { rw };
+ { section .intvec };
+
+  Section            Kind        Address    Size  Object
+  -------            ----        -------    ----  ------
+"A0":                                       0xc0
+  .intvec            ro code  0x00000000    0xc0  iar_startup_nrf51.o [1]
+                            - 0x000000c0    0xc0
+
+"P1":                                     0x187c
+  .text              ro code  0x000000c0   0x5f8  app_timer.o [1]
+  .text              ro code  0x000006b8    0x1c  app_error.o [1]
+  .text              ro code  0x000006d4   0x1e0  main.o [1]
+  .text              ro code  0x000008b4   0x12c  boards.o [1]
+  .text              ro code  0x000009e0   0x13c  app_simple_timer.o [1]
+  .text              ro code  0x00000b1c   0x288  nrf_drv_timer.o [1]
+  .text              ro code  0x00000da4    0xd0  nrf_drv_common.o [1]
+  .text              ro code  0x00000e74   0x35c  nrf_drv_gpiote.o [1]
+  .text              ro code  0x000011d0   0x280  nrf_drv_uart.o [1]
+  .text              ro code  0x00001450   0x174  system_nrf51.o [1]
+  .text              ro code  0x000015c4    0xec  softdevice_handler.o [1]
+  .rodata            const    0x000016b0    0x5c  softdevice_handler.o [1]
+  .rodata            const    0x0000170c    0x44  app_simple_timer.o [1]
+  .rodata            const    0x00001750    0x40  app_timer.o [1]
+  .text              ro code  0x00001790    0x3c  zero_init3.o [4]
+  .text              ro code  0x000017cc    0x30  copy_init3.o [4]
+  .rodata            const    0x000017fc    0x2c  main.o [1]
+  .text              ro code  0x00001828    0x2c  iar_startup_nrf51.o [1]
+  .text              ro code  0x00001854    0x28  data_init.o [4]
+  .iar.init_table    const    0x0000187c    0x24  - Linker created -
+  .text              ro code  0x000018a0    0x1a  cmain.o [4]
+  .text              ro code  0x000018ba     0x4  low_level_init.o [3]
+  .text              ro code  0x000018be     0x8  exit.o [3]
+  .text              ro code  0x000018c6     0x2  iar_startup_nrf51.o [1]
+  .text              ro code  0x000018c8     0xa  cexit.o [4]
+  .text              ro code  0x000018d2     0x2  iar_startup_nrf51.o [1]
+  .text              ro code  0x000018d4    0x14  exit.o [5]
+  .text              ro code  0x000018e8     0xc  cstartup_M.o [4]
+  .rodata            const    0x000018f4     0x8  app_simple_timer.o [1]
+  .rodata            const    0x000018fc     0x8  app_simple_timer.o [1]
+  .rodata            const    0x00001904     0x4  boards.o [1]
+  .rodata            const    0x00001908     0x4  nrf_drv_gpiote.o [1]
+  Initializer bytes  const    0x0000190c     0x4  <for P2-1>
+  .text              ro code  0x00001910     0x2  iar_startup_nrf51.o [1]
+  .text              ro code  0x00001912     0x2  iar_startup_nrf51.o [1]
+  .text              ro code  0x00001914     0x2  iar_startup_nrf51.o [1]
+  .text              ro code  0x00001916     0x2  iar_startup_nrf51.o [1]
+  .text              ro code  0x00001918     0x2  iar_startup_nrf51.o [1]
+  .text              ro code  0x0000191a     0x2  iar_startup_nrf51.o [1]
+  .text              ro code  0x0000191c     0x2  iar_startup_nrf51.o [1]
+  .text              ro code  0x0000191e     0x2  iar_startup_nrf51.o [1]
+  .text              ro code  0x00001920     0x2  iar_startup_nrf51.o [1]
+  .text              ro code  0x00001922     0x2  iar_startup_nrf51.o [1]
+  .text              ro code  0x00001924     0x2  iar_startup_nrf51.o [1]
+  .text              ro code  0x00001926     0x2  iar_startup_nrf51.o [1]
+  .text              ro code  0x00001928     0x2  iar_startup_nrf51.o [1]
+  .text              ro code  0x0000192a     0x2  iar_startup_nrf51.o [1]
+  .text              ro code  0x0000192c     0x2  iar_startup_nrf51.o [1]
+  .text              ro code  0x0000192e     0x2  iar_startup_nrf51.o [1]
+  .text              ro code  0x00001930     0x2  iar_startup_nrf51.o [1]
+  .text              ro code  0x00001932     0x2  iar_startup_nrf51.o [1]
+  .text              ro code  0x00001934     0x2  iar_startup_nrf51.o [1]
+  .text              ro code  0x00001936     0x2  iar_startup_nrf51.o [1]
+  .text              ro code  0x00001938     0x2  iar_startup_nrf51.o [1]
+  .text              ro code  0x0000193a     0x2  iar_startup_nrf51.o [1]
+  .rodata            const    0x0000193c     0x0  zero_init3.o [4]
+  .rodata            const    0x0000193c     0x0  copy_init3.o [4]
+                            - 0x0000193c  0x187c
+
+"P2", part 1 of 3:                           0x4
+  P2-1                        0x20000000     0x4  <Init block>
+    .data            inited   0x20000000     0x4  system_nrf51.o [1]
+                            - 0x20000004     0x4
+
+"P2", part 2 of 3:                         0x800
+  CSTACK                      0x20000008   0x800  <Block>
+    CSTACK           uninit   0x20000008   0x800  <Block tail>
+                            - 0x20000808   0x800
+
+"P2", part 3 of 3:                          0xb8
+  .bss               zero     0x20000808    0x48  nrf_drv_gpiote.o [1]
+  .bss               zero     0x20000850    0x1c  nrf_drv_uart.o [1]
+  .bss               zero     0x2000086c     0xc  nrf_drv_timer.o [1]
+  .bss               zero     0x20000878     0x8  app_timer.o [1]
+  .bss               zero     0x20000880     0x8  app_timer.o [1]
+  .bss               zero     0x20000888     0x4  app_simple_timer.o [1]
+  .bss               zero     0x2000088c     0x4  app_simple_timer.o [1]
+  .bss               zero     0x20000890     0x4  app_timer.o [1]
+  .bss               zero     0x20000894     0x4  app_timer.o [1]
+  .bss               zero     0x20000898     0x4  app_timer.o [1]
+  .bss               zero     0x2000089c     0x4  main.o [1]
+  .bss               zero     0x200008a0     0x4  main.o [1]
+  .bss               zero     0x200008a4     0x4  softdevice_handler.o [1]
+  .bss               zero     0x200008a8     0x4  softdevice_handler.o [1]
+  .bss               zero     0x200008ac     0x4  softdevice_handler.o [1]
+  .bss               zero     0x200008b0     0x4  softdevice_handler.o [1]
+  .bss               zero     0x200008b4     0x2  softdevice_handler.o [1]
+  .bss               zero     0x200008b6     0x1  app_simple_timer.o [1]
+  .bss               zero     0x200008b7     0x1  app_simple_timer.o [1]
+  .bss               zero     0x200008b8     0x1  app_timer.o [1]
+  .bss               zero     0x200008b9     0x1  app_timer.o [1]
+  .bss               zero     0x200008ba     0x1  app_timer.o [1]
+  .bss               zero     0x200008bb     0x1  app_timer.o [1]
+  .bss               zero     0x200008bc     0x1  main.o [1]
+  .bss               zero     0x200008bd     0x1  softdevice_handler.o [1]
+  .bss               zero     0x200008be     0x1  softdevice_handler.o [1]
+                            - 0x200008bf    0xb7
+
+
+*******************************************************************************
+*** INIT TABLE
+***
+
+          Address     Size
+          -------     ----
+Zero (__iar_zero_init3)
+    1 destination range, total size 0xb7:
+          0x20000808  0xb7
+
+Copy (__iar_copy_init3)
+    1 source range, total size 0x4:
+          0x0000190c   0x4
+    1 destination range, total size 0x4:
+          0x20000000   0x4
+
+
+
+*******************************************************************************
+*** MODULE SUMMARY
+***
+
+    Module                ro code  ro data  rw data
+    ------                -------  -------  -------
+D:\Workspace\nRF51_Timer\EWARM\Debug\Obj: [1]
+    app_error.o                28
+    app_simple_timer.o        316       84       10
+    app_timer.o             1 528       64       32
+    boards.o                  300        4
+    iar_startup_nrf51.o       284
+    main.o                    480       44        9
+    nrf_drv_common.o          208
+    nrf_drv_gpiote.o          860        4       72
+    nrf_drv_timer.o           648                12
+    nrf_drv_uart.o            640                28
+    softdevice_handler.o      236       92       20
+    system_nrf51.o            372        4        4
+    -----------------------------------------------
+    Total:                  5 900      296      187
+
+command line: [2]
+    -----------------------------------------------
+    Total:
+
+dl6M_tlf.a: [3]
+    exit.o                      8
+    low_level_init.o            4
+    -----------------------------------------------
+    Total:                     12
+
+rt6M_tl.a: [4]
+    cexit.o                    10
+    cmain.o                    26
+    copy_init3.o               48
+    cstartup_M.o               12
+    data_init.o                40
+    zero_init3.o               60
+    -----------------------------------------------
+    Total:                    196
+
+shb_l.a: [5]
+    exit.o                     20
+    -----------------------------------------------
+    Total:                     20
+
+    Linker created                      36    2 048
+---------------------------------------------------
+    Grand Total:            6 128      332    2 235
+
+
+*******************************************************************************
+*** ENTRY LIST
+***
+
+Entry                      Address   Size  Type      Object
+-----                      -------   ----  ----      ------
+.iar.init_table$$Base   0x0000187c          --   Gb  - Linker created -
+.iar.init_table$$Limit  0x000018a0          --   Gb  - Linker created -
+?main                   0x000018a1         Code  Gb  cmain.o [4]
+CSTACK$$Base            0x20000008          --   Gb  - Linker created -
+CSTACK$$Limit           0x20000808          --   Gb  - Linker created -
+GPIOTE_IRQHandler       0x00000fd1  0x1fc  Code  Gb  nrf_drv_gpiote.o [1]
+NVIC_ClearPendingIRQ    0x000000eb    0xe  Code  Lc  app_timer.o [1]
+NVIC_ClearPendingIRQ    0x00000db3    0xe  Code  Lc  nrf_drv_common.o [1]
+NVIC_DisableIRQ         0x000000cf    0xe  Code  Lc  app_timer.o [1]
+NVIC_EnableIRQ          0x000000c1    0xe  Code  Lc  app_timer.o [1]
+NVIC_EnableIRQ          0x00000da5    0xe  Code  Lc  nrf_drv_common.o [1]
+NVIC_SetPendingIRQ      0x000000dd    0xe  Code  Lc  app_timer.o [1]
+NVIC_SetPriority        0x00000dc1   0x84  Code  Lc  nrf_drv_common.o [1]
+RTC1_IRQHandler         0x00000659   0x2c  Code  Gb  app_timer.o [1]
+Region$$Table$$Base     0x0000187c          --   Gb  - Linker created -
+Region$$Table$$Limit    0x000018a0          --   Gb  - Linker created -
+SIMPLE_TIMER            0x000018f4    0x8  Data  Gb  app_simple_timer.o [1]
+SWI0_IRQHandler         0x00000685    0x8  Code  Gb  app_timer.o [1]
+SWI2_IRQHandler         0x00001669   0x26  Code  Gb  softdevice_handler.o [1]
+SystemCoreClock         0x20000000    0x4  Data  Gb  system_nrf51.o [1]
+SystemInit              0x00001451   0x4c  Code  Gb  system_nrf51.o [1]
+TIMER1_IRQHandler       0x00000d89    0xe  Code  Gb  nrf_drv_timer.o [1]
+UART0_IRQHandler        0x0000143b    0xc  Code  Gb  nrf_drv_uart.o [1]
+__ICFEDIT_region_RAM_end__ {Abs}
+                        0x20007fff         Data  Gb  command line/config [2]
+__ICFEDIT_region_RAM_start__ {Abs}
+                        0x20000000         Data  Gb  command line/config [2]
+__Vectors               0x00000000          --   Gb  iar_startup_nrf51.o [1]
+__Vectors_End           0x000000c0         Data  Gb  iar_startup_nrf51.o [1]
+__Vectors_Size {Abs}    0x000000c0          --   Gb  iar_startup_nrf51.o [1]
+__cmain                 0x000018a1         Code  Gb  cmain.o [4]
+__exit                  0x000018d5   0x14  Code  Gb  exit.o [5]
+__iar_copy_init3        0x000017cd   0x30  Code  Gb  copy_init3.o [4]
+__iar_data_init3        0x00001855   0x28  Code  Gb  data_init.o [4]
+__iar_program_start     0x000018e9         Code  Gb  cstartup_M.o [4]
+__iar_zero_init3        0x00001791   0x3c  Code  Gb  zero_init3.o [4]
+__low_level_init        0x000018bb    0x4  Code  Gb  low_level_init.o [3]
+__vector_table          0x00000000         Data  Gb  iar_startup_nrf51.o [1]
+_call_main              0x000018ad         Code  Gb  cmain.o [4]
+_exit                   0x000018c9         Code  Gb  cexit.o [4]
+_main                   0x000018b7         Code  Gb  cmain.o [4]
+app_error_fault_handler
+                        0x0000070f   0x1c  Code  Gb  main.o [1]
+app_error_handler       0x000006b9   0x16  Code  Gb  app_error.o [1]
+app_simple_timer_event_handler
+                        0x000009e1   0x28  Code  Lc  app_simple_timer.o [1]
+app_simple_timer_init   0x00000a09   0x38  Code  Gb  app_simple_timer.o [1]
+app_simple_timer_start  0x00000a41   0xa0  Code  Gb  app_simple_timer.o [1]
+app_simple_timer_stop   0x00000ae1   0x1a  Code  Gb  app_simple_timer.o [1]
+bsp_board_led_invert    0x000009ad    0xc  Code  Gb  boards.o [1]
+bsp_board_led_off       0x0000098b    0xe  Code  Gb  boards.o [1]
+bsp_board_led_on        0x0000097d    0xe  Code  Gb  boards.o [1]
+bsp_board_leds_init     0x000009b9   0x1a  Code  Gb  boards.o [1]
+bsp_board_leds_off      0x00000999   0x14  Code  Gb  boards.o [1]
+channel_handler_get     0x00000fb7    0xa  Code  Lc  nrf_drv_gpiote.o [1]
+channel_port_get        0x00000fad    0xa  Code  Lc  nrf_drv_gpiote.o [1]
+compare_reg_update      0x0000057d   0x7c  Code  Lc  app_timer.o [1]
+elapsed_ticks_acquire   0x00000339   0x58  Code  Lc  app_timer.o [1]
+exit                    0x000018bf    0x8  Code  Gb  exit.o [3]
+expired_timers_handler  0x0000042d   0x4e  Code  Lc  app_timer.o [1]
+intern_softdevice_events_execute
+                        0x000015c5   0xa4  Code  Gb  softdevice_handler.o [1]
+irq_handler             0x00000d2b   0x5e  Code  Lc  nrf_drv_timer.o [1]
+is_disabled_in_debug_needed
+                        0x0000150d   0x38  Code  Lc  system_nrf51.o [1]
+is_manual_peripheral_setup_needed
+                        0x0000149d   0x70  Code  Lc  system_nrf51.o [1]
+is_peripheral_domain_setup_needed
+                        0x00001545   0x54  Code  Lc  system_nrf51.o [1]
+led_and_timer_control   0x0000072b   0x30  Code  Lc  main.o [1]
+list_deletions_handler  0x000003a5   0x72  Code  Lc  app_timer.o [1]
+list_insertions_handler
+                        0x00000491   0xe2  Code  Lc  app_timer.o [1]
+m_ble_evt_buffer_size   0x200008b4    0x2  Data  Lc  softdevice_handler.o [1]
+m_ble_evt_handler       0x200008ac    0x4  Data  Lc  softdevice_handler.o [1]
+m_board_led_list        0x00001904    0x4  Data  Lc  boards.o [1]
+m_cb                    0x20000808   0x48  Data  Lc  nrf_drv_gpiote.o [1]
+m_cb                    0x2000086c    0xc  Data  Lc  nrf_drv_timer.o [1]
+m_cb                    0x20000850   0x1c  Data  Lc  nrf_drv_uart.o [1]
+m_evt_schedule_func     0x20000898    0x4  Data  Lc  app_timer.o [1]
+m_evt_schedule_func     0x200008a4    0x4  Data  Lc  softdevice_handler.o [1]
+m_mode                  0x200008b6    0x1  Data  Lc  app_simple_timer.o [1]
+m_op_queue              0x20000878    0x8  Data  Lc  app_timer.o [1]
+m_rtc1_reset            0x200008bb    0x1  Data  Lc  app_timer.o [1]
+m_rtc1_running          0x200008ba    0x1  Data  Lc  app_timer.o [1]
+m_simple_timer_state    0x200008b7    0x1  Data  Lc  app_simple_timer.o [1]
+m_softdevice_enabled    0x200008bd    0x1  Data  Lc  softdevice_handler.o [1]
+m_state                 0x200008bc    0x1  Data  Lc  main.o [1]
+m_state_transit_counter
+                        0x2000089c    0x4  Data  Lc  main.o [1]
+m_suspended             0x200008be    0x1  Data  Lc  softdevice_handler.o [1]
+m_sys_evt_handler       0x200008b0    0x4  Data  Lc  softdevice_handler.o [1]
+m_ticks_elapsed         0x20000880    0x8  Data  Lc  app_timer.o [1]
+m_ticks_elapsed_q_read_ind
+                        0x200008b8    0x1  Data  Lc  app_timer.o [1]
+m_ticks_elapsed_q_write_ind
+                        0x200008b9    0x1  Data  Lc  app_timer.o [1]
+m_ticks_latest          0x20000894    0x4  Data  Lc  app_timer.o [1]
+m_timeout_handler       0x20000888    0x4  Data  Lc  app_simple_timer.o [1]
+m_toggle_led_counter    0x200008a0    0x4  Data  Lc  main.o [1]
+main                    0x0000085f   0x36  Code  Gb  main.o [1]
+mp_ble_evt_buffer       0x200008a8    0x4  Data  Lc  softdevice_handler.o [1]
+mp_timeout_handler_context
+                        0x2000088c    0x4  Data  Lc  app_simple_timer.o [1]
+mp_timer_id_head        0x20000890    0x4  Data  Lc  app_timer.o [1]
+nrf_bitmask_bit_is_set  0x00000f81   0x10  Code  Lc  nrf_drv_gpiote.o [1]
+nrf_bitmask_bit_set     0x00000f91   0x16  Code  Lc  nrf_drv_gpiote.o [1]
+nrf_delay_ms            0x00000701    0xe  Code  Lc  main.o [1]
+nrf_delay_us            0x000000f9   0x2c  Code  Lc  app_timer.o [1]
+nrf_delay_us            0x000006d5   0x2c  Code  Lc  main.o [1]
+nrf_drv_common_irq_enable
+                        0x00000e55   0x20  Code  Gb  nrf_drv_common.o [1]
+nrf_drv_get_IRQn        0x00000bfd    0x6  Code  Lc  nrf_drv_timer.o [1]
+nrf_drv_timer_clear     0x00000cb1    0xc  Code  Gb  nrf_drv_timer.o [1]
+nrf_drv_timer_compare   0x00000cbd   0x38  Code  Gb  nrf_drv_timer.o [1]
+nrf_drv_timer_enable    0x00000c7d   0x1c  Code  Gb  nrf_drv_timer.o [1]
+nrf_drv_timer_extended_compare
+                        0x00000cf5   0x36  Code  Gb  nrf_drv_timer.o [1]
+nrf_drv_timer_init      0x00000c03   0x7a  Code  Gb  nrf_drv_timer.o [1]
+nrf_drv_timer_pause     0x00000ca5    0xc  Code  Gb  nrf_drv_timer.o [1]
+nrf_drv_timer_resume    0x00000c99    0xc  Code  Gb  nrf_drv_timer.o [1]
+nrf_gpio_cfg            0x000008bb   0x3a  Code  Lc  boards.o [1]
+nrf_gpio_cfg_output     0x000008f5   0x18  Code  Lc  boards.o [1]
+nrf_gpio_cfg_sense_set  0x00000ed1   0x50  Code  Lc  nrf_drv_gpiote.o [1]
+nrf_gpio_pin_clear      0x00000921   0x14  Code  Lc  boards.o [1]
+nrf_gpio_pin_port_decode
+                        0x000008b5    0x6  Code  Lc  boards.o [1]
+nrf_gpio_pin_port_decode
+                        0x00000ecb    0x6  Code  Lc  nrf_drv_gpiote.o [1]
+nrf_gpio_pin_sense_get  0x00000f21   0x1e  Code  Lc  nrf_drv_gpiote.o [1]
+nrf_gpio_pin_set        0x0000090d   0x14  Code  Lc  boards.o [1]
+nrf_gpio_pin_toggle     0x00000935   0x28  Code  Lc  boards.o [1]
+nrf_gpio_pin_write      0x0000095d   0x12  Code  Lc  boards.o [1]
+nrf_gpio_port_in_read   0x00000f3f    0x8  Code  Lc  nrf_drv_gpiote.o [1]
+nrf_gpio_port_out_clear
+                        0x00000977    0x6  Code  Lc  boards.o [1]
+nrf_gpio_port_out_set   0x0000096f    0x8  Code  Lc  boards.o [1]
+nrf_gpio_ports_read     0x00000f4d   0x2e  Code  Lc  nrf_drv_gpiote.o [1]
+nrf_gpiote_event_addr_get
+                        0x00000e9b    0x8  Code  Lc  nrf_drv_gpiote.o [1]
+nrf_gpiote_event_clear  0x00000e8d    0xe  Code  Lc  nrf_drv_gpiote.o [1]
+nrf_gpiote_event_is_set
+                        0x00000e75   0x18  Code  Lc  nrf_drv_gpiote.o [1]
+nrf_gpiote_event_pin_get
+                        0x00000eab   0x10  Code  Lc  nrf_drv_gpiote.o [1]
+nrf_gpiote_event_polarity_get
+                        0x00000ebb   0x10  Code  Lc  nrf_drv_gpiote.o [1]
+nrf_gpiote_int_is_enabled
+                        0x00000ea3    0x8  Code  Lc  nrf_drv_gpiote.o [1]
+nrf_timer_bit_width_set
+                        0x00000ba1   0x1a  Code  Lc  nrf_drv_timer.o [1]
+nrf_timer_cc_write      0x00000bd5   0x10  Code  Lc  nrf_drv_timer.o [1]
+nrf_timer_compare_event_get
+                        0x00000be5    0xe  Code  Lc  nrf_drv_timer.o [1]
+nrf_timer_compare_int_get
+                        0x00000bf3    0xa  Code  Lc  nrf_drv_timer.o [1]
+nrf_timer_event_check   0x00000b2d   0x14  Code  Lc  nrf_drv_timer.o [1]
+nrf_timer_event_clear   0x00000b25    0x8  Code  Lc  nrf_drv_timer.o [1]
+nrf_timer_frequency_set
+                        0x00000bbb   0x1a  Code  Lc  nrf_drv_timer.o [1]
+nrf_timer_int_disable   0x00000b69    0x8  Code  Lc  nrf_drv_timer.o [1]
+nrf_timer_int_enable    0x00000b61    0x8  Code  Lc  nrf_drv_timer.o [1]
+nrf_timer_int_enable_check
+                        0x00000b71   0x18  Code  Lc  nrf_drv_timer.o [1]
+nrf_timer_mode_set      0x00000b89   0x18  Code  Lc  nrf_drv_timer.o [1]
+nrf_timer_shorts_disable
+                        0x00000b51   0x10  Code  Lc  nrf_drv_timer.o [1]
+nrf_timer_shorts_enable
+                        0x00000b41   0x10  Code  Lc  nrf_drv_timer.o [1]
+nrf_timer_task_trigger  0x00000b1d    0x8  Code  Lc  nrf_drv_timer.o [1]
+nrf_uart_errorsrc_get_and_clear
+                        0x0000120d   0x10  Code  Lc  nrf_drv_uart.o [1]
+nrf_uart_event_check    0x000011d9   0x14  Code  Lc  nrf_drv_uart.o [1]
+nrf_uart_event_clear    0x000011d1    0x8  Code  Lc  nrf_drv_uart.o [1]
+nrf_uart_int_disable    0x00001205    0x8  Code  Lc  nrf_drv_uart.o [1]
+nrf_uart_int_enable_check
+                        0x000011ed   0x18  Code  Lc  nrf_drv_uart.o [1]
+nrf_uart_rxd_get        0x0000121d    0xa  Code  Lc  nrf_drv_uart.o [1]
+nrf_uart_task_trigger   0x0000122f    0x8  Code  Lc  nrf_drv_uart.o [1]
+nrf_uart_txd_set        0x00001227    0x8  Code  Lc  nrf_drv_uart.o [1]
+power_manage            0x00000857    0x8  Code  Lc  main.o [1]
+rtc1_compare0_set       0x000001a3    0x6  Code  Lc  app_timer.o [1]
+rtc1_counter_get        0x00000195    0x6  Code  Lc  app_timer.o [1]
+rtc1_start              0x00000125   0x32  Code  Lc  app_timer.o [1]
+rtc1_stop               0x00000157   0x3e  Code  Lc  app_timer.o [1]
+rx_byte                 0x00001263   0x3e  Code  Lc  nrf_drv_uart.o [1]
+rx_done_event           0x000012a1   0x1a  Code  Lc  nrf_drv_uart.o [1]
+state_entry_action_execute
+                        0x0000075b   0x32  Code  Lc  main.o [1]
+state_machine_state_change
+                        0x0000078d    0xc  Code  Lc  main.o [1]
+ticks_diff_get          0x0000019b    0x8  Code  Lc  app_timer.o [1]
+timeout_handler         0x00000799   0xbe  Code  Gb  main.o [1]
+timeout_handler_exec    0x0000027b   0x2e  Code  Lc  app_timer.o [1]
+timer_list_handler      0x00000605   0x50  Code  Lc  app_timer.o [1]
+timer_list_handler_sched
+                        0x00000271    0xa  Code  Lc  app_timer.o [1]
+timer_list_insert       0x000001a9   0x68  Code  Lc  app_timer.o [1]
+timer_list_remove       0x00000211   0x56  Code  Lc  app_timer.o [1]
+timer_timeouts_check    0x000002a9   0x7a  Code  Lc  app_timer.o [1]
+timer_timeouts_check_sched
+                        0x00000267    0xa  Code  Lc  app_timer.o [1]
+tx_byte                 0x0000123d   0x26  Code  Lc  nrf_drv_uart.o [1]
+tx_done_event           0x000012bb   0x24  Code  Lc  nrf_drv_uart.o [1]
+uart_irq_handler        0x000012df  0x15c  Code  Lc  nrf_drv_uart.o [1]
+
+
+[1] = D:\Workspace\nRF51_Timer\EWARM\Debug\Obj
+[2] = command line
+[3] = dl6M_tlf.a
+[4] = rt6M_tl.a
+[5] = shb_l.a
+
+  6 128 bytes of readonly  code memory
+    332 bytes of readonly  data memory
+  2 235 bytes of readwrite data memory
+
+Errors: none
+Warnings: none

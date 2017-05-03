@@ -137,7 +137,7 @@ void Store_History_Data(void)
 	u16 Page_Start;														// 存储起始页码
 	u16 cData_Addr, cIndex_Addr;										// 页内当前可用地址
 	u32 Op_Data_Addr, Op_Index_Addr;									// 当前操作地址
-	u8  i = 100;
+//	u8  i = 100;
 
 	// 查找储存起始页 Index页可用地址
 	Page_Start    = SearchFor_Valid_Addr(Page_Index, &cIndex_Addr);
@@ -150,7 +150,7 @@ void Store_History_Data(void)
 	Op_Data_Addr  = (Page_Start << 12) + cData_Addr;
 
 	// 存储数据
-	while(i)
+	while(1)
 	{
 		// 获取当前数据 16Bytes
 		Get_Current_Data(Current_DataBuff);
@@ -179,8 +179,8 @@ void Store_History_Data(void)
 			}
 		}
 		// 延时1min
-		nrf_delay_ms(10);
-		i--;
+		nrf_delay_ms(100);
+//		i--;
 	}
 }
 // end of void Store_History_Data(void)
@@ -206,7 +206,7 @@ void Get_Current_Data(u8* Data_Buff)
 	*(++Data_Buff) = Date_Buff_s.WeekDay;
 	*(++Data_Buff) = Date_Buff_s.Months;
 	*(++Data_Buff) = Date_Buff_s.Years;
-	*(++Data_Buff) = 0x20;
+	*(++Data_Buff) = I_temp;
 
 	i = 2;
 	while(i)

@@ -11,6 +11,8 @@
  */
 
 #include "sdk_common.h"
+#include "Global.h"
+
 #if NRF_MODULE_ENABLED(TIMER)
 #define ENABLED_TIMER_COUNT (TIMER0_ENABLED+TIMER1_ENABLED+TIMER2_ENABLED+TIMER3_ENABLED+TIMER4_ENABLED)
 #if ENABLED_TIMER_COUNT
@@ -282,6 +284,19 @@ void TIMER2_IRQHandler(void)
 {
     irq_handler(NRF_TIMER2, &m_cb[TIMER2_INSTANCE_INDEX],
         NRF_TIMER_CC_CHANNEL_COUNT(2));
+
+//    if ((NRF_TIMER2->EVENTS_COMPARE[2] == 1) && (NRF_TIMER2->INTENSET & TIMER_INTENSET_COMPARE2_Msk))
+//   	{
+//		NRF_TIMER2->EVENTS_COMPARE[2] = 0;
+//		
+//		if (9 <= I_temp)
+//		{
+//			I_temp = 0;
+//		}
+//		I_temp++;
+//		
+//		NRF_TIMER2->TASKS_CLEAR = 1;
+//    }
 }
 #endif
 

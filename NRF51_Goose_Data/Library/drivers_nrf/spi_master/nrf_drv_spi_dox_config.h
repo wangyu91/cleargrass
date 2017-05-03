@@ -10,7 +10,7 @@
  *
  * @note This is an NRF_CONFIG macro.
  */
-#define SPI_ENABLED
+#define SPI_ENABLED 
 
 /** @brief Interrupt priority
  *
@@ -37,7 +37,7 @@
  *
  * @note This is an NRF_CONFIG macro.
  */
-#define SPI0_ENABLED
+#define SPI0_ENABLED 
 
 /** @brief Use EasyDMA
  *
@@ -45,7 +45,7 @@
  *
  * @note This is an NRF_CONFIG macro.
  */
-#define SPI0_USE_EASY_DMA
+#define SPI0_USE_EASY_DMA 
 
 
 /** @brief SPI frequency

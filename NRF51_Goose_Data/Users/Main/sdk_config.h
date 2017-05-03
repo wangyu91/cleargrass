@@ -6,13 +6,221 @@
 #ifdef USE_APP_CONFIG
 #include "app_config.h"
 #endif
+// <h> nRF_BLE 
+
+//==========================================================
+// <q> BLE_ADVERTISING_ENABLED  - ble_advertising - Advertising module
+ 
+
+#ifndef BLE_ADVERTISING_ENABLED
+#define BLE_ADVERTISING_ENABLED 1
+#endif
+
+// <q> BLE_DTM_ENABLED  - ble_dtm - Module for testing RF/PHY using DTM commands
+ 
+
+#ifndef BLE_DTM_ENABLED
+#define BLE_DTM_ENABLED 0
+#endif
+
+// <q> BLE_RACP_ENABLED  - ble_racp - Record Access Control Point library
+ 
+
+#ifndef BLE_RACP_ENABLED
+#define BLE_RACP_ENABLED 0
+#endif
+
+// <q> NRF_BLE_QWR_ENABLED  - nrf_ble_qwr - Queued writes support module (prepare/execute write)
+ 
+
+#ifndef NRF_BLE_QWR_ENABLED
+#define NRF_BLE_QWR_ENABLED 0
+#endif
+
+// <q> PEER_MANAGER_ENABLED  - peer_manager - Peer Manager
+ 
+
+#ifndef PEER_MANAGER_ENABLED
+#define PEER_MANAGER_ENABLED 1
+#endif
+
+// </h> 
+//==========================================================
+
+// <h> nRF_BLE_Services 
+
+//==========================================================
+// <q> BLE_ANCS_C_ENABLED  - ble_ancs_c - Apple Notification Service Client
+ 
+
+#ifndef BLE_ANCS_C_ENABLED
+#define BLE_ANCS_C_ENABLED 0
+#endif
+
+// <q> BLE_ANS_C_ENABLED  - ble_ans_c - Alert Notification Service Client
+ 
+
+#ifndef BLE_ANS_C_ENABLED
+#define BLE_ANS_C_ENABLED 0
+#endif
+
+// <q> BLE_BAS_C_ENABLED  - ble_bas_c - Battery Service Client
+ 
+
+#ifndef BLE_BAS_C_ENABLED
+#define BLE_BAS_C_ENABLED 0
+#endif
+
+// <q> BLE_BAS_ENABLED  - ble_bas - Battery Service
+ 
+
+#ifndef BLE_BAS_ENABLED
+#define BLE_BAS_ENABLED 0
+#endif
+
+// <q> BLE_CSCS_ENABLED  - ble_cscs - Cycling Speed and Cadence Service
+ 
+
+#ifndef BLE_CSCS_ENABLED
+#define BLE_CSCS_ENABLED 0
+#endif
+
+// <q> BLE_CTS_C_ENABLED  - ble_cts_c - Current Time Service Client
+ 
+
+#ifndef BLE_CTS_C_ENABLED
+#define BLE_CTS_C_ENABLED 0
+#endif
+
+// <q> BLE_DIS_ENABLED  - ble_dis - Device Information Service
+ 
+
+#ifndef BLE_DIS_ENABLED
+#define BLE_DIS_ENABLED 0
+#endif
+
+// <q> BLE_GLS_ENABLED  - ble_gls - Glucose Service
+ 
+
+#ifndef BLE_GLS_ENABLED
+#define BLE_GLS_ENABLED 0
+#endif
+
+// <q> BLE_HIDS_ENABLED  - ble_hids - Human Interface Device Service
+ 
+
+#ifndef BLE_HIDS_ENABLED
+#define BLE_HIDS_ENABLED 0
+#endif
+
+// <e> BLE_HRS_C_ENABLED - ble_hrs_c - Heart Rate Service Client
+//==========================================================
+#ifndef BLE_HRS_C_ENABLED
+#define BLE_HRS_C_ENABLED 0
+#endif
+#if  BLE_HRS_C_ENABLED
+// <o> BLE_HRS_C_RR_INTERVALS_MAX_CNT - Maximum number of RR_INTERVALS per notification to be decoded 
+#ifndef BLE_HRS_C_RR_INTERVALS_MAX_CNT
+#define BLE_HRS_C_RR_INTERVALS_MAX_CNT 30
+#endif
+
+#endif //BLE_HRS_C_ENABLED
+// </e>
+
+// <q> BLE_HRS_ENABLED  - ble_hrs - Heart Rate Service
+ 
+
+#ifndef BLE_HRS_ENABLED
+#define BLE_HRS_ENABLED 0
+#endif
+
+// <q> BLE_HTS_ENABLED  - ble_hts - Health Thermometer Service
+ 
+
+#ifndef BLE_HTS_ENABLED
+#define BLE_HTS_ENABLED 0
+#endif
+
+// <q> BLE_IAS_C_ENABLED  - ble_ias_c - Immediate Alert Service Client
+ 
+
+#ifndef BLE_IAS_C_ENABLED
+#define BLE_IAS_C_ENABLED 0
+#endif
+
+// <q> BLE_IAS_ENABLED  - ble_ias - Immediate Alert Service
+ 
+
+#ifndef BLE_IAS_ENABLED
+#define BLE_IAS_ENABLED 0
+#endif
+
+// <q> BLE_LBS_C_ENABLED  - ble_lbs_c - Nordic LED Button Service Client
+ 
+
+#ifndef BLE_LBS_C_ENABLED
+#define BLE_LBS_C_ENABLED 0
+#endif
+
+// <q> BLE_LBS_ENABLED  - ble_lbs - LED Button Service
+ 
+
+#ifndef BLE_LBS_ENABLED
+#define BLE_LBS_ENABLED 0
+#endif
+
+// <q> BLE_LLS_ENABLED  - ble_lls - Link Loss Service
+ 
+
+#ifndef BLE_LLS_ENABLED
+#define BLE_LLS_ENABLED 0
+#endif
+
+// <q> BLE_NUS_C_ENABLED  - ble_nus_c - Nordic UART Central Service
+ 
+
+#ifndef BLE_NUS_C_ENABLED
+#define BLE_NUS_C_ENABLED 0
+#endif
+
+// <q> BLE_NUS_ENABLED  - ble_nus - Nordic UART Service
+ 
+
+#ifndef BLE_NUS_ENABLED
+#define BLE_NUS_ENABLED 0
+#endif
+
+// <q> BLE_RSCS_C_ENABLED  - ble_rscs_c - Running Speed and Cadence Client
+ 
+
+#ifndef BLE_RSCS_C_ENABLED
+#define BLE_RSCS_C_ENABLED 0
+#endif
+
+// <q> BLE_RSCS_ENABLED  - ble_rscs - Running Speed and Cadence Service
+ 
+
+#ifndef BLE_RSCS_ENABLED
+#define BLE_RSCS_ENABLED 0
+#endif
+
+// <q> BLE_TPS_ENABLED  - ble_tps - TX Power Service
+ 
+
+#ifndef BLE_TPS_ENABLED
+#define BLE_TPS_ENABLED 0
+#endif
+
+// </h> 
+//==========================================================
+
 // <h> nRF_Drivers 
 
 //==========================================================
 // <e> ADC_ENABLED - nrf_drv_adc - Driver for ADC peripheral (nRF51)
 //==========================================================
 #ifndef ADC_ENABLED
-#define ADC_ENABLED 1
+#define ADC_ENABLED 0
 #endif
 #if  ADC_ENABLED
 // <o> ADC_CONFIG_IRQ_PRIORITY  - Interrupt priority
@@ -82,6 +290,51 @@
 // </e>
 
 #endif //ADC_ENABLED
+// </e>
+
+// <e> APP_USBD_ENABLED - app_usbd - USB Device library
+//==========================================================
+#ifndef APP_USBD_ENABLED
+#define APP_USBD_ENABLED 0
+#endif
+#if  APP_USBD_ENABLED
+// <o> APP_USBD_VID - Vendor ID  <0x0000-0xFFFF> 
+
+
+// <i> Vendor ID ordered from USB IF: http://www.usb.org/developers/vendor/
+
+#ifndef APP_USBD_VID
+#define APP_USBD_VID 0
+#endif
+
+// <o> APP_USBD_PID - Product ID  <0x0000-0xFFFF> 
+
+
+// <i> Selected Product ID
+
+#ifndef APP_USBD_PID
+#define APP_USBD_PID 0
+#endif
+
+// <o> APP_USBD_DEVICE_VER_MAJOR - Device version, major part  <0-99> 
+
+
+// <i> Device version, will be converted automatically to BCD notation. Use just decimal values.
+
+#ifndef APP_USBD_DEVICE_VER_MAJOR
+#define APP_USBD_DEVICE_VER_MAJOR 1
+#endif
+
+// <o> APP_USBD_DEVICE_VER_MINOR - Device version, minor part  <0-99> 
+
+
+// <i> Device version, will be converted automatically to BCD notation. Use just decimal values.
+
+#ifndef APP_USBD_DEVICE_VER_MINOR
+#define APP_USBD_DEVICE_VER_MINOR 0
+#endif
+
+#endif //APP_USBD_ENABLED
 // </e>
 
 // <e> CLOCK_ENABLED - nrf_drv_clock - CLOCK peripheral driver
@@ -662,7 +915,7 @@
 // <e> LPCOMP_ENABLED - nrf_drv_lpcomp - LPCOMP peripheral driver
 //==========================================================
 #ifndef LPCOMP_ENABLED
-#define LPCOMP_ENABLED 1
+#define LPCOMP_ENABLED 0
 #endif
 #if  LPCOMP_ENABLED
 // <o> LPCOMP_CONFIG_REFERENCE  - Reference voltage
@@ -896,7 +1149,7 @@
 // <e> PERIPHERAL_RESOURCE_SHARING_ENABLED - nrf_drv_common - Peripheral drivers common module
 //==========================================================
 #ifndef PERIPHERAL_RESOURCE_SHARING_ENABLED
-#define PERIPHERAL_RESOURCE_SHARING_ENABLED 1
+#define PERIPHERAL_RESOURCE_SHARING_ENABLED 0
 #endif
 #if  PERIPHERAL_RESOURCE_SHARING_ENABLED
 // <e> COMMON_CONFIG_LOG_ENABLED - Enables logging in the module.
@@ -958,7 +1211,7 @@
 // <e> POWER_ENABLED - nrf_drv_power - POWER peripheral driver
 //==========================================================
 #ifndef POWER_ENABLED
-#define POWER_ENABLED 1
+#define POWER_ENABLED 0
 #endif
 #if  POWER_ENABLED
 // <o> POWER_CONFIG_IRQ_PRIORITY  - Interrupt priority
@@ -998,7 +1251,7 @@
 // <e> PPI_ENABLED - nrf_drv_ppi - PPI peripheral driver
 //==========================================================
 #ifndef PPI_ENABLED
-#define PPI_ENABLED 1
+#define PPI_ENABLED 0
 #endif
 #if  PPI_ENABLED
 // <e> PPI_CONFIG_LOG_ENABLED - Enables logging in the module.
@@ -1237,7 +1490,7 @@
 // <e> QDEC_ENABLED - nrf_drv_qdec - QDEC peripheral driver
 //==========================================================
 #ifndef QDEC_ENABLED
-#define QDEC_ENABLED 1
+#define QDEC_ENABLED 0
 #endif
 #if  QDEC_ENABLED
 // <o> QDEC_CONFIG_REPORTPER  - Report period
@@ -1391,7 +1644,7 @@
 // <e> RNG_ENABLED - nrf_drv_rng - RNG peripheral driver
 //==========================================================
 #ifndef RNG_ENABLED
-#define RNG_ENABLED 1
+#define RNG_ENABLED 0
 #endif
 #if  RNG_ENABLED
 // <q> RNG_CONFIG_ERROR_CORRECTION  - Error correction
@@ -1478,7 +1731,7 @@
 // <e> RTC_ENABLED - nrf_drv_rtc - RTC peripheral driver
 //==========================================================
 #ifndef RTC_ENABLED
-#define RTC_ENABLED 1
+#define RTC_ENABLED 0
 #endif
 #if  RTC_ENABLED
 // <o> RTC_DEFAULT_CONFIG_FREQUENCY - Frequency  <16-32768> 
@@ -1512,7 +1765,7 @@
  
 
 #ifndef RTC0_ENABLED
-#define RTC0_ENABLED 1
+#define RTC0_ENABLED 0
 #endif
 
 // <q> RTC1_ENABLED  - Enable RTC1 instance
@@ -1702,7 +1955,7 @@
 // <e> SPIS_ENABLED - nrf_drv_spis - SPI Slave driver
 //==========================================================
 #ifndef SPIS_ENABLED
-#define SPIS_ENABLED 1
+#define SPIS_ENABLED 0
 #endif
 #if  SPIS_ENABLED
 // <o> SPIS_DEFAULT_CONFIG_IRQ_PRIORITY  - Interrupt priority
@@ -1763,7 +2016,7 @@
  
 
 #ifndef SPIS1_ENABLED
-#define SPIS1_ENABLED 1
+#define SPIS1_ENABLED 0
 #endif
 
 // <q> SPIS2_ENABLED  - Enable SPIS2 instance
@@ -1990,7 +2243,7 @@
 // <e> TIMER_ENABLED - nrf_drv_timer - TIMER periperal driver
 //==========================================================
 #ifndef TIMER_ENABLED
-#define TIMER_ENABLED 1
+#define TIMER_ENABLED 0
 #endif
 #if  TIMER_ENABLED
 // <o> TIMER_DEFAULT_CONFIG_FREQUENCY  - Timer frequency if in Timer mode
@@ -2047,21 +2300,21 @@
  
 
 #ifndef TIMER0_ENABLED
-#define TIMER0_ENABLED 1
+#define TIMER0_ENABLED 0
 #endif
 
 // <q> TIMER1_ENABLED  - Enable TIMER1 instance
  
 
 #ifndef TIMER1_ENABLED
-#define TIMER1_ENABLED 1
+#define TIMER1_ENABLED 0
 #endif
 
 // <q> TIMER2_ENABLED  - Enable TIMER2 instance
  
 
 #ifndef TIMER2_ENABLED
-#define TIMER2_ENABLED 1
+#define TIMER2_ENABLED 0
 #endif
 
 // <q> TIMER3_ENABLED  - Enable TIMER3 instance
@@ -2137,7 +2390,7 @@
 // <e> TWIS_ENABLED - nrf_drv_twis - TWIS peripheral driver
 //==========================================================
 #ifndef TWIS_ENABLED
-#define TWIS_ENABLED 1
+#define TWIS_ENABLED 0
 #endif
 #if  TWIS_ENABLED
 // <o> TWIS_DEFAULT_CONFIG_ADDR0 - Address0 
@@ -2274,7 +2527,7 @@
 // <e> TWI_ENABLED - nrf_drv_twi - TWI/TWIM peripheral driver
 //==========================================================
 #ifndef TWI_ENABLED
-#define TWI_ENABLED 1
+#define TWI_ENABLED 0
 #endif
 #if  TWI_ENABLED
 // <o> TWI_DEFAULT_CONFIG_FREQUENCY  - Frequency
@@ -2317,7 +2570,7 @@
 // <e> TWI0_ENABLED - Enable TWI0 instance
 //==========================================================
 #ifndef TWI0_ENABLED
-#define TWI0_ENABLED 1
+#define TWI0_ENABLED 0
 #endif
 #if  TWI0_ENABLED
 // <q> TWI0_USE_EASY_DMA  - Use EasyDMA (if present)
@@ -2333,7 +2586,7 @@
 // <e> TWI1_ENABLED - Enable TWI1 instance
 //==========================================================
 #ifndef TWI1_ENABLED
-#define TWI1_ENABLED 1
+#define TWI1_ENABLED 0
 #endif
 #if  TWI1_ENABLED
 // <q> TWI1_USE_EASY_DMA  - Use EasyDMA (if present)
@@ -2548,10 +2801,35 @@
 #endif //UART_ENABLED
 // </e>
 
+// <e> USBD_ENABLED - nrf_drv_usbd - USB driver
+//==========================================================
+#ifndef USBD_ENABLED
+#define USBD_ENABLED 0
+#endif
+#if  USBD_ENABLED
+// <o> NRF_DRV_USBD_DMASCHEDULER_MODE  - USBD SMA scheduler working scheme
+ 
+// <0=> Prioritized access 
+// <1=> Round Robin 
+
+#ifndef NRF_DRV_USBD_DMASCHEDULER_MODE
+#define NRF_DRV_USBD_DMASCHEDULER_MODE 0
+#endif
+
+// <q> NRF_USBD_DRV_LOG_ENABLED  - Enable logging.
+ 
+
+#ifndef NRF_USBD_DRV_LOG_ENABLED
+#define NRF_USBD_DRV_LOG_ENABLED 0
+#endif
+
+#endif //USBD_ENABLED
+// </e>
+
 // <e> WDT_ENABLED - nrf_drv_wdt - WDT peripheral driver
 //==========================================================
 #ifndef WDT_ENABLED
-#define WDT_ENABLED 1
+#define WDT_ENABLED 0
 #endif
 #if  WDT_ENABLED
 // <o> WDT_CONFIG_BEHAVIOUR  - WDT behavior in CPU SLEEP or HALT mode
@@ -2647,31 +2925,24 @@
 // <h> nRF_Libraries 
 
 //==========================================================
-// <q> APP_FIFO_ENABLED  - app_fifo - Software FIFO implementation
- 
-
-#ifndef APP_FIFO_ENABLED
-#define APP_FIFO_ENABLED 1
-#endif
-
 // <q> APP_GPIOTE_ENABLED  - app_gpiote - GPIOTE events dispatcher
  
 
 #ifndef APP_GPIOTE_ENABLED
-#define APP_GPIOTE_ENABLED 1
+#define APP_GPIOTE_ENABLED 0
 #endif
 
 // <q> APP_PWM_ENABLED  - app_pwm - PWM functionality
  
 
 #ifndef APP_PWM_ENABLED
-#define APP_PWM_ENABLED 1
+#define APP_PWM_ENABLED 0
 #endif
 
 // <e> APP_SCHEDULER_ENABLED - app_scheduler - Events scheduler
 //==========================================================
 #ifndef APP_SCHEDULER_ENABLED
-#define APP_SCHEDULER_ENABLED 1
+#define APP_SCHEDULER_ENABLED 0
 #endif
 #if  APP_SCHEDULER_ENABLED
 // <q> APP_SCHEDULER_WITH_PAUSE  - Enabling pause feature
@@ -2721,13 +2992,13 @@
  
 
 #ifndef APP_TWI_ENABLED
-#define APP_TWI_ENABLED 1
+#define APP_TWI_ENABLED 0
 #endif
 
 // <e> APP_UART_ENABLED - app_uart - UART driver
 //==========================================================
 #ifndef APP_UART_ENABLED
-#define APP_UART_ENABLED 1
+#define APP_UART_ENABLED 0
 #endif
 #if  APP_UART_ENABLED
 // <o> APP_UART_DRIVER_INSTANCE  - UART instance used
@@ -2740,6 +3011,41 @@
 
 #endif //APP_UART_ENABLED
 // </e>
+
+// <q> APP_USBD_CLASS_AUDIO_ENABLED  - app_usbd_audio - USB AUDIO class
+ 
+
+#ifndef APP_USBD_CLASS_AUDIO_ENABLED
+#define APP_USBD_CLASS_AUDIO_ENABLED 0
+#endif
+
+// <q> APP_USBD_CLASS_HID_ENABLED  - app_usbd_hid - USB HID class
+ 
+
+#ifndef APP_USBD_CLASS_HID_ENABLED
+#define APP_USBD_CLASS_HID_ENABLED 0
+#endif
+
+// <q> APP_USBD_HID_GENERIC_ENABLED  - app_usbd_hid_generic - USB HID generic
+ 
+
+#ifndef APP_USBD_HID_GENERIC_ENABLED
+#define APP_USBD_HID_GENERIC_ENABLED 0
+#endif
+
+// <q> APP_USBD_HID_KBD_ENABLED  - app_usbd_hid_kbd - USB HID keyboard
+ 
+
+#ifndef APP_USBD_HID_KBD_ENABLED
+#define APP_USBD_HID_KBD_ENABLED 0
+#endif
+
+// <q> APP_USBD_HID_MOUSE_ENABLED  - app_usbd_hid_mouse - USB HID mouse
+ 
+
+#ifndef APP_USBD_HID_MOUSE_ENABLED
+#define APP_USBD_HID_MOUSE_ENABLED 0
+#endif
 
 // <q> BUTTON_ENABLED  - app_button - buttons handling module
  
@@ -2759,7 +3065,7 @@
  
 
 #ifndef CRC32_ENABLED
-#define CRC32_ENABLED 1
+#define CRC32_ENABLED 0
 #endif
 
 // <q> ECC_ENABLED  - ecc - Elliptic Curve Cryptography Library
@@ -2769,17 +3075,102 @@
 #define ECC_ENABLED 0
 #endif
 
+// <e> FDS_ENABLED - fds - Flash data storage module
+//==========================================================
+#ifndef FDS_ENABLED
+#define FDS_ENABLED 1
+#endif
+#if  FDS_ENABLED
+// <o> FDS_OP_QUEUE_SIZE - Size of the internal queue. 
+#ifndef FDS_OP_QUEUE_SIZE
+#define FDS_OP_QUEUE_SIZE 4
+#endif
+
+// <o> FDS_CHUNK_QUEUE_SIZE - Determines how many @ref fds_record_chunk_t structures can be buffered at any time. 
+#ifndef FDS_CHUNK_QUEUE_SIZE
+#define FDS_CHUNK_QUEUE_SIZE 8
+#endif
+
+// <o> FDS_MAX_USERS - Maximum number of callbacks that can be registered. 
+#ifndef FDS_MAX_USERS
+#define FDS_MAX_USERS 8
+#endif
+
+// <o> FDS_VIRTUAL_PAGES - Number of virtual flash pages to use. 
+// <i> One of the virtual pages is reserved by the system for garbage collection.
+// <i> Therefore, the minimum is two virtual pages: one page to store data and
+// <i> one page to be used by the system for garbage collection. The total amount
+// <i> of flash memory that is used by FDS amounts to @ref FDS_VIRTUAL_PAGES
+// <i> @ref FDS_VIRTUAL_PAGE_SIZE * 4 bytes.
+
+#ifndef FDS_VIRTUAL_PAGES
+#define FDS_VIRTUAL_PAGES 3
+#endif
+
+// <o> FDS_VIRTUAL_PAGE_SIZE  - The size of a virtual page of flash memory, expressed in number of 4-byte words.
+ 
+
+// <i> By default, a virtual page is the same size as a physical page.
+// <i> The size of a virtual page must be a multiple of the size of a physical page.
+// <256=> 256 
+// <512=> 512 
+// <1024=> 1024 
+
+#ifndef FDS_VIRTUAL_PAGE_SIZE
+#define FDS_VIRTUAL_PAGE_SIZE 256
+#endif
+
+#endif //FDS_ENABLED
+// </e>
+
+// <e> FSTORAGE_ENABLED - fstorage - Flash storage module
+//==========================================================
+#ifndef FSTORAGE_ENABLED
+#define FSTORAGE_ENABLED 1
+#endif
+#if  FSTORAGE_ENABLED
+// <o> FS_QUEUE_SIZE - Configures the size of the internal queue. 
+// <i> Increase this if there are many users, or if it is likely that many
+// <i> operation will be queued at once without waiting for the previous operations
+// <i> to complete. In general, increase the queue size if you frequently receive
+// <i> @ref FS_ERR_QUEUE_FULL errors when calling @ref fs_store or @ref fs_erase.
+
+#ifndef FS_QUEUE_SIZE
+#define FS_QUEUE_SIZE 4
+#endif
+
+// <o> FS_OP_MAX_RETRIES - Number attempts to execute an operation if the SoftDevice fails. 
+// <i> Increase this value if events return the @ref FS_ERR_OPERATION_TIMEOUT
+// <i> error often. The SoftDevice may fail to schedule flash access due to high BLE activity.
+
+#ifndef FS_OP_MAX_RETRIES
+#define FS_OP_MAX_RETRIES 3
+#endif
+
+// <o> FS_MAX_WRITE_SIZE_WORDS - Maximum number of words to be written to flash in a single operation. 
+// <i> Tweaking this value can increase the chances of the SoftDevice being
+// <i> able to fit flash operations in between radio activity. This value is bound by the
+// <i> maximum number of words which the SoftDevice can write to flash in a single call to
+// <i> @ref sd_flash_write, which is 256 words for nRF51 ICs and 1024 words for nRF52 ICs.
+
+#ifndef FS_MAX_WRITE_SIZE_WORDS
+#define FS_MAX_WRITE_SIZE_WORDS 256
+#endif
+
+#endif //FSTORAGE_ENABLED
+// </e>
+
 // <q> HARDFAULT_HANDLER_ENABLED  - hardfault_default - HardFault default handler for debugging and release
  
 
 #ifndef HARDFAULT_HANDLER_ENABLED
-#define HARDFAULT_HANDLER_ENABLED 1
+#define HARDFAULT_HANDLER_ENABLED 0
 #endif
 
 // <e> HCI_MEM_POOL_ENABLED - hci_mem_pool - memory pool implementation used by HCI
 //==========================================================
 #ifndef HCI_MEM_POOL_ENABLED
-#define HCI_MEM_POOL_ENABLED 1
+#define HCI_MEM_POOL_ENABLED 0
 #endif
 #if  HCI_MEM_POOL_ENABLED
 // <o> HCI_TX_BUF_SIZE - TX buffer size in bytes. 
@@ -2803,7 +3194,7 @@
 // <e> HCI_SLIP_ENABLED - hci_slip - SLIP protocol implementation used by HCI
 //==========================================================
 #ifndef HCI_SLIP_ENABLED
-#define HCI_SLIP_ENABLED 1
+#define HCI_SLIP_ENABLED 0
 #endif
 #if  HCI_SLIP_ENABLED
 // <o> HCI_UART_BAUDRATE  - Default Baudrate
@@ -2864,7 +3255,7 @@
 // <e> HCI_TRANSPORT_ENABLED - hci_transport - HCI transport
 //==========================================================
 #ifndef HCI_TRANSPORT_ENABLED
-#define HCI_TRANSPORT_ENABLED 1
+#define HCI_TRANSPORT_ENABLED 0
 #endif
 #if  HCI_TRANSPORT_ENABLED
 // <o> HCI_MAX_PACKET_SIZE_IN_BITS - Maximum size of a single application packet in bits. 
@@ -2879,20 +3270,20 @@
  
 
 #ifndef LED_SOFTBLINK_ENABLED
-#define LED_SOFTBLINK_ENABLED 1
+#define LED_SOFTBLINK_ENABLED 0
 #endif
 
 // <q> LOW_POWER_PWM_ENABLED  - low_power_pwm - low_power_pwm module
  
 
 #ifndef LOW_POWER_PWM_ENABLED
-#define LOW_POWER_PWM_ENABLED 1
+#define LOW_POWER_PWM_ENABLED 0
 #endif
 
 // <e> MEM_MANAGER_ENABLED - mem_manager - Dynamic memory allocator
 //==========================================================
 #ifndef MEM_MANAGER_ENABLED
-#define MEM_MANAGER_ENABLED 1
+#define MEM_MANAGER_ENABLED 0
 #endif
 #if  MEM_MANAGER_ENABLED
 // <o> MEMORY_MANAGER_SMALL_BLOCK_COUNT - Size of each memory blocks identified as 'small' block.  <0-255> 
@@ -2957,7 +3348,7 @@
 // <e> NRF_CSENSE_ENABLED - nrf_csense - nrf_csense module
 //==========================================================
 #ifndef NRF_CSENSE_ENABLED
-#define NRF_CSENSE_ENABLED 1
+#define NRF_CSENSE_ENABLED 0
 #endif
 #if  NRF_CSENSE_ENABLED
 // <o> NRF_CSENSE_PAD_HYSTERESIS - Minimal value of change to decide that pad was touched. 
@@ -2998,7 +3389,7 @@
 // <e> NRF_DRV_CSENSE_ENABLED - nrf_drv_csense - Capacitive sensor module
 //==========================================================
 #ifndef NRF_DRV_CSENSE_ENABLED
-#define NRF_DRV_CSENSE_ENABLED 1
+#define NRF_DRV_CSENSE_ENABLED 0
 #endif
 #if  NRF_DRV_CSENSE_ENABLED
 // <o> TIMER0_FOR_CSENSE - First TIMER instance used by the driver (except nRF51) 
@@ -3025,15 +3416,55 @@
  
 
 #ifndef NRF_QUEUE_ENABLED
-#define NRF_QUEUE_ENABLED 1
+#define NRF_QUEUE_ENABLED 0
 #endif
 
 // <q> SLIP_ENABLED  - slip - SLIP encoding decoding
  
 
 #ifndef SLIP_ENABLED
-#define SLIP_ENABLED 1
+#define SLIP_ENABLED 0
 #endif
+
+// <h> app_usbd_cdc_acm - USB CDC ACM class
+
+//==========================================================
+// <q> APP_USBD_CLASS_CDC_ACM_ENABLED  - Enabling USBD CDC ACM Class library
+ 
+
+#ifndef APP_USBD_CLASS_CDC_ACM_ENABLED
+#define APP_USBD_CLASS_CDC_ACM_ENABLED 0
+#endif
+
+// <q> APP_USBD_CDC_ACM_LOG_ENABLED  - Enables logging in the module.
+ 
+
+#ifndef APP_USBD_CDC_ACM_LOG_ENABLED
+#define APP_USBD_CDC_ACM_LOG_ENABLED 0
+#endif
+
+// </h> 
+//==========================================================
+
+// <h> app_usbd_msc - USB MSC class
+
+//==========================================================
+// <q> APP_USBD_CLASS_MSC_ENABLED  - Enabling USBD MSC Class library
+ 
+
+#ifndef APP_USBD_CLASS_MSC_ENABLED
+#define APP_USBD_CLASS_MSC_ENABLED 0
+#endif
+
+// <q> APP_USBD_MSC_CLASS_LOG_ENABLED  - Enables logging in the module.
+ 
+
+#ifndef APP_USBD_MSC_CLASS_LOG_ENABLED
+#define APP_USBD_MSC_CLASS_LOG_ENABLED 0
+#endif
+
+// </h> 
+//==========================================================
 
 // </h> 
 //==========================================================

@@ -10,7 +10,7 @@
  *
  * @note This is an NRF_CONFIG macro.
  */
-#define TIMER_ENABLED
+#define TIMER_ENABLED 
 
 /** @brief Timer frequency if in Timer mode
  *
@@ -28,7 +28,7 @@
  *
  * @note This is an NRF_CONFIG macro.
  */
-#define TIMER_DEFAULT_CONFIG_FREQUENCY
+#define TIMER_DEFAULT_CONFIG_FREQUENCY 
 
 
 /** @brief Timer mode or operation
@@ -39,7 +39,7 @@
  *
  * @note This is an NRF_CONFIG macro.
  */
-#define TIMER_DEFAULT_CONFIG_MODE
+#define TIMER_DEFAULT_CONFIG_MODE 
 
 
 /** @brief Timer counter bit width
@@ -52,7 +52,7 @@
  *
  * @note This is an NRF_CONFIG macro.
  */
-#define TIMER_DEFAULT_CONFIG_BIT_WIDTH
+#define TIMER_DEFAULT_CONFIG_BIT_WIDTH 
 
 
 /** @brief Interrupt priority
@@ -98,7 +98,7 @@
  *
  * @note This is an NRF_CONFIG macro.
  */
-#define TIMER2_ENABLED
+#define TIMER2_ENABLED 
 
 
 /** @brief Enable TIMER3 instance

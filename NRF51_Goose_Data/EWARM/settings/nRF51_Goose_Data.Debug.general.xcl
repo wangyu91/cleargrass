@@ -6,8 +6,6 @@
 
 --plugin "D:\IAR\arm\bin\armbat.dll" 
 
---flash_loader "D:\IAR\arm\config\flashloader\NordicSemi\FlashNRF51822.board" 
-
 
 
 

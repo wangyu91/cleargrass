@@ -2317,6 +2317,24 @@
   <group>
     <name>App</name>
     <group>
+      <name>BLE_Init</name>
+      <file>
+        <name>$PROJ_DIR$\..\Users\App\BLE\BLE_Init.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\..\Users\App\BLE\BLE_Init.h</name>
+      </file>
+    </group>
+    <group>
+      <name>BLE_Services</name>
+      <file>
+        <name>$PROJ_DIR$\..\Users\App\BLE_Services\Goose_RTC_Service.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\..\Users\App\BLE_Services\Goose_RTC_Service.h</name>
+      </file>
+    </group>
+    <group>
       <name>Global</name>
       <file>
         <name>$PROJ_DIR$\..\Users\App\Global\Global.c</name>
@@ -2386,12 +2404,99 @@
   <group>
     <name>Library</name>
     <group>
+      <name>App_Scheduler</name>
+      <file>
+        <name>$PROJ_DIR$\..\Library\libraries\scheduler\app_scheduler.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\..\Library\libraries\scheduler\app_scheduler.h</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\..\Library\libraries\scheduler\app_scheduler_dox_config.h</name>
+      </file>
+    </group>
+    <group>
+      <name>App_Timer</name>
+      <file>
+        <name>$PROJ_DIR$\..\Library\libraries\timer\app_timer.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\..\Library\libraries\timer\App_timer.h</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\..\Library\libraries\timer\app_timer_appsh.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\..\Library\libraries\timer\App_timer_appsh.h</name>
+      </file>
+    </group>
+    <group>
+      <name>App_Trace</name>
+      <file>
+        <name>$PROJ_DIR$\..\Library\libraries\trace\app_trace.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\..\Library\libraries\trace\app_trace.h</name>
+      </file>
+    </group>
+    <group>
+      <name>BLE</name>
+      <file>
+        <name>$PROJ_DIR$\..\Library\ble\ble_advertising\ble_advertising.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\..\Library\ble\ble_advertising\ble_advertising.h</name>
+      </file>
+    </group>
+    <group>
+      <name>BLE_Common</name>
+      <file>
+        <name>$PROJ_DIR$\..\Users\App\common\ble_advdata.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\..\Users\App\common\ble_advdata.h</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\..\Users\App\common\ble_conn_params.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\..\Users\App\common\ble_conn_params.h</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\..\Users\App\common\ble_conn_state.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\..\Users\App\common\ble_conn_state.h</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\..\Users\App\common\ble_date_time.h</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\..\Users\App\common\ble_gatt_db.h</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\..\Users\App\common\ble_sensor_location.h</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\..\Users\App\common\ble_srv_common.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\..\Users\App\common\ble_srv_common.h</name>
+      </file>
+    </group>
+    <group>
       <name>Boards</name>
       <file>
         <name>$PROJ_DIR$\..\Library\boards\boards.c</name>
       </file>
       <file>
         <name>$PROJ_DIR$\..\Library\boards\boards.h</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\..\Library\libraries\bsp\bsp.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\..\Library\libraries\bsp\bsp.h</name>
       </file>
       <file>
         <name>$PROJ_DIR$\..\Library\boards\pca10028.h</name>
@@ -2472,15 +2577,42 @@
         </file>
       </group>
       <group>
+        <name>pStrorage</name>
+        <group>
+          <name>Config</name>
+          <file>
+            <name>$PROJ_DIR$\..\Library\drivers_nrf\pstorage\config\pstorage_platform.h</name>
+          </file>
+        </group>
+        <file>
+          <name>$PROJ_DIR$\..\Library\drivers_nrf\pstorage\pstorage.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\Library\drivers_nrf\pstorage\pstorage.h</name>
+        </file>
+      </group>
+      <group>
         <name>SPI</name>
         <file>
           <name>$PROJ_DIR$\..\Library\drivers_nrf\spi_master\nrf_drv_spi.c</name>
         </file>
         <file>
-          <name>$PROJ_DIR$\..\Library\drivers_nrf\spi_master\Nrf_drv_spi.h</name>
+          <name>$PROJ_DIR$\..\Library\drivers_nrf\spi_master\nrf_drv_spi.h</name>
         </file>
         <file>
           <name>$PROJ_DIR$\..\Library\drivers_nrf\spi_master\nrf_drv_spi_dox_config.h</name>
+        </file>
+      </group>
+      <group>
+        <name>Timer</name>
+        <file>
+          <name>$PROJ_DIR$\..\Library\drivers_nrf\timer\nrf_drv_timer.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\Library\drivers_nrf\timer\nrf_drv_timer.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\Library\drivers_nrf\timer\nrf_drv_timer_dox_config.h</name>
         </file>
       </group>
       <group>
@@ -2608,7 +2740,7 @@
   <group>
     <name>Main</name>
     <file>
-      <name>$PROJ_DIR$\..\Users\Main\iar_nrf51_blank_xxac.icf</name>
+      <name>$PROJ_DIR$\..\Users\Main\iar_s130_nrf51422_xxac.icf</name>
     </file>
     <file>
       <name>$PROJ_DIR$\..\Users\Main\iar_startup_nrf51.s</name>
@@ -2618,6 +2750,87 @@
     </file>
     <file>
       <name>$PROJ_DIR$\..\Users\Main\sdk_config.h</name>
+    </file>
+  </group>
+  <group>
+    <name>Soft_Device</name>
+    <group>
+      <name>Common</name>
+      <file>
+        <name>$PROJ_DIR$\..\Library\softdevice\common\softdevice_handler\ant_stack_handler_types.h</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\..\..\nRF51_SDK\components\softdevice\common\softdevice_handler\app_ram_base.h</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\..\..\nRF51_SDK\components\softdevice\common\softdevice_handler\ble_stack_handler_types.h</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\..\Library\softdevice\common\softdevice_handler\softdevice_handler.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\..\Library\softdevice\common\softdevice_handler\softdevice_handler.h</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\..\..\nRF51_SDK\components\softdevice\common\softdevice_handler\softdevice_handler_appsh.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\..\..\nRF51_SDK\components\softdevice\common\softdevice_handler\softdevice_handler_appsh.h</name>
+      </file>
+    </group>
+    <file>
+      <name>$PROJ_DIR$\..\Library\softdevice\s130\headers\ble.h</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\Library\softdevice\s130\headers\ble_err.h</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\Library\softdevice\s130\headers\ble_gap.h</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\Library\softdevice\s130\headers\ble_gatt.h</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\Library\softdevice\s130\headers\ble_gattc.h</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\Library\softdevice\s130\headers\ble_gatts.h</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\Library\softdevice\s130\headers\ble_hci.h</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\Library\softdevice\s130\headers\ble_l2cap.h</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\Library\softdevice\s130\headers\ble_ranges.h</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\Library\softdevice\s130\headers\ble_types.h</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\Library\softdevice\s130\headers\nrf_error.h</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\Library\softdevice\s130\headers\nrf_error_sdm.h</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\Library\softdevice\s130\headers\nrf_error_soc.h</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\Library\softdevice\s130\headers\nrf_nvic.h</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\Library\softdevice\s130\headers\nrf_sd_def.h</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\Library\softdevice\s130\headers\nrf_sdm.h</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\Library\softdevice\s130\headers\nrf_soc.h</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\Library\softdevice\s130\headers\nrf_svc.h</name>
     </file>
   </group>
 </project>

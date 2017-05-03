@@ -11,6 +11,7 @@
 #include "KH25V1635F_Driver.h"
 #include "nrf_gpio.h"
 //#include "Global.h"
+#include "nrf_delay.h"
 
 /* Private variables ---------------------------------------------------------*/
         
@@ -62,7 +63,7 @@ void KH25_Flash_Init(void)
 	nrf_gpio_pin_write(KH25_PIN_WP, 1);
 	nrf_gpio_cfg_output(KH25_PIN_HOLD);
 	nrf_gpio_pin_write(KH25_PIN_HOLD, 1);
-	
+
 }
 // end of void KH25_Flash_Init(void)
 
@@ -287,7 +288,11 @@ void KH25_Chip_Init(void)
 	// 判断是否存储过历史数据 
 	if ((Data_Buff[0] == 0xFF) && (Data_Buff[1] == 0xFF))
 	{
+		// 从第一页开始写
+		Data_Buff[0] = 0x00;
+		Data_Buff[1] = 0x00;
 		KH25_Chip_Erase();
+		KH25_Page_Program(0x001FF000, Data_Buff, 2);
 	}
 }
 // end of void KH25_Chip_Init(void)

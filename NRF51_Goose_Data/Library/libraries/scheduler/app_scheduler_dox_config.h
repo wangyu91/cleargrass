@@ -10,7 +10,7 @@
  *
  * @note This is an NRF_CONFIG macro.
  */
-#define APP_SCHEDULER_ENABLED
+#define APP_SCHEDULER_ENABLED 1
 
 /** @brief Enabling pause feature
  *

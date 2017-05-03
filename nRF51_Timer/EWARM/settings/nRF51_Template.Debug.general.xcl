@@ -1,0 +1,13 @@
+"D:\IAR\arm\bin\armproc.dll" 
+
+"D:\IAR\arm\bin\armjlink2.dll" 
+
+"D:\Workspace\nRF51_Timer\EWARM\Debug\Exe\nRF51_Template.out" 
+
+--plugin "D:\IAR\arm\bin\armbat.dll" 
+
+--flash_loader "D:\IAR\arm\config\flashloader\NordicSemi\FlashNRF51822.board" 
+
+
+
+

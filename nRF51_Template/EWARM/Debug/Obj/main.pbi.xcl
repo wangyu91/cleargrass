@@ -1,4 +1,4 @@
-"D:\Workspace\NRF51_Goose_Data\Users\Main\main.c"
+"D:\Workspace\nRF51_Template\Users\Main\main.c"
 -std=c99
 -ferror-limit=100
 -I
@@ -69,6 +69,8 @@ D:\Workspace\nRF51_Template\EWARM\..\Library\drivers_nrf\power
 D:\Workspace\nRF51_Template\EWARM\..\Library\drivers_nrf\rng
 -I
 D:\Workspace\nRF51_Template\EWARM\..\Library\libraries\queue
+-I
+D:\Workspace\nRF51_Template\EWARM\..\Library\boards
 -I
 D:\IAR\arm\CMSIS\Include
 -I
@@ -144,6 +146,8 @@ D:\Workspace\nRF51_Template\Library\drivers_nrf\rng
 -I
 D:\Workspace\nRF51_Template\Library\libraries\queue
 -I
+D:\Workspace\nRF51_Template\Library\boards
+-I
 D:\IAR\arm\CMSIS\Include
 -DDEBUG=1
 -DBLE_STACK_SUPPORT_REQD=1
@@ -152,6 +156,7 @@ D:\IAR\arm\CMSIS\Include
 -DNRF51=1
 -DNRF_SD_BLE_API_VERSION=2
 -DSOFTDEVICE_PRESENT=1
+-DBOARDS_PCA10028=1
 -D__CHAR_BITS__=8
 -D__CHAR_MAX__=0xff
 -D__CHAR_MIN__=0

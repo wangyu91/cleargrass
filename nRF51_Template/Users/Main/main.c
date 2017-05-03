@@ -26,7 +26,7 @@
 #include "app_error.h"
 #include "app_timer.h"
 #include "app_util_platform.h"
-//#include "boards.h"
+#include "boards.h"
 //#include "bsp.h"
 #if 0
 #include "nrf_drv_timer.h"

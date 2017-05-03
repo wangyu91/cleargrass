@@ -1,4 +1,7 @@
----- Get_Current_Data Matches (3 in 1 files) ----
-KH25_Flash_Store.c (d:\workspace\nrf51_goose_data\users\app\spi_flash):		Get_Current_Data(Current_DataBuff);
-KH25_Flash_Store.c (d:\workspace\nrf51_goose_data\users\app\spi_flash):* Function Name  :  Get_Current_Data
-KH25_Flash_Store.c (d:\workspace\nrf51_goose_data\users\app\spi_flash):void Get_Current_Data(u8* Data_Buff)
+---- RTC_Write_Handler Matches (7 in 3 files) ----
+BLE_Init.c (d:\workspace\nrf51_goose_data\users\app\ble):    RTC_Init.RTC_Write_Handler = Goose_RTC_Set_Handler;
+Goose_RTC_Service.c (d:\workspace\nrf51_goose_data\users\app\ble_services):    pRTC->RTC_Write_Handler = pRTC_Init->RTC_Write_Handler;
+Goose_RTC_Service.c (d:\workspace\nrf51_goose_data\users\app\ble_services):        (pRTC->RTC_Write_Handler!= NULL))
+Goose_RTC_Service.c (d:\workspace\nrf51_goose_data\users\app\ble_services):        pRTC->RTC_Write_Handler(pRTC, p_evt_write->data[0]);
+Goose_RTC_Service.h (d:\workspace\nrf51_goose_data\users\app\ble_services):	Goose_RTC_Write_Handler_t	RTC_Write_Handler;
+Goose_RTC_Service.h (d:\workspace\nrf51_goose_data\users\app\ble_services):	Goose_RTC_Write_Handler_t	RTC_Write_Handler;

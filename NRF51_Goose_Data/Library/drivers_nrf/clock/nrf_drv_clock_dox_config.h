@@ -10,7 +10,7 @@
  *
  * @note This is an NRF_CONFIG macro.
  */
-#define CLOCK_ENABLED
+#define CLOCK_ENABLED 1
 
 /** @brief HF XTAL Frequency
  *
@@ -33,7 +33,7 @@
  *
  * @note This is an NRF_CONFIG macro.
  */
-#define CLOCK_CONFIG_LF_SRC
+#define CLOCK_CONFIG_LF_SRC 1
 
 
 /** @brief Interrupt priority
